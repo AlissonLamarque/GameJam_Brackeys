@@ -1,8 +1,17 @@
+<<<<<<< Updated upstream
 [gd_scene load_steps=8 format=4 uid="uid://dro1xa4eu2qxn"]
+=======
+[gd_scene load_steps=11 format=4 uid="uid://dro1xa4eu2qxn"]
+>>>>>>> Stashed changes
 
 [ext_resource type="Texture2D" uid="uid://dsgtrivt15h6x" path="res://assets/texture/TX Tileset Grass.png" id="1_024t6"]
 [ext_resource type="Texture2D" uid="uid://wb7ptve4sdwh" path="res://assets/texture/TX Tileset Stone Ground.png" id="2_bow2d"]
 [ext_resource type="Texture2D" uid="uid://c8d17cho10hdu" path="res://assets/texture/TX Props.png" id="3_ncong"]
+<<<<<<< Updated upstream
+=======
+[ext_resource type="PackedScene" uid="uid://df88ub57bgkgd" path="res://scenes/mage.tscn" id="4_eai3i"]
+[ext_resource type="PackedScene" uid="uid://dgunt0onwvp5q" path="res://scenes/player.tscn" id="5_4gsao"]
+>>>>>>> Stashed changes
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_272pr"]
 texture = ExtResource("1_024t6")
@@ -827,6 +836,9 @@ sources/0 = SubResource("TileSetAtlasSource_272pr")
 sources/1 = SubResource("TileSetAtlasSource_4vakc")
 sources/2 = SubResource("TileSetAtlasSource_f2woa")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u173s"]
+size = Vector2(27.5, 25)
+
 [node name="Main" type="Node"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -839,4 +851,23 @@ tile_map_data = PackedByteArray("AAD1//b/AAAFAAgAAAD1//f/AAAFAAgAAAD1//j/AAAFAAg
 tile_set = SubResource("TileSet_4xp4r")
 
 [node name="TileMapLayer1" type="TileMapLayer" parent="TileMap"]
+<<<<<<< Updated upstream
 tile_set = SubResource("TileSet_4xp4r")
+=======
+position = Vector2(0, -6)
+tile_map_data = PackedByteArray("AAD4//f/AgABABoAAAD9//3/AgAWABAAAAD9//7/AgAWABEAAAD9////AgAWABIAAAD9/wAAAgAWABMAAAD9/wEAAgAWABQAAAD+//7/AgAXABEAAAD+////AgAXABIAAAD+/wAAAgAXABMAAAD+/wEAAgAXABQAAAD+/wIAAgAXABUAAAD///3/AgAYABAAAAD///7/AgAYABEAAAD/////AgAYABIAAAD//wAAAgAYABMAAAD//wEAAgAYABQAAAD//wIAAgAYABUAAAAAAP3/AgAZABAAAAAAAP7/AgAZABEAAAAAAP//AgAZABIAAAAAAAAAAgAZABMAAAAAAAEAAgAZABQAAAAAAAIAAgAZABUAAAABAP7/AgAaABEAAAABAP//AgAaABIAAAABAAAAAgAaABMAAAABAAEAAgAaABQAAAABAAIAAgAaABUAAAACAP7/AgAbABEAAAACAP//AgAbABIAAAACAAAAAgAbABMAAAACAAEAAgAbABQAAAA=")
+tile_set = SubResource("TileSet_4xp4r")
+
+[node name="Mage" parent="." instance=ExtResource("4_eai3i")]
+position = Vector2(0, -31)
+
+[node name="Player" parent="." instance=ExtResource("5_4gsao")]
+position = Vector2(-38, -44)
+
+[node name="Collisions" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions"]
+position = Vector2(1, -14)
+scale = Vector2(1, 0.8)
+shape = SubResource("RectangleShape2D_u173s")
+>>>>>>> Stashed changes
