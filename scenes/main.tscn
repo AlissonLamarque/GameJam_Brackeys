@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://calgrt7nv8wgk"]
+[gd_scene load_steps=10 format=4 uid="uid://bpib2e6h3628"]
 
 [ext_resource type="Texture2D" uid="uid://dsgtrivt15h6x" path="res://assets/texture/TX Tileset Grass.png" id="1_leukg"]
 [ext_resource type="Texture2D" uid="uid://wb7ptve4sdwh" path="res://assets/texture/TX Tileset Stone Ground.png" id="2_xvdl3"]
@@ -842,6 +842,10 @@ tile_set = SubResource("TileSet_hw2x3")
 
 [node name="TileMapLayer1" type="TileMapLayer" parent="TileMapLayers"]
 tile_map_data = PackedByteArray("AAD9//7/AgAWABEAAAD9////AgAWABIAAAD9/wAAAgAWABMAAAD9/wEAAgAWABQAAAD+//7/AgAXABEAAAD+////AgAXABIAAAD+/wAAAgAXABMAAAD+/wEAAgAXABQAAAD+/wIAAgAXABUAAAD///3/AgAYABAAAAD///7/AgAYABEAAAD/////AgAYABIAAAD//wAAAgAYABMAAAD//wEAAgAYABQAAAD//wIAAgAYABUAAAAAAP3/AgAZABAAAAAAAP7/AgAZABEAAAAAAP//AgAZABIAAAAAAAAAAgAZABMAAAAAAAEAAgAZABQAAAAAAAIAAgAZABUAAAABAP7/AgAaABEAAAABAP//AgAaABIAAAABAAAAAgAaABMAAAABAAEAAgAaABQAAAABAAIAAgAaABUAAAACAP7/AgAbABEAAAACAP//AgAbABIAAAACAAAAAgAbABMAAAACAAEAAgAbABQAAAA=")
+tile_set = SubResource("TileSet_hw2x3")
+
+[node name="TileMapLayer2" type="TileMapLayer" parent="TileMapLayers"]
+tile_map_data = PackedByteArray("AAD/////AgAUABAAAAD//wAAAgAUABEAAAAAAP//AgAVABAAAAAAAAAAAgAVABEAAAA=")
 tile_set = SubResource("TileSet_hw2x3")
 
 [node name="Mage" parent="." instance=ExtResource("4_g6unc")]

@@ -9,6 +9,44 @@ var player_alive = true
 var is_moving = false
 var attack_ip = null
 
+@export var staff_distance = 40  # Distância do cajado em relação ao player
+@export var bullet_scene: PackedScene  # Cena do projétil
+var can_shoot = true
+
+
+func _process(delta):
+	if player_alive:
+		rotate_staff()
+
+		if Input.is_action_pressed("shoot") and can_shoot:
+			shoot()
+
+func rotate_staff():
+	var mouse_pos = get_global_mouse_position()
+
+	# Calcula o ângulo entre o player e o mouse
+	var angle = (mouse_pos - global_position).angle()
+
+	# Move o cajado em círculo em torno do player
+	$Staff.position = Vector2(cos(angle), sin(angle)) * staff_distance
+
+	# Faz o cajado olhar para o mouse
+	$Staff.look_at(mouse_pos)
+
+func shoot():
+	can_shoot = false
+	
+	# Cria o projétil na posição do Muzzle
+	var bullet = bullet_scene.instantiate()
+	bullet.global_position = $Staff/Muzzle.global_position
+	bullet.direction = (get_global_mouse_position() - $Staff.global_position).normalized()
+
+	get_parent().add_child(bullet)
+
+	await get_tree().create_timer(0.2).timeout  # Taxa de tiro (0.2 segundos)
+	can_shoot = true
+
+
 func _ready():
 	pass
 
