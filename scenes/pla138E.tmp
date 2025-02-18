@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://dgunt0onwvp5q"]
+[gd_scene load_steps=46 format=3 uid="uid://dgunt0onwvp5q"]
 
 [ext_resource type="Texture2D" uid="uid://k6650b1gw4pf" path="res://assets/character/idle.png" id="1_0esoy"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_rjxes"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://uwewe7lbb1qd" path="res://assets/weapons/STAFF16.png" id="3_cplfs"]
 [ext_resource type="Texture2D" uid="uid://dook8ccdnv5by" path="res://assets/character/run.png" id="3_grk2s"]
 [ext_resource type="Texture2D" uid="uid://c3s6jruidvkv4" path="res://assets/particles/light.webp" id="4_81xn6"]
+[ext_resource type="Texture2D" uid="uid://daiprbetl58d" path="res://assets/particles/crosshair.png" id="7_i7n46"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a676i"]
 atlas = ExtResource("1_0esoy")
@@ -301,14 +302,6 @@ bullet_scene = ExtResource("2_go0rh")
 
 [node name="Staff" type="Node2D" parent="."]
 
-[node name="PointLight2D" type="PointLight2D" parent="Staff"]
-position = Vector2(20, -10)
-scale = Vector2(0.0546875, 0.0546875)
-color = Color(0, 0.545098, 0.505882, 0.576471)
-shadow_enabled = true
-texture = ExtResource("4_81xn6")
-height = 4.0
-
 [node name="Sprite2D" type="Sprite2D" parent="Staff"]
 z_index = 2
 position = Vector2(19, 4)
@@ -322,6 +315,14 @@ position = Vector2(20, -10)
 [node name="Muzzle2" type="Marker2D" parent="Staff"]
 position = Vector2(20, 19)
 
+[node name="PointLight2D" type="PointLight2D" parent="Staff"]
+position = Vector2(20, -10)
+scale = Vector2(0.0546875, 0.0546875)
+color = Color(0, 0.545098, 0.505882, 0.576471)
+shadow_enabled = true
+texture = ExtResource("4_81xn6")
+height = 4.0
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_mvd11")
@@ -330,3 +331,8 @@ metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_wpdte")
+
+[node name="Crosshair" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Crosshair"]
+texture = ExtResource("7_i7n46")
