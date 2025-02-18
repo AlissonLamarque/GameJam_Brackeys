@@ -2,20 +2,92 @@ extends CharacterBody2D
 
 const speed = 150.0
 
-var dir = "right"
+var rng = RandomNumberGenerator.new()
 
 var health = 100
 var player_alive = true
 var is_moving = false
-var attack_ip = null
+
+@export var staff_distance = 5
+@export var bullet_scene: PackedScene
+var can_shoot = true
+
+var initial_light_scale = 0
+
+var staff_position_offset = Vector2.ZERO
+var staff_position_target = Vector2.ZERO
+
+
+func get_look_direction():
+	var mouse_pos = get_global_mouse_position()
+	
+	return global_position.direction_to(mouse_pos).normalized()
+
 
 func _ready():
-	pass
+	initial_light_scale = $Staff/PointLight2D.scale
 
+func _process(delta):
+	if player_alive:
+		rotate_staff(delta)
+
+		if Input.is_action_pressed("shoot") and can_shoot:
+			shoot()
+
+
+func rotate_staff(delta):
+	
+	var light = $Staff/PointLight2D
+	
+	var angle = get_look_direction()
+	
+	if angle.x > 0:
+		$Staff/Sprite2D.flip_h = false
+		light.position = $Staff/Muzzle.position
+		
+	else:
+		$Staff/Sprite2D.flip_h = true
+		light.position = $Staff/Muzzle2.position
+		
+	
+	staff_position_offset = lerp(staff_position_offset, staff_position_offset.move_toward(staff_position_target, delta), 0.7)
+	
+	if staff_position_offset.is_equal_approx(staff_position_target):
+		staff_position_target = Vector2(rng.randf_range(-1.5, 1.5), rng.randf_range(-1.5, 1.5))
+	
+	$Staff.position = (angle * staff_distance) + staff_position_offset
+	
+	$Staff.look_at(get_global_mouse_position())
+
+func shoot():
+	can_shoot = false
+	
+	$Staff/PointLight2D.scale = initial_light_scale * 2
+	
+	var bullet = bullet_scene.instantiate()
+	
+	var muzzle = $Staff/Muzzle
+	
+	if $Staff/Sprite2D.flip_h:
+		muzzle = $Staff/Muzzle2
+	
+	bullet.global_position = muzzle.global_position
+	bullet.direction = (get_global_mouse_position() - muzzle.global_position).normalized()
+	
+	get_parent().add_child(bullet)
+
+	await get_tree().create_timer(0.2).timeout
+
+	can_shoot = true
+	
 
 func _physics_process(delta: float):
 	player_movement(delta)
 	play_anim()
+	
+	var light = $Staff/PointLight2D
+	
+	light.scale = lerp(light.scale, initial_light_scale, 0.1)
 	
 	if health <= 0:
 		player_alive = false
@@ -28,43 +100,44 @@ func player_movement(delta):
 	var dir_x = Input.get_axis("move_left", "move_right")
 	var dir_y = Input.get_axis("move_up", "move_down")
 	
-	if dir_x > 0:
-		dir = "right"
-	elif dir_x < 0:
-		dir = "left"
-	
-	if dir_y > 0:
-		dir = "down"
-	elif dir_y < 0:
-		dir = "up"
-	
 	velocity = Vector2(dir_x, dir_y).normalized() * speed
+	
+	is_moving = false
+	
+	if not velocity.is_zero_approx():
+		is_moving = true
+	
 	move_and_slide()
 
 
 func play_anim():
 	var anim = $AnimatedSprite2D
-	anim.flip_h = dir == "left"
-	
-	if dir == "left" or dir == "right":
-		if abs(velocity.x) > 0:
-			anim.play("walk_side")
-			is_moving = true
-		else:
-			if not attack_ip:
-				is_moving = false
-				anim.play("idle_side")
-	
-	if dir == "up" or dir == "down":
-		var side = "_back" if dir == "up" else "_front"
 
-		if abs(velocity.y) > 0:
-			is_moving = true
-			anim.play("walk"+side)
+	var angle = get_look_direction()
+	
+	var dir = null
+	
+	if (angle.x > 0 or angle.x < 0) and (angle.y > -0.5 and angle.y < 0.5):
+		dir = "side"
+	else:
+		if angle.y > 0:
+			dir = "front"
 		else:
-			if not attack_ip:
-				is_moving = false
-				anim.play("idle"+side)
+			dir = "back"
+			
+
+	if angle.x > 0:
+		anim.flip_h = false
+	else:
+		anim.flip_h = true
+	
+	if is_moving:
+		anim.play("walk_"+dir)
+		
+	else:
+		anim.play("idle_"+dir)
+	
+	
 
 func player():
 	pass
