@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=4 uid="uid://bpib2e6h3628"]
+[gd_scene load_steps=11 format=4 uid="uid://bpib2e6h3628"]
 
 [ext_resource type="Texture2D" uid="uid://dsgtrivt15h6x" path="res://assets/texture/TX Tileset Grass.png" id="1_leukg"]
 [ext_resource type="Texture2D" uid="uid://wb7ptve4sdwh" path="res://assets/texture/TX Tileset Stone Ground.png" id="2_xvdl3"]
 [ext_resource type="Texture2D" uid="uid://c8d17cho10hdu" path="res://assets/texture/TX Props.png" id="3_8eys7"]
-[ext_resource type="PackedScene" uid="uid://df88ub57bgkgd" path="res://scenes/mage.tscn" id="4_g6unc"]
+[ext_resource type="PackedScene" path="res://scenes/mage.tscn" id="4_g6unc"]
 [ext_resource type="PackedScene" uid="uid://dgunt0onwvp5q" path="res://scenes/player.tscn" id="5_yec0p"]
+[ext_resource type="Texture2D" uid="uid://c3s6jruidvkv4" path="res://assets/particles/light.webp" id="6_p81ri"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yc0jt"]
 texture = ExtResource("1_leukg")
@@ -832,7 +833,7 @@ sources/2 = SubResource("TileSetAtlasSource_4x2g1")
 [node name="Main" type="Node"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(1.5, 1.5)
+zoom = Vector2(2, 2)
 
 [node name="TileMapLayers" type="Node" parent="."]
 
@@ -852,4 +853,11 @@ tile_set = SubResource("TileSet_hw2x3")
 position = Vector2(0, -29)
 
 [node name="Player" parent="." instance=ExtResource("5_yec0p")]
-position = Vector2(-40, -12)
+position = Vector2(-55, -28)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(-5.36442e-07, -2.98023e-07)
+scale = Vector2(1.25, 0.859375)
+color = Color(0.232541, 0.852706, 0.886764, 1)
+texture = ExtResource("6_p81ri")
+texture_scale = 0.1
