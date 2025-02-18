@@ -1,5 +1,6 @@
-[gd_scene load_steps=11 format=4 uid="uid://bpib2e6h3628"]
+[gd_scene load_steps=12 format=4 uid="uid://bpib2e6h3628"]
 
+[ext_resource type="Script" path="res://scenes/camera_2d.gd" id="1_frwiy"]
 [ext_resource type="Texture2D" uid="uid://dsgtrivt15h6x" path="res://assets/texture/TX Tileset Grass.png" id="1_leukg"]
 [ext_resource type="Texture2D" uid="uid://wb7ptve4sdwh" path="res://assets/texture/TX Tileset Stone Ground.png" id="2_xvdl3"]
 [ext_resource type="Texture2D" uid="uid://c8d17cho10hdu" path="res://assets/texture/TX Props.png" id="3_8eys7"]
@@ -833,7 +834,8 @@ sources/2 = SubResource("TileSetAtlasSource_4x2g1")
 [node name="Main" type="Node"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2, 2)
+zoom = Vector2(1.5, 1.5)
+script = ExtResource("1_frwiy")
 
 [node name="TileMapLayers" type="Node" parent="."]
 
