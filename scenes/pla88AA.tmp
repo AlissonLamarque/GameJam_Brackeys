@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://k6650b1gw4pf" path="res://assets/character/idle.png" id="1_0esoy"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_rjxes"]
 [ext_resource type="PackedScene" uid="uid://q14ikqdfgugs" path="res://scenes/bullet.tscn" id="2_go0rh"]
-[ext_resource type="Texture2D" uid="uid://uwewe7lbb1qd" path="res://assets/weapons/STAFF16.png" id="3_cplfs"]
+[ext_resource type="Texture2D" uid="uid://bec4fbh1v2aet" path="res://assets/weapons/Wood.png" id="2_yvyej"]
 [ext_resource type="Texture2D" uid="uid://dook8ccdnv5by" path="res://assets/character/run.png" id="3_grk2s"]
 [ext_resource type="Texture2D" uid="uid://c3s6jruidvkv4" path="res://assets/particles/light.webp" id="4_81xn6"]
 
@@ -231,7 +231,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk_back",
-"speed": 10.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -260,7 +260,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk_front",
-"speed": 10.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -289,7 +289,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk_side",
-"speed": 10.0
+"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wpdte"]
@@ -301,32 +301,36 @@ bullet_scene = ExtResource("2_go0rh")
 
 [node name="Staff" type="Node2D" parent="."]
 
+[node name="Sprite2D" type="Sprite2D" parent="Staff"]
+z_index = 2
+position = Vector2(14, 1)
+rotation = -1.46084
+texture = ExtResource("2_yvyej")
+region_enabled = true
+region_rect = Rect2(80.9996, 2.95348, 29.0515, 10.1415)
+
+[node name="Muzzle" type="Marker2D" parent="Staff"]
+position = Vector2(16, -10)
+
+[node name="Muzzle2" type="Marker2D" parent="Staff"]
+position = Vector2(13, 13)
+metadata/_edit_lock_ = true
+
 [node name="PointLight2D" type="PointLight2D" parent="Staff"]
-position = Vector2(20, -10)
+position = Vector2(16, -11)
 scale = Vector2(0.0546875, 0.0546875)
-color = Color(0, 0.545098, 0.505882, 0.576471)
+color = Color(0, 0.545098, 0.411765, 0.819608)
 shadow_enabled = true
 texture = ExtResource("4_81xn6")
 height = 4.0
 
-[node name="Sprite2D" type="Sprite2D" parent="Staff"]
-z_index = 2
-position = Vector2(19, 4)
-scale = Vector2(2, 2)
-texture = ExtResource("3_cplfs")
-region_rect = Rect2(80.9996, 2.95348, 29.0515, 10.1415)
-
-[node name="Muzzle" type="Marker2D" parent="Staff"]
-position = Vector2(20, -10)
-
-[node name="Muzzle2" type="Marker2D" parent="Staff"]
-position = Vector2(20, 19)
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_mvd11")
-animation = &"walk_back"
+animation = &"walk_side"
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0.5)
 shape = SubResource("RectangleShape2D_wpdte")
+metadata/_edit_lock_ = true
