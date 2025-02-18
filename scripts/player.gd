@@ -21,6 +21,16 @@ var initial_light_scale = 0
 var staff_position_offset = Vector2.ZERO
 var staff_position_target = Vector2.ZERO
 
+var near_item = null
+var held_item = null
+
+func _on_item_detector_body_entered(body: Node2D) -> void:
+	if body.is_class("Node2D") and body.get_script() == preload("res://scenes/item_base.tscn"):
+		near_item = body
+
+func _on_item_detector_body_exited(body: Node2D) -> void:
+	if body == near_item:
+		near_item = null
 
 func get_look_direction():
 	var mouse_pos = get_global_mouse_position()
@@ -38,6 +48,14 @@ func _process(delta):
 
 		if Input.is_action_pressed("shoot") and can_shoot:
 			shoot()
+
+		if Input.is_action_just_pressed("right_mouse") and near_item and not held_item:
+			held_item = near_item
+			held_item.pick_up(self)  # Notifica o item que ele foi pego
+
+		if Input.is_action_just_released("right_mouse") and held_item:
+			held_item.drop()  # Notifica o item que ele foi solto
+			held_item = null
 
 
 func rotate_staff(delta):
