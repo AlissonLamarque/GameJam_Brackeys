@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://drff425y7txmj"]
+
+[ext_resource type="PackedScene" uid="uid://dj6sle58ekgb8" path="res://scenes/bola.tscn" id="1_s8whn"]
+[ext_resource type="Script" path="res://scripts/items/wisdom_flower.gd" id="2_dw3l3"]
+
+[node name="WisdomFlower" instance=ExtResource("1_s8whn")]
+script = ExtResource("2_dw3l3")
+item_nome = "wisdom_flower"

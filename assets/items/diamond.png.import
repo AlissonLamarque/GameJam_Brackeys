@@ -2,17 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b3s0o4coeg7iw"
-
-path="res://.godot/imported/ritual.png-55a756675fa51c07ecb5e2ef4da4f8b8.ctex"
+uid="uid://bcn7bpl10ueru"
+path="res://.godot/imported/diamond.png-4f02220c0ca05ba0e8fe115609162949.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/texture/ritual.png"
-dest_files=["res://.godot/imported/ritual.png-55a756675fa51c07ecb5e2ef4da4f8b8.ctex"]
+source_file="res://assets/items/diamond.png"
+dest_files=["res://.godot/imported/diamond.png-4f02220c0ca05ba0e8fe115609162949.ctex"]
 
 [params]
 

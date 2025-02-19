@@ -1,0 +1,12 @@
+[gd_scene load_steps=4 format=3 uid="uid://bcjiwrp4ulb5w"]
+
+[ext_resource type="PackedScene" uid="uid://dj6sle58ekgb8" path="res://scenes/bola.tscn" id="1_qgt6b"]
+[ext_resource type="Script" path="res://scripts/items/rubi.gd" id="2_crli0"]
+[ext_resource type="Texture2D" uid="uid://p1qk0jdte74e" path="res://assets/items/rubi.png" id="3_2y4sk"]
+
+[node name="Rubi" instance=ExtResource("1_qgt6b")]
+script = ExtResource("2_crli0")
+item_nome = "rubi"
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("3_2y4sk")
