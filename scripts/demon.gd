@@ -9,6 +9,9 @@ extends CharacterBody2D
 var player_pos
 var target_pos
 
+func _ready():
+	add_to_group("Demon")
+
 func _physics_process(delta: float) -> void:
 	player_pos = player.position
 	target_pos = (player_pos - position).normalized()
@@ -30,8 +33,18 @@ func update_animation(direction: Vector2) -> void:
 			animated_sprite.play("run_right")
 		else:
 			animated_sprite.play("run_left")
-	else:  # Movimento vertical
+	else:
 		if direction.y > 0:
 			animated_sprite.play("run_down")
 		else:
 			animated_sprite.play("run_up")
+
+func die():
+	var light = get_node("PointLight2D")
+	var tween = get_tree().create_tween()
+	
+	animated_sprite.visible = false
+	light.visible = true
+	tween.tween_property(light, "texture_scale", 0, 0.5)
+	await get_tree().create_timer(0.2).timeout
+	queue_free()

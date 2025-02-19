@@ -81,6 +81,8 @@ func shoot():
 	bullet.global_position = muzzle.global_position
 	bullet.direction = (get_global_mouse_position() - muzzle.global_position).normalized()
 	
+	bullet.connect("hit_target", Callable(self, "_on_bullet_hit"))
+	
 	get_parent().add_child(bullet)
 	
 	camera.apply_shake(0.5, 2)
@@ -90,6 +92,11 @@ func shoot():
 	can_shoot = true
 	
 
+func _on_bullet_hit(body):
+	if body.is_in_group("Demon"):
+		print("Demônio atingido")
+		body.die()
+	
 func _physics_process(delta: float):
 	player_movement(delta)
 	play_anim()
