@@ -95,7 +95,6 @@ func shoot():
 
 func _on_bullet_hit(body):
 	if body.is_in_group("Demon"):
-		print("Demônio atingido")
 		body.die()
 	
 func _physics_process(delta: float):
