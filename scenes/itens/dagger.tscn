@@ -1,0 +1,12 @@
+[gd_scene load_steps=4 format=3 uid="uid://brdhnvtf7c33n"]
+
+[ext_resource type="PackedScene" uid="uid://dj6sle58ekgb8" path="res://scenes/bola.tscn" id="1_75nya"]
+[ext_resource type="Script" path="res://scripts/items/dagger.gd" id="2_008ip"]
+[ext_resource type="Texture2D" uid="uid://w8c6t5wbs722" path="res://assets/items/dagger.png" id="3_tackx"]
+
+[node name="Dagger" instance=ExtResource("1_75nya")]
+script = ExtResource("2_008ip")
+item_nome = "dagger"
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("3_tackx")

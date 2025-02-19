@@ -43,13 +43,8 @@ func die():
 	var light = get_node("PointLight2D")
 	var tween = get_tree().create_tween()
 	
-	speed = 0
 	animated_sprite.visible = false
-	# Trecho para brilho de morte do demon
 	light.visible = true
-	tween.tween_property(light, "texture_scale", 0.35, 0.15)
-	tween.tween_property(light, "color", Color.hex(0xfa000000), 0.15)
-	tween.tween_property(light, "energy", 0, 0.15)
-	await get_tree().create_timer(0.15).timeout
-	
+	tween.tween_property(light, "texture_scale", 0, 0.5)
+	await get_tree().create_timer(0.2).timeout
 	queue_free()
