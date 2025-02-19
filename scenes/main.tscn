@@ -1,15 +1,18 @@
-[gd_scene load_steps=18 format=4 uid="uid://bpib2e6h3628"]
+[gd_scene load_steps=19 format=4 uid="uid://bpib2e6h3628"]
 
 [ext_resource type="Script" path="res://scripts/camera_2d.gd" id="1_frwiy"]
 [ext_resource type="Texture2D" uid="uid://dsgtrivt15h6x" path="res://assets/texture/TX Tileset Grass.png" id="1_leukg"]
-[ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_o2bqn"]
+[ext_resource type="Script" path="res://scripts/demon_spawner.gd" id="1_tf2o3"]
+[ext_resource type="PackedScene" uid="uid://xalb8yo4x8lp" path="res://scenes/demon_spawner.tscn" id="2_solcr"]
 [ext_resource type="Texture2D" uid="uid://wb7ptve4sdwh" path="res://assets/texture/TX Tileset Stone Ground.png" id="2_xvdl3"]
 [ext_resource type="Texture2D" uid="uid://c8d17cho10hdu" path="res://assets/texture/TX Props.png" id="3_8eys7"]
 [ext_resource type="PackedScene" uid="uid://df88ub57bgkgd" path="res://scenes/mage.tscn" id="4_g6unc"]
-[ext_resource type="PackedScene" uid="uid://datauqyrgk8a6" path="res://scenes/demon.tscn" id="5_kvw3k"]
 [ext_resource type="Texture2D" uid="uid://vso7sgsg1sq2" path="res://assets/texture/main_tileset.png" id="5_od7gk"]
 [ext_resource type="PackedScene" uid="uid://dgunt0onwvp5q" path="res://scenes/player.tscn" id="5_yec0p"]
 [ext_resource type="Texture2D" uid="uid://c3s6jruidvkv4" path="res://assets/particles/light.webp" id="6_p81ri"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jbw0h"]
+size = Vector2(579, 383)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yc0jt"]
 texture = ExtResource("1_leukg")
@@ -870,8 +873,24 @@ sources/0 = SubResource("TileSetAtlasSource_5urii")
 
 [node name="Main" type="Node"]
 
-[node name="GameManager" type="Node" parent="."]
-script = ExtResource("1_o2bqn")
+[node name="GameManager" type="Node2D" parent="."]
+script = ExtResource("1_tf2o3")
+
+[node name="DemonSpawner" parent="GameManager" node_paths=PackedStringArray("spawn_area", "no_spawn_area") instance=ExtResource("2_solcr")]
+spawn_area = NodePath("SpawnArea")
+no_spawn_area = NodePath("NoSpawnArea")
+
+[node name="SpawnArea" type="Area2D" parent="GameManager/DemonSpawner"]
+
+[node name="CollisionShape2D_Spawn" type="CollisionShape2D" parent="GameManager/DemonSpawner/SpawnArea"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_jbw0h")
+
+[node name="NoSpawnArea" type="Area2D" parent="GameManager/DemonSpawner"]
+
+[node name="CollisionShape2D_NoSpawn" type="CollisionShape2D" parent="GameManager/DemonSpawner/NoSpawnArea"]
+position = Vector2(0.5, -61.5)
+shape = SubResource("RectangleShape2D_jbw0h")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
@@ -908,6 +927,3 @@ scale = Vector2(1.25, 0.859375)
 color = Color(0.232541, 0.852706, 0.886764, 1)
 texture = ExtResource("6_p81ri")
 texture_scale = 0.1
-
-[node name="Demon" parent="." instance=ExtResource("5_kvw3k")]
-position = Vector2(98, -11)
