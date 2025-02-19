@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://scripts/camera_2d.gd" id="1_frwiy"]
 [ext_resource type="Texture2D" uid="uid://dsgtrivt15h6x" path="res://assets/texture/TX Tileset Grass.png" id="1_leukg"]
 [ext_resource type="Script" path="res://scripts/demon_spawner.gd" id="1_tf2o3"]
-[ext_resource type="PackedScene" path="res://scenes/demon_spawner.tscn" id="2_solcr"]
+[ext_resource type="PackedScene" uid="uid://xalb8yo4x8lp" path="res://scenes/demon_spawner.tscn" id="2_solcr"]
 [ext_resource type="Texture2D" uid="uid://wb7ptve4sdwh" path="res://assets/texture/TX Tileset Stone Ground.png" id="2_xvdl3"]
 [ext_resource type="Texture2D" uid="uid://c8d17cho10hdu" path="res://assets/texture/TX Props.png" id="3_8eys7"]
 [ext_resource type="PackedScene" uid="uid://df88ub57bgkgd" path="res://scenes/mage.tscn" id="4_g6unc"]
