@@ -93,6 +93,8 @@ particles_anim_v_frames = 16
 particles_anim_loop = true
 
 [node name="Bullet" type="Area2D"]
+collision_layer = 2
+collision_mask = 4
 script = ExtResource("1_w87mf")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -117,3 +119,5 @@ color = Color(0.411765, 1, 1, 0.211765)
 shadow_enabled = true
 texture = ExtResource("4_wwr11")
 height = 5.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
