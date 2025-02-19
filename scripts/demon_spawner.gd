@@ -29,14 +29,15 @@ func get_valid_spawn_position() -> Vector2:
 		spawn_position = get_random_position_within(spawn_area)
 		if not is_in_no_spawn_area(spawn_position):
 			return spawn_position
+	
 	return get_random_position_within(spawn_area)
 
 func is_in_no_spawn_area(pos: Vector2) -> bool:
-	var shape: CollisionShape2D = no_spawn_area.get_node_or_null("CollisionShape2D")
+	var shape: CollisionShape2D = no_spawn_area.get_node_or_null("CollisionShape2D_NoSpawn")
 
 	if shape and shape.shape is RectangleShape2D:
 		var rect = shape.shape.extents
-		var area_pos = no_spawn_area.global_position
+		var area_pos = shape.global_position
 		var local_pos = pos - area_pos
 
 		return (abs(local_pos.x) <= rect.x and abs(local_pos.y) <= rect.y)
@@ -44,16 +45,12 @@ func is_in_no_spawn_area(pos: Vector2) -> bool:
 	return false
 
 func get_random_position_within(area: Area2D) -> Vector2:
-	var shape: CollisionShape2D = area.get_node_or_null("CollisionShape2D")
+	var shape: CollisionShape2D = area.get_node_or_null("CollisionShape2D_Spawn")
 	
-	if not shape:
-		print("Erro: CollisionShape2D não encontrado dentro de ", area.name)
-		return Vector2.ZERO
-
 	if shape.shape is RectangleShape2D:
 		var rect = shape.shape.extents
-		var pos = area.global_position
-		return pos + Vector2(randf_range(-rect.x, rect.x), randf_range(-rect.y, rect.y))
+		var pos = shape.global_position 
+		var offset = Vector2(randf_range(-rect.x, rect.x), randf_range(-rect.y, rect.y))
+		return pos + offset
 
-	print("Erro: Shape não é RectangleShape2D!")
 	return Vector2.ZERO
