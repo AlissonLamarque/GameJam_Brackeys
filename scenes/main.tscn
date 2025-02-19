@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://bpib2e6h3628"]
+[gd_scene load_steps=19 format=4 uid="uid://bpib2e6h3628"]
 
 [ext_resource type="Script" path="res://scripts/camera_2d.gd" id="1_frwiy"]
 [ext_resource type="Texture2D" uid="uid://dsgtrivt15h6x" path="res://assets/texture/TX Tileset Grass.png" id="1_leukg"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://vso7sgsg1sq2" path="res://assets/texture/main_tileset.png" id="5_od7gk"]
 [ext_resource type="PackedScene" uid="uid://dgunt0onwvp5q" path="res://scenes/player.tscn" id="5_yec0p"]
 [ext_resource type="Texture2D" uid="uid://c3s6jruidvkv4" path="res://assets/particles/light.webp" id="6_p81ri"]
+[ext_resource type="PackedScene" uid="uid://dj6sle58ekgb8" path="res://scenes/bola.tscn" id="13_cl6fh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yc0jt"]
 texture = ExtResource("1_leukg")
@@ -906,3 +907,9 @@ texture_scale = 0.1
 
 [node name="Demon" parent="." instance=ExtResource("5_kvw3k")]
 position = Vector2(-1, 28)
+
+[node name="BOLA" parent="." instance=ExtResource("13_cl6fh")]
+position = Vector2(-82, 39)
+mass = 0.001
+gravity_scale = 0.0
+inertia = 0.93

@@ -20,7 +20,7 @@ var initial_light_scale = 0
 
 var staff_position_offset = Vector2.ZERO
 var staff_position_target = Vector2.ZERO
-
+var canPick = true
 
 func get_look_direction():
 	var mouse_pos = get_global_mouse_position()
@@ -29,6 +29,7 @@ func get_look_direction():
 
 
 func _ready():
+	add_to_group("player")
 	initial_light_scale = $Staff/PointLight2D.scale
 	
 
