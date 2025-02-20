@@ -6,6 +6,8 @@ extends CharacterBody2D
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var player = get_parent().get_node("Player")
 
+@onready var camera = get_parent().get_node("Camera2D")
+
 var player_pos
 var target_pos
 
@@ -50,6 +52,9 @@ func die():
 	tween.tween_property(light, "texture_scale", 0.35, 0.15)
 	tween.tween_property(light, "color", Color.hex(0xfa000000), 0.15)
 	tween.tween_property(light, "energy", 0, 0.15)
+	
+	camera.apply_shake(0.4, 2)
+	
 	await get_tree().create_timer(0.15).timeout
 	
 	queue_free()

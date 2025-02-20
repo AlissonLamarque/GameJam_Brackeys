@@ -85,8 +85,6 @@ func shoot():
 	bullet.connect("hit_target", Callable(self, "_on_bullet_hit"))
 	
 	get_parent().add_child(bullet)
-	
-	camera.apply_shake(0.5, 2)
 
 	await get_tree().create_timer(0.2).timeout
 
