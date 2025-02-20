@@ -1,9 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://dj6sle58ekgb8"]
+[gd_scene load_steps=7 format=3 uid="uid://dj6sle58ekgb8"]
 
 [ext_resource type="Script" path="res://scripts/bola.gd" id="1_eafgv"]
+[ext_resource type="Shader" path="res://shaders/outline.gdshader" id="1_enydp"]
+[ext_resource type="Texture2D" path="res://assets/items/bola.png" id="3_45s7g"]
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_2gmop"]
-size = Vector2(16, 16)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_obsl3"]
+shader = ExtResource("1_enydp")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 1.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rxonh"]
 size = Vector2(16, 16)
@@ -18,7 +25,9 @@ freeze_mode = 1
 script = ExtResource("1_eafgv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("PlaceholderTexture2D_2gmop")
+material = SubResource("ShaderMaterial_obsl3")
+scale = Vector2(2, 2)
+texture = ExtResource("3_45s7g")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_rxonh")
