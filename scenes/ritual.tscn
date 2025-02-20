@@ -1,0 +1,61 @@
+[gd_scene load_steps=7 format=3 uid="uid://didmp1hd7wdo7"]
+
+[ext_resource type="Texture2D" uid="uid://bgt8h3kuqfavu" path="res://assets/texture/ritual.png" id="1_1oscp"]
+[ext_resource type="Script" path="res://scripts/ritual.gd" id="2_44xap"]
+[ext_resource type="Texture2D" uid="uid://ba8n6hyqaijwx" path="res://assets/particles/ritual_blur.png" id="3_6ql3u"]
+[ext_resource type="Texture2D" uid="uid://br12dglm4qt8r" path="res://assets/particles/runes.png" id="4_8wrfv"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_dtuaw"]
+particles_animation = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 16
+particles_anim_loop = true
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_khxd1"]
+particle_flag_disable_z = true
+angle_min = 1.07288e-05
+angle_max = 90.0
+angular_velocity_min = 12.2
+angular_velocity_max = 12.2
+gravity = Vector3(0, -20, 0)
+linear_accel_min = -2.23517e-06
+linear_accel_max = 100.0
+color = Color(1, 0.51, 0.5835, 0.85098)
+anim_speed_min = 0.1
+anim_speed_max = 0.3
+
+[node name="Ritual" type="Sprite2D"]
+texture = ExtResource("1_1oscp")
+script = ExtResource("2_44xap")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+show_behind_parent = true
+color = Color(1, 0.278431, 1, 0.854902)
+shadow_enabled = true
+shadow_item_cull_mask = 7
+texture = ExtResource("3_6ql3u")
+metadata/_edit_lock_ = true
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+y_sort_enabled = true
+material = SubResource("CanvasItemMaterial_dtuaw")
+position = Vector2(63, -47)
+amount = 3
+process_material = SubResource("ParticleProcessMaterial_khxd1")
+texture = ExtResource("4_8wrfv")
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="."]
+y_sort_enabled = true
+material = SubResource("CanvasItemMaterial_dtuaw")
+position = Vector2(3, 25)
+amount = 3
+process_material = SubResource("ParticleProcessMaterial_khxd1")
+texture = ExtResource("4_8wrfv")
+
+[node name="GPUParticles2D3" type="GPUParticles2D" parent="."]
+y_sort_enabled = true
+material = SubResource("CanvasItemMaterial_dtuaw")
+position = Vector2(-67, -49)
+amount = 3
+process_material = SubResource("ParticleProcessMaterial_khxd1")
+texture = ExtResource("4_8wrfv")
