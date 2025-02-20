@@ -1,17 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://duleeslcm6io5"]
+[gd_scene load_steps=3 format=3 uid="uid://duleeslcm6io5"]
 
 [ext_resource type="Script" path="res://scripts/menu.gd" id="1_xjlkq"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_4tyfi"]
 size = Vector2(660, 440)
-
-[sub_resource type="Animation" id="Animation_hexmk"]
-resource_name = "fade_out"
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_w75fb"]
-_data = {
-"fade_out": SubResource("Animation_hexmk")
-}
 
 [node name="Menu" type="Node2D"]
 position = Vector2(317, 285)
@@ -63,11 +55,6 @@ offset_right = 21.0
 offset_bottom = 180.0
 text = "EXIT"
 metadata/_edit_use_anchors_ = true
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_w75fb")
-}
 
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="ConfigButton" to="." method="_on_config_button_pressed"]
