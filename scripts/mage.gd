@@ -8,7 +8,6 @@ extends Node2D
 @onready var game_manager: Node2D = $"../GameManager"
 
 
-
 # Lista de itens que o mago conhece
 @export var itens_conhecidos: Array[String] = ["bola", "bottle", "dagger", "rubi", "magic_book", "diamond"]
 var item_pedido: String = ""

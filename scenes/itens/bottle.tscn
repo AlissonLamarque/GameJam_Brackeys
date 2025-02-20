@@ -2,11 +2,11 @@
 
 [ext_resource type="PackedScene" uid="uid://dj6sle58ekgb8" path="res://scenes/bola.tscn" id="1_00ba7"]
 [ext_resource type="Script" path="res://scripts/items/bottle.gd" id="2_1u56t"]
-[ext_resource type="Texture2D" uid="uid://xyen81m6hjkf" path="res://assets/items/WaterPot.png" id="3_0yorr"]
+[ext_resource type="Texture2D" uid="uid://c7xpb7srlsifa" path="res://assets/items/bottle.png" id="3_1f8ql"]
 
 [node name="Bottle" instance=ExtResource("1_00ba7")]
 script = ExtResource("2_1u56t")
 item_nome = "bottle"
 
 [node name="Sprite2D" parent="." index="0"]
-texture = ExtResource("3_0yorr")
+texture = ExtResource("3_1f8ql")
