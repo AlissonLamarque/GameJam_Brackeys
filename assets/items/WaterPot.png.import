@@ -2,18 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-
-uid="uid://bgt8h3kuqfavu"
-
-path="res://.godot/imported/ritual.png-55a756675fa51c07ecb5e2ef4da4f8b8.ctex"
+uid="uid://xyen81m6hjkf"
+path="res://.godot/imported/WaterPot.png-c523f097df42b88d9fb50bd2747e9643.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/texture/ritual.png"
-dest_files=["res://.godot/imported/ritual.png-55a756675fa51c07ecb5e2ef4da4f8b8.ctex"]
+source_file="res://assets/items/WaterPot.png"
+dest_files=["res://.godot/imported/WaterPot.png-c523f097df42b88d9fb50bd2747e9643.ctex"]
 
 [params]
 
