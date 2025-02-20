@@ -27,19 +27,16 @@ func get_look_direction():
 	
 	return global_position.direction_to(mouse_pos).normalized()
 
-
 func _ready():
 	add_to_group("player")
 	initial_light_scale = $Staff/PointLight2D.scale
-	
 
 func _process(delta):
 	if player_alive:
 		rotate_staff(delta)
 
-		if Input.is_action_pressed("shoot") and can_shoot:
+		if Input.is_action_pressed("shoot") and can_shoot and canPick:
 			shoot()
-
 
 func rotate_staff(delta):
 	
@@ -89,12 +86,11 @@ func shoot():
 	await get_tree().create_timer(0.2).timeout
 
 	can_shoot = true
-	
 
 func _on_bullet_hit(body):
 	if body.is_in_group("Demon"):
 		body.die()
-	
+
 func _physics_process(delta: float):
 	player_movement(delta)
 	play_anim()
@@ -108,6 +104,10 @@ func _physics_process(delta: float):
 		health = 0
 		self.queue_free()
 	
+	$Staff.visible = true
+	
+	if not canPick:
+		$Staff.visible = false
 
 func player_movement(delta):
 	
@@ -150,8 +150,6 @@ func play_anim():
 		
 	else:
 		anim.play("idle_"+dir)
-	
-	
 
 func player():
 	pass
