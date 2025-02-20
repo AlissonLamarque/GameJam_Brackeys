@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://d1sot0xnreal7"]
+
+[ext_resource type="PackedScene" uid="uid://dj6sle58ekgb8" path="res://scenes/bola.tscn" id="1_x434j"]
+[ext_resource type="Script" path="res://scripts/made_items/diamond_scroll.gd" id="2_80d28"]
+
+[node name="DiamondScroll" instance=ExtResource("1_x434j")]
+script = ExtResource("2_80d28")
+item_nome = "diamond_scroll"

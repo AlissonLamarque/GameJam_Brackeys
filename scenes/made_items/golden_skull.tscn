@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqd440vcy7ueh"]
+
+[ext_resource type="PackedScene" uid="uid://dj6sle58ekgb8" path="res://scenes/bola.tscn" id="1_0gebt"]
+[ext_resource type="Script" path="res://scripts/made_items/golden_skull.gd" id="2_wyhdd"]
+
+[node name="GoldenSkull" instance=ExtResource("1_0gebt")]
+script = ExtResource("2_wyhdd")
+item_nome = "golden_skull"
