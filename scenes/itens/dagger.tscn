@@ -2,11 +2,11 @@
 
 [ext_resource type="PackedScene" uid="uid://dj6sle58ekgb8" path="res://scenes/bola.tscn" id="1_75nya"]
 [ext_resource type="Script" path="res://scripts/items/dagger.gd" id="2_008ip"]
-[ext_resource type="Texture2D" uid="uid://w8c6t5wbs722" path="res://assets/items/dagger.png" id="3_tackx"]
+[ext_resource type="Texture2D" uid="uid://bji7g58kqjcs3" path="res://assets/items/dagger_new.png" id="3_rlrld"]
 
 [node name="Dagger" instance=ExtResource("1_75nya")]
 script = ExtResource("2_008ip")
 item_nome = "dagger"
 
 [node name="Sprite2D" parent="." index="0"]
-texture = ExtResource("3_tackx")
+texture = ExtResource("3_rlrld")

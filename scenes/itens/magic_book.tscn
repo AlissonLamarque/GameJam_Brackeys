@@ -2,11 +2,11 @@
 
 [ext_resource type="PackedScene" uid="uid://dj6sle58ekgb8" path="res://scenes/bola.tscn" id="1_o48ay"]
 [ext_resource type="Script" path="res://scripts/items/magic_book.gd" id="2_08bor"]
-[ext_resource type="Texture2D" uid="uid://3si1gnsqbpnd" path="res://assets/items/magic_book.png" id="3_dk0bt"]
+[ext_resource type="Texture2D" uid="uid://dql0i1kbf5hrl" path="res://assets/items/spell_book.png" id="3_atc3e"]
 
 [node name="MagicBook" instance=ExtResource("1_o48ay")]
 script = ExtResource("2_08bor")
 item_nome = "magic_book"
 
 [node name="Sprite2D" parent="." index="0"]
-texture = ExtResource("3_dk0bt")
+texture = ExtResource("3_atc3e")
