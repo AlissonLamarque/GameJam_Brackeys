@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://xalb8yo4x8lp"]
+[gd_scene load_steps=3 format=3 uid="uid://cds0imafbemob"]
 
 [ext_resource type="Script" path="res://scripts/demon_spawner.gd" id="1_gh4gl"]
 [ext_resource type="PackedScene" uid="uid://datauqyrgk8a6" path="res://scenes/demon.tscn" id="2_ul6bq"]
