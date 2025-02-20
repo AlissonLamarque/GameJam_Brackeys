@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://dgquoxm730122"]
+
+[ext_resource type="PackedScene" uid="uid://dj6sle58ekgb8" path="res://scenes/bola.tscn" id="1_f1y4p"]
+[ext_resource type="Script" path="res://scripts/made_items/herbs_potion.gd" id="2_mja5v"]
+
+[node name="HerbsPotion" instance=ExtResource("1_f1y4p")]
+script = ExtResource("2_mja5v")
+item_nome = "herbs_potion"

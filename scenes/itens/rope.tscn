@@ -1,8 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://bm4muqbevhjuj"]
-
-[ext_resource type="PackedScene" uid="uid://dj6sle58ekgb8" path="res://scenes/bola.tscn" id="1_ogu3l"]
-[ext_resource type="Script" path="res://scripts/items/rope.gd" id="2_4j0hu"]
-
-[node name="Rope" instance=ExtResource("1_ogu3l")]
-script = ExtResource("2_4j0hu")
-item_nome = "rope"
