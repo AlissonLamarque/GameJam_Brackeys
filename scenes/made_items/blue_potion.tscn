@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://bm4muqbevhjuj"]
+
+[ext_resource type="PackedScene" uid="uid://dj6sle58ekgb8" path="res://scenes/bola.tscn" id="1_b2cos"]
+[ext_resource type="Script" path="res://scripts/made_items/blue_potion.gd" id="2_g1byb"]
+
+[node name="BluePotion" instance=ExtResource("1_b2cos")]
+script = ExtResource("2_g1byb")
+item_nome = "blue_potion"

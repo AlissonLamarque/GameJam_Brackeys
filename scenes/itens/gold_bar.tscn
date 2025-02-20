@@ -1,8 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://dgquoxm730122"]
-
-[ext_resource type="PackedScene" uid="uid://dj6sle58ekgb8" path="res://scenes/bola.tscn" id="1_137r8"]
-[ext_resource type="Script" path="res://scripts/items/gold_bar.gd" id="2_bk0fw"]
-
-[node name="GoldBar" instance=ExtResource("1_137r8")]
-script = ExtResource("2_bk0fw")
-item_nome = "gold_bar"

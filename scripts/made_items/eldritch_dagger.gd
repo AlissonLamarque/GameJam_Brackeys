@@ -3,7 +3,7 @@ extends Bola
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	item_nome = "wisdom_flower"
+	item_nome = "eldritch_dagger"
 	pass # Replace with function body.
 
 
