@@ -66,7 +66,18 @@ text = "bola"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 2.996
+[node name="TimerVerificaItem" type="Timer" parent="."]
+wait_time = 0.578
+one_shot = true
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[node name="TimerStartTalking" type="Timer" parent="."]
+wait_time = 1.346
+one_shot = true
+
+[node name="TimerStopTalking" type="Timer" parent="."]
+wait_time = 1.105
+one_shot = true
+
+[connection signal="timeout" from="TimerVerificaItem" to="." method="_on_timer_item_verify_timeout"]
+[connection signal="timeout" from="TimerStartTalking" to="." method="_on_timer_start_talking_timeout"]
+[connection signal="timeout" from="TimerStopTalking" to="." method="_on_timer_stop_talking_timeout"]
