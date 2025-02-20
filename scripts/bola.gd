@@ -4,22 +4,38 @@ class_name Bola
 @export var item_nome: String = "bola"
 
 var picked = false
+var target_scale = Vector2(2,2)
 
+var original_index = z_index
 
 func _physics_process(delta):
+	
+	var staff = get_node("../Player/Staff")
+	
 	if picked == true:
-		self.position = get_node("../Player/Marker2D").global_position
-
+		var muzzle1 = staff.get_node("Muzzle")
+		var muzzle2 = staff.get_node("Muzzle2")
+		var target_position = (muzzle1.global_position + muzzle2.global_position)/2
+		self.position = lerp(self.position, target_position, 0.4)
+		z_index = get_node("../Player/").z_index+1
+		
+		target_scale = Vector2(1,1)
+		
+	else:
+		target_scale = Vector2(2,2)
+		z_index = original_index
+	
+	$Sprite2D.scale = lerp($Sprite2D.scale, target_scale, 0.3)
 
 func _input(event):
-	if Input.is_action_just_pressed("ui_pick"):
+	if Input.is_action_pressed("ui_pick"):
 		var bodies = $Area2D.get_overlapping_bodies()
 		for body in bodies:
 			if body.name == "Player" and get_node("../Player").canPick == true:
 				picked = true
 				get_node("../Player").canPick = false
-
-	if Input.is_action_just_pressed("ui_drop") and picked == true:
+	
+	else:
 		picked = false
 		get_node("../Player").canPick = true
 		

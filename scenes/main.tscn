@@ -1,12 +1,11 @@
-[gd_scene load_steps=20 format=4 uid="uid://bpib2e6h3628"]
+[gd_scene load_steps=23 format=4 uid="uid://bpib2e6h3628"]
 
 [ext_resource type="Script" path="res://scripts/camera_2d.gd" id="1_frwiy"]
-[ext_resource type="PackedScene" uid="uid://cu7lx3nllaatw" path="res://scenes/game_manager.tscn" id="1_q7qob"]
-[ext_resource type="PackedScene" uid="uid://cds0imafbemob" path="res://scenes/demon_spawner.tscn" id="2_solcr"]
+[ext_resource type="PackedScene" path="res://scenes/game_manager.tscn" id="1_q7qob"]
+[ext_resource type="PackedScene" uid="uid://xalb8yo4x8lp" path="res://scenes/demon_spawner.tscn" id="2_solcr"]
 [ext_resource type="PackedScene" uid="uid://df88ub57bgkgd" path="res://scenes/mage.tscn" id="4_g6unc"]
 [ext_resource type="Texture2D" uid="uid://vso7sgsg1sq2" path="res://assets/texture/main_tileset.png" id="5_od7gk"]
 [ext_resource type="PackedScene" uid="uid://dgunt0onwvp5q" path="res://scenes/player.tscn" id="5_yec0p"]
-[ext_resource type="Texture2D" uid="uid://c3s6jruidvkv4" path="res://assets/particles/light.webp" id="6_p81ri"]
 [ext_resource type="PackedScene" uid="uid://didmp1hd7wdo7" path="res://scenes/ritual.tscn" id="8_tnkwe"]
 [ext_resource type="PackedScene" uid="uid://y7y5vycuf8li" path="res://scenes/itens/bottle.tscn" id="11_e5gke"]
 [ext_resource type="PackedScene" uid="uid://dj6sle58ekgb8" path="res://scenes/bola.tscn" id="13_cl6fh"]
@@ -68,6 +67,18 @@ texture_region_size = Vector2i(32, 32)
 [sub_resource type="TileSet" id="TileSet_t5t8e"]
 tile_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetAtlasSource_5urii")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5k478"]
+size = Vector2(518, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ukh0g"]
+size = Vector2(136, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b3j45"]
+size = Vector2(70, 29.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eymym"]
+size = Vector2(20, 270)
 
 [node name="Main" type="Node"]
 
@@ -136,11 +147,57 @@ position = Vector2(-429, -1)
 [node name="Player" parent="." instance=ExtResource("5_yec0p")]
 position = Vector2(-55, -28)
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(-5.36442e-07, -2.98023e-07)
-scale = Vector2(1.25, 0.859375)
-color = Color(0.232541, 0.852706, 0.886764, 1)
-texture = ExtResource("6_p81ri")
-texture_scale = 0.1
+[node name="Collisions" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Collisions"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions/StaticBody2D"]
+position = Vector2(-3, -159)
+shape = SubResource("RectangleShape2D_5k478")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Collisions/StaticBody2D"]
+position = Vector2(0, 239)
+shape = SubResource("RectangleShape2D_5k478")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Collisions/StaticBody2D"]
+position = Vector2(-325, -129)
+shape = SubResource("RectangleShape2D_ukh0g")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="Collisions/StaticBody2D"]
+position = Vector2(-325, 206)
+shape = SubResource("RectangleShape2D_ukh0g")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Collisions/StaticBody2D"]
+position = Vector2(-419, -98)
+shape = SubResource("RectangleShape2D_b3j45")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Collisions/StaticBody2D"]
+position = Vector2(-421, 174.75)
+shape = SubResource("RectangleShape2D_b3j45")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Collisions/StaticBody2D"]
+position = Vector2(-458, 31)
+shape = SubResource("RectangleShape2D_eymym")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="Collisions/StaticBody2D"]
+position = Vector2(325, -127)
+shape = SubResource("RectangleShape2D_ukh0g")
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="Collisions/StaticBody2D"]
+position = Vector2(324, 208)
+shape = SubResource("RectangleShape2D_ukh0g")
+
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="Collisions/StaticBody2D"]
+position = Vector2(419, -96)
+shape = SubResource("RectangleShape2D_b3j45")
+
+[node name="CollisionShape2D11" type="CollisionShape2D" parent="Collisions/StaticBody2D"]
+position = Vector2(420, 175)
+shape = SubResource("RectangleShape2D_b3j45")
+
+[node name="CollisionShape2D12" type="CollisionShape2D" parent="Collisions/StaticBody2D"]
+position = Vector2(458, 25)
+shape = SubResource("RectangleShape2D_eymym")
 
 [node name="PauseMenu" parent="." instance=ExtResource("18_v6ds1")]
+metadata/_edit_lock_ = true
