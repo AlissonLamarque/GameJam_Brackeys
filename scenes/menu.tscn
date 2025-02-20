@@ -1,0 +1,75 @@
+[gd_scene load_steps=5 format=3 uid="uid://duleeslcm6io5"]
+
+[ext_resource type="Script" path="res://scripts/menu.gd" id="1_xjlkq"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_4tyfi"]
+size = Vector2(660, 440)
+
+[sub_resource type="Animation" id="Animation_hexmk"]
+resource_name = "fade_out"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w75fb"]
+_data = {
+"fade_out": SubResource("Animation_hexmk")
+}
+
+[node name="Menu" type="Node2D"]
+position = Vector2(317, 285)
+script = ExtResource("1_xjlkq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("PlaceholderTexture2D_4tyfi")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -89.0
+offset_top = -66.0
+offset_right = 73.0
+offset_bottom = -17.0
+text = "CONTEMPLEM O MAGO
+THE GAME"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="PlayButton" type="Button" parent="."]
+z_index = 4
+offset_left = -54.0
+offset_top = 25.0
+offset_right = 58.0
+offset_bottom = 56.0
+text = "INICIAR JOGO"
+metadata/_edit_use_anchors_ = true
+
+[node name="ConfigButton" type="Button" parent="."]
+offset_left = -34.0
+offset_top = 64.0
+offset_right = 35.0
+offset_bottom = 95.0
+text = "CONFIG"
+metadata/_edit_use_anchors_ = true
+
+[node name="CreditsButton" type="Button" parent="."]
+offset_left = -36.0
+offset_top = 107.0
+offset_right = 36.0
+offset_bottom = 138.0
+text = "CREDITS"
+metadata/_edit_use_anchors_ = true
+
+[node name="ExitButton" type="Button" parent="."]
+offset_left = -20.0
+offset_top = 149.0
+offset_right = 21.0
+offset_bottom = 180.0
+text = "EXIT"
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_w75fb")
+}
+
+[connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="ConfigButton" to="." method="_on_config_button_pressed"]
+[connection signal="pressed" from="CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]
