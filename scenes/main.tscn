@@ -1,3 +1,4 @@
+
 [gd_scene load_steps=18 format=4 uid="uid://bpib2e6h3628"]
 
 [ext_resource type="Script" path="res://scripts/camera_2d.gd" id="1_frwiy"]
@@ -7,12 +8,14 @@
 [ext_resource type="Texture2D" uid="uid://vso7sgsg1sq2" path="res://assets/texture/main_tileset.png" id="5_od7gk"]
 [ext_resource type="PackedScene" uid="uid://dgunt0onwvp5q" path="res://scenes/player.tscn" id="5_yec0p"]
 [ext_resource type="PackedScene" uid="uid://didmp1hd7wdo7" path="res://scenes/ritual.tscn" id="8_tnkwe"]
+
 [ext_resource type="PackedScene" uid="uid://y7y5vycuf8li" path="res://scenes/itens/bottle.tscn" id="11_e5gke"]
 [ext_resource type="PackedScene" uid="uid://dj6sle58ekgb8" path="res://scenes/bola.tscn" id="13_cl6fh"]
 [ext_resource type="PackedScene" uid="uid://brdhnvtf7c33n" path="res://scenes/itens/dagger.tscn" id="13_e04sb"]
 [ext_resource type="PackedScene" uid="uid://b5f6j70pjrk1g" path="res://scenes/itens/diamond.tscn" id="14_njq81"]
 [ext_resource type="PackedScene" uid="uid://b0mnai7isl78n" path="res://scenes/itens/magic_book.tscn" id="15_b11i0"]
 [ext_resource type="PackedScene" uid="uid://bcjiwrp4ulb5w" path="res://scenes/itens/rubi.tscn" id="16_grdbn"]
+[ext_resource type="PackedScene" uid="uid://btrw106rurke7" path="res://scenes/pause_menu.tscn" id="18_v6ds1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jbw0h"]
 size = Vector2(861, 248)
@@ -134,5 +137,13 @@ position = Vector2(-429, -1)
 [node name="Player" parent="." instance=ExtResource("5_yec0p")]
 position = Vector2(-55, -28)
 
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.78, 0.78, 0.78, 1)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(-5.36442e-07, -2.98023e-07)
+scale = Vector2(1.25, 0.859375)
+color = Color(0.232541, 0.852706, 0.886764, 1)
+texture = ExtResource("6_p81ri")
+texture_scale = 0.1
+
+[node name="PauseMenu" parent="." instance=ExtResource("18_v6ds1")]
+
