@@ -1,8 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dj6sle58ekgb8"]
+[gd_scene load_steps=8 format=3 uid="uid://dj6sle58ekgb8"]
 
 [ext_resource type="Script" path="res://scripts/bola.gd" id="1_eafgv"]
 [ext_resource type="Shader" path="res://shaders/outline.gdshader" id="1_enydp"]
-[ext_resource type="Texture2D" path="res://assets/items/bola.png" id="3_45s7g"]
+[ext_resource type="Texture2D" uid="uid://5io0kmdcaj3b" path="res://assets/items/bola.png" id="3_45s7g"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_obsl3"]
 shader = ExtResource("1_enydp")
@@ -14,6 +14,14 @@ shader_parameter/add_margins = true
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rxonh"]
 size = Vector2(16, 16)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_16hxu"]
+shader = ExtResource("1_enydp")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 1.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yspe6"]
 radius = 24.0
@@ -35,4 +43,6 @@ shape = SubResource("RectangleShape2D_rxonh")
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+z_index = 4
+material = SubResource("ShaderMaterial_16hxu")
 shape = SubResource("CircleShape2D_yspe6")

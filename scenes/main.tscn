@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://b5f6j70pjrk1g" path="res://scenes/itens/diamond.tscn" id="14_njq81"]
 [ext_resource type="PackedScene" uid="uid://b0mnai7isl78n" path="res://scenes/itens/magic_book.tscn" id="15_b11i0"]
 [ext_resource type="PackedScene" uid="uid://bcjiwrp4ulb5w" path="res://scenes/itens/rubi.tscn" id="16_grdbn"]
-[ext_resource type="PackedScene" path="res://scenes/pause_menu.tscn" id="18_v6ds1"]
+[ext_resource type="PackedScene" uid="uid://c8efopliot5j6" path="res://scenes/pause_menu.tscn" id="18_v6ds1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jbw0h"]
 size = Vector2(861, 248)
@@ -119,7 +119,7 @@ tile_set = SubResource("TileSet_t5t8e")
 position = Vector2(0, -29)
 
 [node name="BOLA" parent="." instance=ExtResource("13_cl6fh")]
-position = Vector2(307, -85)
+position = Vector2(308, -84)
 
 [node name="bottle" parent="." instance=ExtResource("11_e5gke")]
 position = Vector2(411, -45)
