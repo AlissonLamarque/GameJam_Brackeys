@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://dgf6skjlfbj6n"]
+
+[ext_resource type="PackedScene" uid="uid://dj6sle58ekgb8" path="res://scenes/bola.tscn" id="1_tsvem"]
+[ext_resource type="Script" path="res://scripts/items/golden_feather.gd" id="2_ptbo6"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_p0pim"]
+size = Vector2(16, 16)
+
+[node name="GoldenFeather" instance=ExtResource("1_tsvem")]
+script = ExtResource("2_ptbo6")
+item_nome = "golden_feather"
+
+[node name="Sprite2D" parent="." index="0"]
+texture = SubResource("PlaceholderTexture2D_p0pim")

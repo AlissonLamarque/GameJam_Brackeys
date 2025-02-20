@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://3rib2of57rp1"]
+
+[ext_resource type="PackedScene" uid="uid://dj6sle58ekgb8" path="res://scenes/bola.tscn" id="1_d74g0"]
+[ext_resource type="Script" path="res://scripts/made_items/ice_dagger.gd" id="2_sb2tt"]
+
+[node name="IceDagger" instance=ExtResource("1_d74g0")]
+script = ExtResource("2_sb2tt")
+item_nome = "ice_dagger"

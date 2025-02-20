@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://bkhxx1erfcha6"]
+
+[ext_resource type="PackedScene" uid="uid://dj6sle58ekgb8" path="res://scenes/bola.tscn" id="1_ui2hu"]
+[ext_resource type="Script" path="res://scripts/made_items/fire_dagger.gd" id="2_bm3od"]
+
+[node name="FireDagger" instance=ExtResource("1_ui2hu")]
+script = ExtResource("2_bm3od")
+item_nome = "fire_dagger"
