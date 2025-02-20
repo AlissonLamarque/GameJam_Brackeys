@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bgt8h3kuqfavu"
-path="res://.godot/imported/ritual.png-55a756675fa51c07ecb5e2ef4da4f8b8.ctex"
+uid="uid://ba8n6hyqaijwx"
+path="res://.godot/imported/ritual_blur.png-62a13ec4b4f953d6067fa1ff969226b5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/texture/ritual.png"
-dest_files=["res://.godot/imported/ritual.png-55a756675fa51c07ecb5e2ef4da4f8b8.ctex"]
+source_file="res://assets/particles/ritual_blur.png"
+dest_files=["res://.godot/imported/ritual_blur.png-62a13ec4b4f953d6067fa1ff969226b5.ctex"]
 
 [params]
 
