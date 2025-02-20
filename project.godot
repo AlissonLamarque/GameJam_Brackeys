@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 window/size/viewport_width=640
 window/size/viewport_height=640
+window/size/mode=2
 mouse_cursor/custom_image="res://assets/particles/crosshair.png"
 mouse_cursor/custom_image_hotspot=Vector2(14, 14)
 
