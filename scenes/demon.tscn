@@ -321,8 +321,8 @@ size = Vector2(10, 21)
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_8f4g8")
-stop_distance = 30.0
 particle_scene = ExtResource("2_r1y2b")
+stop_distance = 30.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_j2yiv")
@@ -343,3 +343,7 @@ energy = 2.0
 shadow_enabled = true
 texture = ExtResource("4_c2ywt")
 texture_scale = 0.01
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_AttackTimer_timeout"]

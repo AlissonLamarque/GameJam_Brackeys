@@ -1,13 +1,15 @@
 extends CharacterBody2D
 
+@export var particle_scene: PackedScene
 @export var speed: float = 70
 @export var stop_distance: float = 10
-@export var particle_scene: PackedScene
+@export var attack_damage: int = 25
+@export var attack_cooldown: float = 3
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var player = get_parent().get_node("Player")
-
 @onready var camera = get_parent().get_node("Camera2D")
+@onready var attack_timer: Timer = $Timer
 
 var player_pos
 var target_pos
@@ -16,6 +18,8 @@ var dissolve_rate = -1.14
 
 func _ready():
 	add_to_group("Demon")
+	attack_timer.wait_time = attack_cooldown
+	attack_timer.start()
 
 func _physics_process(delta: float) -> void:
 	player_pos = player.position
@@ -45,6 +49,10 @@ func update_animation(direction: Vector2) -> void:
 			animated_sprite.play("run_down")
 		else:
 			animated_sprite.play("run_up")
+
+func _on_AttackTimer_timeout():
+	if position.distance_to(player.position) <= stop_distance:
+		player.take_damage(attack_damage)
 
 func die():
 	var light = get_node("PointLight2D")
