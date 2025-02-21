@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://ck8si6sff7erd"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_iayn8"]
+particle_flag_disable_z = true
+angle_min = 1.07288e-05
+angle_max = 360.0
+radial_velocity_min = 60.0
+radial_velocity_max = 60.0
+gravity = Vector3(0, 0, 0)
+damping_min = 7.095
+damping_max = 7.095
+color = Color(1, 0.516667, 0, 1)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(0, -14)
+emitting = false
+amount = 30
+process_material = SubResource("ParticleProcessMaterial_iayn8")
+lifetime = 0.45
+one_shot = true
+explosiveness = 0.5
