@@ -1,6 +1,8 @@
 extends CharacterBody2D
 
-const speed = 150.0
+var max_speed = 150.0
+var min_speed = 150.0/1.5
+var speed = max_speed
 
 @onready var camera = get_parent().get_node("Camera2D")
 
@@ -35,8 +37,9 @@ func _process(delta):
 	if player_alive:
 		rotate_staff(delta)
 
-		if Input.is_action_pressed("shoot") and can_shoot and canPick:
-			shoot()
+		if Input.is_action_pressed("shoot") and can_shoot:
+			if canPick:
+				shoot()
 
 func rotate_staff(delta):
 	
