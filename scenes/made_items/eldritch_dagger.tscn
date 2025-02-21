@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://oqosegpemw11"]
+[gd_scene load_steps=6 format=3 uid="uid://oqosegpemw11"]
 
 [ext_resource type="PackedScene" uid="uid://dj6sle58ekgb8" path="res://scenes/bola.tscn" id="1_yxu6q"]
 [ext_resource type="Script" path="res://scripts/made_items/eldritch_dagger.gd" id="2_rsiha"]
 [ext_resource type="Shader" path="res://shaders/outline.gdshader" id="3_xsc5o"]
+[ext_resource type="Texture2D" uid="uid://baqgdkji7oxqq" path="res://assets/items/eldritch_dagger.png" id="4_3w6m1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xj6y2"]
 resource_local_to_scene = true
@@ -19,3 +20,4 @@ item_nome = "eldritch_dagger"
 
 [node name="Sprite2D" parent="." index="0"]
 material = SubResource("ShaderMaterial_xj6y2")
+texture = ExtResource("4_3w6m1")

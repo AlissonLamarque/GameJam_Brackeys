@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bvq3cjta85d8i"]
+[gd_scene load_steps=6 format=3 uid="uid://bvq3cjta85d8i"]
 
 [ext_resource type="PackedScene" uid="uid://dj6sle58ekgb8" path="res://scenes/bola.tscn" id="1_2hv1e"]
 [ext_resource type="Script" path="res://scripts/made_items/golden_potion.gd" id="2_td1gy"]
 [ext_resource type="Shader" path="res://shaders/outline.gdshader" id="3_cexa8"]
+[ext_resource type="Texture2D" uid="uid://n15yiv5qe87b" path="res://assets/items/golden_potion.png" id="4_6in66"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k0ip7"]
 resource_local_to_scene = true
@@ -19,3 +20,4 @@ item_nome = "golden_potion"
 
 [node name="Sprite2D" parent="." index="0"]
 material = SubResource("ShaderMaterial_k0ip7")
+texture = ExtResource("4_6in66")

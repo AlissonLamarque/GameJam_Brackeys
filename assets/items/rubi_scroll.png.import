@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://utmbsjc5n718"
-path="res://.godot/imported/rubi_new.png-9e48d4435549c87fbb9c34a9fc124ab7.ctex"
+uid="uid://bcnswu5jti5wj"
+path="res://.godot/imported/rubi_scroll.png-c281af425cf898932d6484d38210e5be.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/items/rubi_new.png"
-dest_files=["res://.godot/imported/rubi_new.png-9e48d4435549c87fbb9c34a9fc124ab7.ctex"]
+source_file="res://assets/items/rubi_scroll.png"
+dest_files=["res://.godot/imported/rubi_scroll.png-c281af425cf898932d6484d38210e5be.ctex"]
 
 [params]
 

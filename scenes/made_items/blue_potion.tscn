@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bm4muqbevhjuj"]
+[gd_scene load_steps=6 format=3 uid="uid://bm4muqbevhjuj"]
 
 [ext_resource type="PackedScene" uid="uid://dj6sle58ekgb8" path="res://scenes/bola.tscn" id="1_b2cos"]
 [ext_resource type="Script" path="res://scripts/made_items/blue_potion.gd" id="2_g1byb"]
 [ext_resource type="Shader" path="res://shaders/outline.gdshader" id="3_w0ohj"]
+[ext_resource type="Texture2D" uid="uid://nsqrf25dgqeq" path="res://assets/items/blue_potion.png" id="4_06a7s"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_x2pe8"]
 resource_local_to_scene = true
@@ -19,3 +20,4 @@ item_nome = "blue_potion"
 
 [node name="Sprite2D" parent="." index="0"]
 material = SubResource("ShaderMaterial_x2pe8")
+texture = ExtResource("4_06a7s")

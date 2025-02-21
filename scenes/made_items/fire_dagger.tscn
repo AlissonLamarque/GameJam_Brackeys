@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dj6sle58ekgb8" path="res://scenes/bola.tscn" id="1_ui2hu"]
 [ext_resource type="Script" path="res://scripts/made_items/fire_dagger.gd" id="2_bm3od"]
 [ext_resource type="Shader" path="res://shaders/outline.gdshader" id="3_h0j4l"]
-[ext_resource type="Texture2D" uid="uid://w8c6t5wbs722" path="res://assets/items/dagger.png" id="4_ri07l"]
+[ext_resource type="Texture2D" uid="uid://dsd66ja8j6hi4" path="res://assets/items/fire_dagger.png" id="4_s7xje"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jea6t"]
 resource_local_to_scene = true
@@ -20,4 +20,4 @@ item_nome = "fire_dagger"
 
 [node name="Sprite2D" parent="." index="0"]
 material = SubResource("ShaderMaterial_jea6t")
-texture = ExtResource("4_ri07l")
+texture = ExtResource("4_s7xje")

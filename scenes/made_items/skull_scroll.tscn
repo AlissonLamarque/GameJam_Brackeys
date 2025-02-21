@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cgru1r7jwo366"]
+[gd_scene load_steps=6 format=3 uid="uid://cgru1r7jwo366"]
 
 [ext_resource type="PackedScene" uid="uid://dj6sle58ekgb8" path="res://scenes/bola.tscn" id="1_ntltj"]
 [ext_resource type="Script" path="res://scripts/made_items/skull_scroll.gd" id="2_05tkf"]
 [ext_resource type="Shader" path="res://shaders/outline.gdshader" id="3_4w78x"]
+[ext_resource type="Texture2D" uid="uid://cdp4anhkqe3k1" path="res://assets/items/skull_scroll.png" id="4_rfnb4"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h1owx"]
 resource_local_to_scene = true
@@ -19,3 +20,4 @@ item_nome = "skull_scroll"
 
 [node name="Sprite2D" parent="." index="0"]
 material = SubResource("ShaderMaterial_h1owx")
+texture = ExtResource("4_rfnb4")

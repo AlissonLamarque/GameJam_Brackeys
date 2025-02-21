@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dr0cx1aes8hfp"
-path="res://.godot/imported/magic_book.png-12bdc3cb52a2835baca458848d1a36ce.ctex"
+uid="uid://dl7hml1nleywx"
+path="res://.godot/imported/herbs_scroll.png-bea4ce5c5485aeeec66c6dfd23de0c62.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/items/magic_book.png"
-dest_files=["res://.godot/imported/magic_book.png-12bdc3cb52a2835baca458848d1a36ce.ctex"]
+source_file="res://assets/items/herbs_scroll.png"
+dest_files=["res://.godot/imported/herbs_scroll.png-bea4ce5c5485aeeec66c6dfd23de0c62.ctex"]
 
 [params]
 
