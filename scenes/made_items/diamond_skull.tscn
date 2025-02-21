@@ -1,8 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://b154l3lfq2r4h"]
+[gd_scene load_steps=5 format=3 uid="uid://b154l3lfq2r4h"]
 
 [ext_resource type="PackedScene" uid="uid://dj6sle58ekgb8" path="res://scenes/bola.tscn" id="1_mtgif"]
 [ext_resource type="Script" path="res://scripts/made_items/diamond_skull.gd" id="2_d8ce4"]
+[ext_resource type="Shader" path="res://shaders/outline.gdshader" id="3_52y4b"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1n4ko"]
+resource_local_to_scene = true
+shader = ExtResource("3_52y4b")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 1.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
 
 [node name="DiamondSkull" instance=ExtResource("1_mtgif")]
 script = ExtResource("2_d8ce4")
 item_nome = "diamond_skull"
+
+[node name="Sprite2D" parent="." index="0"]
+material = SubResource("ShaderMaterial_1n4ko")

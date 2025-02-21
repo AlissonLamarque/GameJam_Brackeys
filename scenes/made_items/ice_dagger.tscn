@@ -1,8 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://3rib2of57rp1"]
+[gd_scene load_steps=5 format=3 uid="uid://3rib2of57rp1"]
 
 [ext_resource type="PackedScene" uid="uid://dj6sle58ekgb8" path="res://scenes/bola.tscn" id="1_d74g0"]
 [ext_resource type="Script" path="res://scripts/made_items/ice_dagger.gd" id="2_sb2tt"]
+[ext_resource type="Shader" path="res://shaders/outline.gdshader" id="3_5fo8g"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qbqgd"]
+resource_local_to_scene = true
+shader = ExtResource("3_5fo8g")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 1.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
 
 [node name="IceDagger" instance=ExtResource("1_d74g0")]
 script = ExtResource("2_sb2tt")
 item_nome = "ice_dagger"
+
+[node name="Sprite2D" parent="." index="0"]
+material = SubResource("ShaderMaterial_qbqgd")

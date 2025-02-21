@@ -1,7 +1,7 @@
 extends RigidBody2D
 class_name Bola
 
-@export var item_nome: String = "bola"
+@export var item_nome: String = ""
 
 var picked = false
 var target_scale = Vector2(2,2)
@@ -43,7 +43,7 @@ func _input(event):
 			if body.name == "Player" and player.canPick == true and can_pick:
 				picked = true
 				player.canPick = false
-				player.speed = player.min_speed
+				player.speed = player.min_speed 
 	else:
 		picked = false
 		player.canPick = true
@@ -51,10 +51,21 @@ func _input(event):
 		
 		# Verifica se o item foi solto perto do mago
 		var mago = get_node("../Mage")
+		var crafting_table = get_node("../CraftingTable")
+		
 		if mago and $Area2D.overlaps_body(mago):
 			if mago.verificar_item(item_nome):
 				# Item entregue com sucesso
 				destroy()  # Remove o item da cena
+		elif crafting_table and $Area2D.overlaps_body(crafting_table):
+			if crafting_table.is_empty():
+				crafting_table.first_item_name = item_nome
+				crafting_table.first_item = self
+			elif crafting_table.first_item_name != item_nome:
+				crafting_table.second_item = self
+				crafting_table.verify_second_item_name(item_nome)
+			
+				
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -75,6 +86,7 @@ func destroy():
 		 
 
 	tween = get_tree().create_tween()
+
 	tween.tween_property(self, "dissolve_rate",1, 2).set_trans(Tween.TRANS_LINEAR)
 	tween.tween_callback(self.queue_free)
 

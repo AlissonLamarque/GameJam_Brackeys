@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://bnsb2fndt7f86"]
+
+[ext_resource type="Script" path="res://scripts/crafting_table.gd" id="1_bbfvl"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_iwo3x"]
+size = Vector2(40, 25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g47pi"]
+size = Vector2(36, 22)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o7xp1"]
+size = Vector2(68, 46)
+
+[node name="CraftingTable" type="StaticBody2D"]
+collision_layer = 7
+collision_mask = 7
+script = ExtResource("1_bbfvl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("PlaceholderTexture2D_iwo3x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_g47pi")
+
+[node name="TimerConsomeItens" type="Timer" parent="."]
+wait_time = 0.193
+one_shot = true
+
+[node name="TimerPodeSpawnar" type="Timer" parent="."]
+wait_time = 0.729
+one_shot = true
+
+[node name="TimerGaranteItemsNull" type="Timer" parent="."]
+wait_time = 2.996
+one_shot = true
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_o7xp1")
+
+[connection signal="timeout" from="TimerConsomeItens" to="." method="_on_timer_consome_itens_timeout"]
+[connection signal="timeout" from="TimerPodeSpawnar" to="." method="_on_timer_pode_spawnar_timeout"]
+[connection signal="timeout" from="TimerGaranteItemsNull" to="." method="_on_timer_garante_items_null_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

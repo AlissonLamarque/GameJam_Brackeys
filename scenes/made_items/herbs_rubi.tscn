@@ -1,8 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://bo4y2lysi6gw8"]
+[gd_scene load_steps=5 format=3 uid="uid://bo4y2lysi6gw8"]
 
 [ext_resource type="PackedScene" uid="uid://dj6sle58ekgb8" path="res://scenes/bola.tscn" id="1_plmdx"]
 [ext_resource type="Script" path="res://scripts/made_items/herbs_rubi.gd" id="2_hi26r"]
+[ext_resource type="Shader" path="res://shaders/outline.gdshader" id="3_e2842"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6gaip"]
+resource_local_to_scene = true
+shader = ExtResource("3_e2842")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 1.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
 
 [node name="HerbsRubi" instance=ExtResource("1_plmdx")]
 script = ExtResource("2_hi26r")
 item_nome = "herbs_rubi"
+
+[node name="Sprite2D" parent="." index="0"]
+material = SubResource("ShaderMaterial_6gaip")
