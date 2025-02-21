@@ -11,6 +11,8 @@ extends CharacterBody2D
 var player_pos
 var target_pos
 
+var dissolve_rate = -1.14
+
 func _ready():
 	add_to_group("Demon")
 
@@ -22,6 +24,8 @@ func _physics_process(delta: float) -> void:
 		update_animation(target_pos)
 	else:
 		animated_sprite.play("idle")
+	
+	$AnimatedSprite2D.material.set_shader_parameter("dissolve_rate", dissolve_rate)
 
 func update_animation(direction: Vector2) -> void:
 	if direction.length() == 0:
@@ -46,15 +50,15 @@ func die():
 	var tween = get_tree().create_tween()
 	
 	speed = 0
-	animated_sprite.visible = false
+	set_collision_layer_value(3, false)
+	#animated_sprite.visible = false
 	# Trecho para brilho de morte do demon
-	light.visible = true
-	tween.tween_property(light, "texture_scale", 0.35, 0.15)
-	tween.tween_property(light, "color", Color.hex(0xfa000000), 0.15)
-	tween.tween_property(light, "energy", 0, 0.15)
+	#light.visible = true
+	tween.parallel().tween_property(self, "dissolve_rate",1, 0.5).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
+	tween.parallel().tween_property(light, "texture_scale", 0.3, 0.5).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_IN_OUT)
+	#tween.parallel().tween_property(light, "energy", 0, 0.15)
+	
+	tween.tween_callback(self.queue_free)
 	
 	camera.apply_shake(0.4, 2)
 	
-	await get_tree().create_timer(0.15).timeout
-	
-	queue_free()
