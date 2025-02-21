@@ -15,11 +15,49 @@ extends StaticBody2D
 "skull_scroll"
 ]
 
+const combinacoes = {
+	"dagger,rubi":"fire_dagger",
+	"rubi,dagger":"fire_dagger",
+	"rubi,bottle":"red_potion",
+	"bottle,rubi":"red_potion",
+	"diamond,bottle":"blue_potion",
+	"bottle,diamong":"blue_potion",
+	"herbs,bottle":"herbs_potion",
+	"bottle,herbs":"herbs_potion",
+	"golden_feather,bottle":"golden_potion",
+	"bottle,golden_feather":"golden_potion",
+	"diamond,dagger":"ice_dagger",
+	"dagger,diamond":"ice_dagger",
+	"skull,dagger":"skull_dagger",
+	"dagger,skull":"skull_dagger",
+	"bola,dagger":"eldritch_dagger",
+	"dagger,bola":"eldritch_dagger",
+	"dagger,herbs":"herbs_dagger",
+	"herbs,dagger":"herbs_dagger",
+	"diamond,magic_book":"diamond_scroll",
+	"magic_book,diamond":"diamond_scroll",
+	"diamond,skull":"diamond_skull",
+	"skull,diamond":"diamond_skull",
+	"golden_feather,skull":"golden_skull",
+	"skull,golden_feather":"golden_skull",
+	"herbs,rubi":"herbs_rubi",
+	"rubi,herbs":"herbs_rubi",
+	"herbs,magic_book":"herbs_scroll",
+	"margic_book,herbs":"herbs_scroll",
+	"rubi,magic_book":"rubi_scroll",
+	"magic_book,rubi":"rubi_scroll",
+	"skull,magic_book":"skull_scroll",
+	"magic_book,skull":"skull_scroll",
+}
+
 var new_item_scene_path = ""
 
 @onready var timer_consome_itens: Timer = $TimerConsomeItens
+@onready var timer_pode_spawnar: Timer = $TimerPodeSpawnar
 
 var item_estava_certo = false
+
+var can_spawn = true
 
 func is_empty():
 	if first_item_name == "":
@@ -38,7 +76,12 @@ func _ready():
 	
 func combine_items(item1: String, item2: String) -> String:
 	#junta itens pra fazer item novo ou nao faz nada se combinacao nao existe
-	var new_item_name = "fire_dagger"
+	var truncated_name = item1 + "," + item2
+	var new_item_name = ""
+	if truncated_name in combinacoes:
+		new_item_name = combinacoes[truncated_name]
+	else:
+		new_item_name = ""
 	first_item_name = ""
 	second_item_name = ""
 	print(new_item_name)
@@ -51,17 +94,28 @@ func spawn_item():
 		new_item.global_position = global_position
 		new_item.global_position.y = global_position.y - 50
 		get_parent().add_child(new_item)
+	
 
 func _on_timer_consome_itens_timeout() -> void:
+	if not can_spawn:
+		return
+	
+	can_spawn = false
+	
 	if first_item:
 		first_item.destroy()
 	if second_item:
 		second_item.destroy()
-		pass
 	first_item = null
 	second_item = null
 	
 	var new_item_name = combine_items(first_item_name, second_item_name)
-	if new_item_name:
+	if new_item_name != "":
 		new_item_scene_path = "res://scenes/made_items/" + new_item_name + ".tscn"
 		spawn_item()
+	timer_pode_spawnar.start()
+
+
+func _on_timer_pode_spawnar_timeout() -> void:
+	can_spawn = true
+	pass # Replace with function body.

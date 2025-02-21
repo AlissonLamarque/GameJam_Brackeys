@@ -22,4 +22,8 @@ shape = SubResource("RectangleShape2D_g47pi")
 [node name="TimerConsomeItens" type="Timer" parent="."]
 one_shot = true
 
+[node name="TimerPodeSpawnar" type="Timer" parent="."]
+wait_time = 2.612
+
 [connection signal="timeout" from="TimerConsomeItens" to="." method="_on_timer_consome_itens_timeout"]
+[connection signal="timeout" from="TimerPodeSpawnar" to="." method="_on_timer_pode_spawnar_timeout"]
