@@ -5,6 +5,7 @@ extends StaticBody2D
 
 @export var first_item = null
 @export var second_item = null
+@onready var area_2d: Area2D = $Area2D
 
 @export var base_items: Array[String] = ["bola", "bottle", "dagger", "rubi", "magic_book", "diamond"]
 @export var made_items: Array[String] = [
@@ -54,6 +55,7 @@ var new_item_scene_path = ""
 
 @onready var timer_consome_itens: Timer = $TimerConsomeItens
 @onready var timer_pode_spawnar: Timer = $TimerPodeSpawnar
+@onready var timer_garante_items_null: Timer = $TimerGaranteItemsNull
 
 var item_estava_certo = false
 
@@ -67,8 +69,9 @@ func is_empty():
 
 func verify_second_item_name(item_nome: String):
 	if item_nome in base_items:
-		timer_consome_itens.start()
-		second_item_name = item_nome
+		if item_nome != first_item_name:
+			timer_consome_itens.start()
+			second_item_name = item_nome
 
 func _ready():
 	#timer_start_talking.start()
@@ -82,8 +85,6 @@ func combine_items(item1: String, item2: String) -> String:
 		new_item_name = combinacoes[truncated_name]
 	else:
 		new_item_name = ""
-	first_item_name = ""
-	second_item_name = ""
 	print(new_item_name)
 	return new_item_name
 
@@ -100,22 +101,40 @@ func _on_timer_consome_itens_timeout() -> void:
 	if not can_spawn:
 		return
 	
-	can_spawn = false
-	
-	if first_item:
-		first_item.destroy()
-	if second_item:
-		second_item.destroy()
-	first_item = null
-	second_item = null
-	
 	var new_item_name = combine_items(first_item_name, second_item_name)
 	if new_item_name != "":
 		new_item_scene_path = "res://scenes/made_items/" + new_item_name + ".tscn"
 		spawn_item()
+	can_spawn = false
+	
+	timer_garante_items_null.start()
+	if first_item:
+		first_item.destroy()
+	if second_item:
+		second_item.destroy()
+	first_item_name = ""
+	second_item_name = ""
+	first_item = null
+	second_item = null
+	
 	timer_pode_spawnar.start()
 
 
 func _on_timer_pode_spawnar_timeout() -> void:
 	can_spawn = true
 	pass # Replace with function body.
+
+#
+#func _on_area_2d_body_entered(body: Node2D) -> void:
+	#var close_items = area_2d.get_overlapping_bodies()
+	#
+	#if first_item == null:
+		#first_item = 
+	#pass # Replace with function body.
+
+
+func _on_timer_garante_items_null_timeout() -> void:
+	first_item = null
+	second_item = null
+	first_item_name = ""
+	second_item_name = ""
