@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://df88ub57bgkgd"]
+[gd_scene load_steps=10 format=3 uid="uid://df88ub57bgkgd"]
 
 [ext_resource type="Script" path="res://scripts/mage.gd" id="1_rpk5o"]
 [ext_resource type="Texture2D" uid="uid://f2wuxe8481mn" path="res://assets/characterMage/32x32/Char_005_Idle.png" id="1_yrchu"]
+[ext_resource type="Texture2D" uid="uid://buqtp3mmbey0i" path="res://assets/texture/textbox.png" id="3_ufwq1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o51x3"]
 atlas = ExtResource("1_yrchu")
@@ -76,6 +77,27 @@ one_shot = true
 [node name="TimerStopTalking" type="Timer" parent="."]
 wait_time = 1.105
 one_shot = true
+
+[node name="RequestItemUI" type="Node2D" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="RequestItemUI"]
+visibility_layer = 2
+z_index = 10
+offset_left = -13.0
+offset_top = -76.0
+offset_right = 13.0
+offset_bottom = -51.0
+expand_mode = 2
+stretch_mode = 5
+
+[node name="NinePatchRect" type="NinePatchRect" parent="RequestItemUI"]
+show_behind_parent = true
+offset_left = -20.0
+offset_top = -81.0
+offset_right = 20.0
+offset_bottom = -41.0
+texture = ExtResource("3_ufwq1")
+region_rect = Rect2(0, 0, 47.0891, 48)
 
 [connection signal="timeout" from="TimerVerificaItem" to="." method="_on_timer_item_verify_timeout"]
 [connection signal="timeout" from="TimerStartTalking" to="." method="_on_timer_start_talking_timeout"]

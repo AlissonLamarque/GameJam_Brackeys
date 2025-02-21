@@ -3,9 +3,11 @@ extends Node2D
 @onready var timer_item_verify: Timer = $TimerVerificaItem
 @onready var timer_start_talking: Timer = $TimerStartTalking
 @onready var timer_stop_talking: Timer = $TimerStopTalking
-@onready var balao_fala = $BalaoFala
 @onready var game_manager: Node2D = $"../GameManager"
 @onready var camera = get_parent().get_node("Camera2D")
+
+@onready var request_item_ui: Node = $RequestItemUI
+@onready var texture_rect: TextureRect = $RequestItemUI/TextureRect
 
 var health = 100
 
@@ -14,44 +16,45 @@ var health = 100
 var item_pedido: String = ""
 # Acima, o item que o mago está pedindo no momento
 
-# flag pra identificar se o item verificado foi o mesmo que o pedido
-var item_estava_certo = false
-
 
 func _ready():
 	timer_start_talking.start()
+	request_item_ui.visible = false
 	
 
 # Função para pedir um item aleatório
 func decide_item_aleatorio():
 	if itens_conhecidos.size() > 0:
 		item_pedido = itens_conhecidos.pop_at(randi() % itens_conhecidos.size())
-		pedir_item()
+		exibir_item()
 	elif itens_conhecidos.size() == 0:
 		game_manager.game_state = 1
-	
-func pedir_item():
-	balao_fala.text = "I need  " + item_pedido + "!"
+
+func exibir_item():
+	var item_texture_path = "res://assets/items/" + item_pedido + ".png"
+	var item_texture = load(item_texture_path)
+
+	if item_texture:
+		texture_rect.texture = item_texture
+		request_item_ui.visible = true
+	else:
+		print("Imagem do item não encontrada:", item_texture_path)
+
 	print("Mago pediu:", item_pedido)
 
-func agradece_item_certo():
-	balao_fala.text = "Thanks!"
-
-func reclama_item_errado():
-	balao_fala.text = "Not what I wanted..."
-
-func apaga_fala():
-	balao_fala.text = ""
+func esconder_item():
+	request_item_ui.visible = false
+	timer_stop_talking.start()
+	print("Item correto entregue")
 
 # Função para verificar o item entregue
 func verificar_item(item_nome: String) -> bool:
 	timer_item_verify.start()
 	if item_nome == item_pedido:
-		agradece_item_certo()
-		item_estava_certo = true
+		esconder_item()
 		return true
 	else:
-		reclama_item_errado()
+		print("Item incorreto entregue")
 		return false
 
 func take_damage(amount: int):
@@ -63,13 +66,7 @@ func die():
 	camera.apply_shake(5, 5)
 
 func _on_timer_item_verify_timeout() -> void:
-	if item_estava_certo:
-		apaga_fala()
-		timer_stop_talking.start()
-		item_estava_certo = false
-	else:
-		pedir_item()
-
+	pass
 
 func _on_timer_start_talking_timeout() -> void:
 	decide_item_aleatorio()
