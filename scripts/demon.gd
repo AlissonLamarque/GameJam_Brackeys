@@ -65,6 +65,7 @@ func _on_AttackTimer_timeout():
 		if target.has_method("take_damage"):  
 			target.take_damage(attack_damage)
 			camera.apply_shake(1, 2)
+			die()
 	attack_timer.start()
 
 func die():
