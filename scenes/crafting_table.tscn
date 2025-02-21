@@ -20,5 +20,6 @@ texture = SubResource("PlaceholderTexture2D_iwo3x")
 shape = SubResource("RectangleShape2D_g47pi")
 
 [node name="TimerConsomeItens" type="Timer" parent="."]
+one_shot = true
 
 [connection signal="timeout" from="TimerConsomeItens" to="." method="_on_timer_consome_itens_timeout"]

@@ -59,10 +59,13 @@ func _input(event):
 				destroy()  # Remove o item da cena
 		elif crafting_table and $Area2D.overlaps_body(crafting_table):
 			if crafting_table.is_empty():
-				destroy()
-				crafting_table.first_item = item_nome
-			elif crafting_table.verify_second_item(item_nome):
-				destroy()
+				crafting_table.first_item_name = item_nome
+				crafting_table.first_item = self
+			elif crafting_table.first_item_name != item_nome:
+				crafting_table.second_item = self
+				crafting_table.verify_second_item_name(item_nome)
+			
+				
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -84,7 +87,7 @@ func destroy():
 
 	tween = get_tree().create_tween()
 	tween.tween_property(self, "dissolve_rate",1, 1).set_trans(Tween.TRANS_LINEAR)
-	tween.tween_callback(self.queue_free)
+	tween.tween_callback(self.free)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
