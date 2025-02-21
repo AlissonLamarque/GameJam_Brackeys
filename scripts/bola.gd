@@ -86,8 +86,9 @@ func destroy():
 		 
 
 	tween = get_tree().create_tween()
-	tween.tween_property(self, "dissolve_rate",1, 1).set_trans(Tween.TRANS_LINEAR)
-	tween.tween_callback(self.free)
+
+	tween.tween_property(self, "dissolve_rate",1, 2).set_trans(Tween.TRANS_LINEAR)
+	tween.tween_callback(self.queue_free)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

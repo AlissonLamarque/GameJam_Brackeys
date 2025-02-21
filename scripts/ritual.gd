@@ -3,8 +3,8 @@ extends Sprite2D
 @onready var point_light_2d: PointLight2D = $PointLight2D
 
 
-var min_energy = 1.0
-var max_energy = 4.0
+var min_energy = 0.22
+var max_energy = 1
 var target_energy = max_energy
 
 

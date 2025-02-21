@@ -3,11 +3,11 @@ extends Node2D
 @onready var timer_item_verify: Timer = $TimerVerificaItem
 @onready var timer_start_talking: Timer = $TimerStartTalking
 @onready var timer_stop_talking: Timer = $TimerStopTalking
-
 @onready var balao_fala = $BalaoFala
 @onready var game_manager: Node2D = $"../GameManager"
+@onready var camera = get_parent().get_node("Camera2D")
 
-
+var health = 100
 
 # Lista de itens que o mago conhece
 @export var itens_conhecidos: Array[String] = ["bola", "bottle", "dagger", "rubi", "magic_book", "diamond"]
@@ -54,6 +54,13 @@ func verificar_item(item_nome: String) -> bool:
 		reclama_item_errado()
 		return false
 
+func take_damage(amount: int):
+	health -= amount
+	if health <= 0:
+		die()
+
+func die():
+	camera.apply_shake(5, 5)
 
 func _on_timer_item_verify_timeout() -> void:
 	if item_estava_certo:

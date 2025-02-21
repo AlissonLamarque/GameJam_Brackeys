@@ -157,3 +157,10 @@ func play_anim():
 func player():
 	pass
 	
+func take_damage(amount: int):
+	health -= amount
+	if health <= 0:
+		die()
+
+func die():
+	pass

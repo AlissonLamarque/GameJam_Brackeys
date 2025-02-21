@@ -31,7 +31,8 @@ script = ExtResource("2_44xap")
 [node name="PointLight2D" type="PointLight2D" parent="."]
 show_behind_parent = true
 z_index = -2
-color = Color(1, 0, 1, 0.333333)
+color = Color(1, 0, 1, 0.196078)
+energy = 0.22
 shadow_enabled = true
 shadow_item_cull_mask = 7
 texture = ExtResource("3_6ql3u")
