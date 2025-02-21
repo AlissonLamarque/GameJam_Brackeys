@@ -59,10 +59,9 @@ func _input(event):
 				destroy()  # Remove o item da cena
 		elif crafting_table and $Area2D.overlaps_body(crafting_table):
 			if crafting_table.is_empty():
-				crafting_table.first_item = item_nome
 				destroy()
+				crafting_table.first_item = item_nome
 			elif crafting_table.verify_second_item(item_nome):
-				crafting_table.first_item.destroy()
 				destroy()
 
 # Called when the node enters the scene tree for the first time.

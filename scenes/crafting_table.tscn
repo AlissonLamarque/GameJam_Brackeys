@@ -8,7 +8,7 @@ size = Vector2(40, 25)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g47pi"]
 size = Vector2(60, 40)
 
-[node name="CraftingTable" type="Area2D"]
+[node name="CraftingTable" type="StaticBody2D"]
 collision_layer = 7
 collision_mask = 7
 script = ExtResource("1_bbfvl")

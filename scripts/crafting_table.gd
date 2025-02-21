@@ -1,4 +1,4 @@
-extends Area2D
+extends StaticBody2D
 
 @export var first_item = ""
 @export var second_item = ""
@@ -43,9 +43,10 @@ func combine_items(item1: String, item2: String) -> String:
 
 func spawn_item():
 	if new_item_scene_path:
-		var new_item = new_item_scene_path.instantiate()
+		var new_item_packed_scene = load(new_item_scene_path)
+		var new_item = new_item_packed_scene.instantiate()
 		new_item.global_position = global_position
-		get_parent().get_parent().add_child(new_item)
+		get_parent().add_child(new_item)
 
 func _on_timer_consome_itens_timeout() -> void:
 	var new_item_name = combine_items(first_item, second_item)
