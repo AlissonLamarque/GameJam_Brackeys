@@ -332,3 +332,5 @@ energy = 1.5
 shadow_enabled = true
 texture = ExtResource("4_c2ywt")
 texture_scale = 0.3
+
+[node name="Timer" type="Timer" parent="."]
