@@ -159,7 +159,6 @@ func player():
 	
 func take_damage(amount: int):
 	health -= amount
-	camera.apply_shake(5, 2)
 	if health <= 0:
 		die()
 

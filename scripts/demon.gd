@@ -5,13 +5,16 @@ extends CharacterBody2D
 @export var stop_distance: float = 10
 @export var attack_damage: int = 25
 @export var attack_cooldown: float = 3
+@export var attack_range: float = 50
+@export var player_ignore_distance: float = 50
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var player = get_parent().get_node("Player")
+@onready var mage = get_parent().get_node("Mage")
 @onready var camera = get_parent().get_node("Camera2D")
 @onready var attack_timer: Timer = $Timer
 
-var player_pos
+var target
 var target_pos
 
 var dissolve_rate = -1.14
@@ -22,9 +25,16 @@ func _ready():
 	attack_timer.start()
 
 func _physics_process(delta: float) -> void:
-	player_pos = player.position
-	target_pos = (player_pos - position).normalized()
-	if position.distance_to(player_pos) > stop_distance:
+	var player_dist = position.distance_to(player.position)
+	var mage_dist = position.distance_to(mage.position)
+	
+	target = player
+	if mage_dist < attack_range and player_dist > player_ignore_distance:
+		target = mage
+		
+	target_pos = (target.position - position).normalized()
+	
+	if position.distance_to(target.position) > stop_distance:
 		position += target_pos * speed * delta
 		update_animation(target_pos)
 	else:
@@ -51,8 +61,11 @@ func update_animation(direction: Vector2) -> void:
 			animated_sprite.play("run_up")
 
 func _on_AttackTimer_timeout():
-	if position.distance_to(player.position) <= stop_distance:
-		player.take_damage(attack_damage)
+	if target and position.distance_to(target.position) <= attack_range:
+		if target.has_method("take_damage"):  
+			target.take_damage(attack_damage)
+			camera.apply_shake(1, 2)
+	attack_timer.start()
 
 func die():
 	var light = get_node("PointLight2D")
