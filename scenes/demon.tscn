@@ -10,7 +10,7 @@
 resource_local_to_scene = true
 shader = ExtResource("2_jw4ia")
 shader_parameter/dissolve_rate = -1.4
-shader_parameter/size = 0.15
+shader_parameter/size = 0.06
 shader_parameter/color = Color(0, 0.926148, 0.940078, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f2i28"]
