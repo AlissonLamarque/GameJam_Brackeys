@@ -1,8 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://blods88ecx0md"]
+[gd_scene load_steps=5 format=3 uid="uid://blods88ecx0md"]
 
 [ext_resource type="PackedScene" uid="uid://dj6sle58ekgb8" path="res://scenes/bola.tscn" id="1_yfcto"]
 [ext_resource type="Script" path="res://scripts/made_items/skull_dagger.gd" id="2_15y61"]
+[ext_resource type="Shader" path="res://shaders/outline.gdshader" id="3_1bet6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l4a83"]
+resource_local_to_scene = true
+shader = ExtResource("3_1bet6")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 1.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
 
 [node name="SkullDagger" instance=ExtResource("1_yfcto")]
 script = ExtResource("2_15y61")
 item_nome = "skull_dagger"
+
+[node name="Sprite2D" parent="." index="0"]
+material = SubResource("ShaderMaterial_l4a83")

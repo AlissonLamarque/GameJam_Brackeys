@@ -1,7 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://dgf6skjlfbj6n"]
+[gd_scene load_steps=6 format=3 uid="uid://dgf6skjlfbj6n"]
 
 [ext_resource type="PackedScene" uid="uid://dj6sle58ekgb8" path="res://scenes/bola.tscn" id="1_tsvem"]
 [ext_resource type="Script" path="res://scripts/items/golden_feather.gd" id="2_ptbo6"]
+[ext_resource type="Shader" path="res://shaders/outline.gdshader" id="3_yqbtv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w741k"]
+resource_local_to_scene = true
+shader = ExtResource("3_yqbtv")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 1.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_p0pim"]
 size = Vector2(16, 16)
@@ -11,4 +21,5 @@ script = ExtResource("2_ptbo6")
 item_nome = "golden_feather"
 
 [node name="Sprite2D" parent="." index="0"]
+material = SubResource("ShaderMaterial_w741k")
 texture = SubResource("PlaceholderTexture2D_p0pim")
