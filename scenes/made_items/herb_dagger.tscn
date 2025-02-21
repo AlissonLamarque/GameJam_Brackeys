@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://b5ix28yygt6om"]
+[gd_scene load_steps=6 format=3 uid="uid://b5ix28yygt6om"]
 
 [ext_resource type="PackedScene" uid="uid://dj6sle58ekgb8" path="res://scenes/bola.tscn" id="1_18ge5"]
 [ext_resource type="Script" path="res://scripts/made_items/herb_dagger.gd" id="2_46xat"]
 [ext_resource type="Shader" path="res://shaders/outline.gdshader" id="3_jq0vi"]
+[ext_resource type="Texture2D" uid="uid://chmji4d4aiovq" path="res://assets/items/herb_dagger.png" id="4_dmcir"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rotsa"]
 resource_local_to_scene = true
@@ -19,3 +20,4 @@ item_nome = "herb_dagger"
 
 [node name="Sprite2D" parent="." index="0"]
 material = SubResource("ShaderMaterial_rotsa")
+texture = ExtResource("4_dmcir")

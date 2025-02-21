@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cqd440vcy7ueh"]
+[gd_scene load_steps=6 format=3 uid="uid://cqd440vcy7ueh"]
 
 [ext_resource type="PackedScene" uid="uid://dj6sle58ekgb8" path="res://scenes/bola.tscn" id="1_0gebt"]
 [ext_resource type="Script" path="res://scripts/made_items/golden_skull.gd" id="2_wyhdd"]
 [ext_resource type="Shader" path="res://shaders/outline.gdshader" id="3_56xbe"]
+[ext_resource type="Texture2D" uid="uid://bb8ryfj0kgo4p" path="res://assets/items/golden_skull.png" id="4_62fog"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_m7wel"]
 resource_local_to_scene = true
@@ -19,3 +20,4 @@ item_nome = "golden_skull"
 
 [node name="Sprite2D" parent="." index="0"]
 material = SubResource("ShaderMaterial_m7wel")
+texture = ExtResource("4_62fog")

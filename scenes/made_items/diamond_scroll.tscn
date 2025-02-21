@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://d1sot0xnreal7"]
+[gd_scene load_steps=6 format=3 uid="uid://d1sot0xnreal7"]
 
 [ext_resource type="PackedScene" uid="uid://dj6sle58ekgb8" path="res://scenes/bola.tscn" id="1_x434j"]
 [ext_resource type="Script" path="res://scripts/made_items/diamond_scroll.gd" id="2_80d28"]
 [ext_resource type="Shader" path="res://shaders/outline.gdshader" id="3_fsuw5"]
+[ext_resource type="Texture2D" uid="uid://cikqq83j3kuip" path="res://assets/items/diamond_scroll.png" id="4_uyk6f"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jmorg"]
 resource_local_to_scene = true
@@ -19,3 +20,4 @@ item_nome = "diamond_scroll"
 
 [node name="Sprite2D" parent="." index="0"]
 material = SubResource("ShaderMaterial_jmorg")
+texture = ExtResource("4_uyk6f")

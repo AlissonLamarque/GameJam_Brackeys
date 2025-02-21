@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://mlx5v3732rwl"
-path="res://.godot/imported/bone_dagger.png-1c18d53e353b866df51af2c1467a83dc.ctex"
+uid="uid://3si1gnsqbpnd"
+path="res://.godot/imported/magic_book2.png-0a768965c134df47a1b9fd6ed715aef8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/items/bone_dagger.png"
-dest_files=["res://.godot/imported/bone_dagger.png-1c18d53e353b866df51af2c1467a83dc.ctex"]
+source_file="res://assets/items/magic_book2.png"
+dest_files=["res://.godot/imported/magic_book2.png-0a768965c134df47a1b9fd6ed715aef8.ctex"]
 
 [params]
 

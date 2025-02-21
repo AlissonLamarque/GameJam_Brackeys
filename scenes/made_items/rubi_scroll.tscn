@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cnpbgyw8m8dab"]
+[gd_scene load_steps=6 format=3 uid="uid://cnpbgyw8m8dab"]
 
 [ext_resource type="PackedScene" uid="uid://dj6sle58ekgb8" path="res://scenes/bola.tscn" id="1_owxry"]
 [ext_resource type="Script" path="res://scripts/made_items/rubi_scroll.gd" id="2_yyxct"]
 [ext_resource type="Shader" path="res://shaders/outline.gdshader" id="3_15qdp"]
+[ext_resource type="Texture2D" uid="uid://bcnswu5jti5wj" path="res://assets/items/rubi_scroll.png" id="4_jy2ar"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nfgyq"]
 resource_local_to_scene = true
@@ -19,3 +20,4 @@ item_nome = "rubi_scroll"
 
 [node name="Sprite2D" parent="." index="0"]
 material = SubResource("ShaderMaterial_nfgyq")
+texture = ExtResource("4_jy2ar")

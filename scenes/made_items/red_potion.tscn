@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://drff425y7txmj"]
+[gd_scene load_steps=6 format=3 uid="uid://drff425y7txmj"]
 
 [ext_resource type="PackedScene" uid="uid://dj6sle58ekgb8" path="res://scenes/bola.tscn" id="1_n2uw7"]
 [ext_resource type="Script" path="res://scripts/made_items/red_potion.gd" id="2_o8nni"]
 [ext_resource type="Shader" path="res://shaders/outline.gdshader" id="3_ncakl"]
+[ext_resource type="Texture2D" uid="uid://v0yfuvbrixn7" path="res://assets/items/red_potion.png" id="4_waick"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6q8wl"]
 resource_local_to_scene = true
@@ -19,3 +20,4 @@ item_nome = "red_potion"
 
 [node name="Sprite2D" parent="." index="0"]
 material = SubResource("ShaderMaterial_6q8wl")
+texture = ExtResource("4_waick")

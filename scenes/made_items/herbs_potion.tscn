@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dgquoxm730122"]
+[gd_scene load_steps=6 format=3 uid="uid://dgquoxm730122"]
 
 [ext_resource type="PackedScene" uid="uid://dj6sle58ekgb8" path="res://scenes/bola.tscn" id="1_f1y4p"]
 [ext_resource type="Script" path="res://scripts/made_items/herbs_potion.gd" id="2_mja5v"]
 [ext_resource type="Shader" path="res://shaders/outline.gdshader" id="3_y1voc"]
+[ext_resource type="Texture2D" uid="uid://rqtqfeqjvqyj" path="res://assets/items/herbs_potion.png" id="4_gp05k"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yi4bl"]
 resource_local_to_scene = true
@@ -19,3 +20,4 @@ item_nome = "herbs_potion"
 
 [node name="Sprite2D" parent="." index="0"]
 material = SubResource("ShaderMaterial_yi4bl")
+texture = ExtResource("4_gp05k")
