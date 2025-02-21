@@ -62,7 +62,6 @@ offset_top = -60.0
 offset_right = 8.0
 offset_bottom = -37.0
 theme_override_font_sizes/font_size = 16
-text = "bola"
 horizontal_alignment = 1
 vertical_alignment = 1
 

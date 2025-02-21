@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @export var speed: float = 70
 @export var stop_distance: float = 10
+@export var particle_scene: PackedScene
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var player = get_parent().get_node("Player")
@@ -54,8 +55,12 @@ func die():
 	#animated_sprite.visible = false
 	# Trecho para brilho de morte do demon
 	#light.visible = true
+	var particle = particle_scene.instantiate()
+	particle.get_node("GPUParticles2D").emitting = true
+	particle.global_position = global_position
+	get_parent().add_child(particle)
 	tween.parallel().tween_property(self, "dissolve_rate",1, 0.5).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
-	tween.parallel().tween_property(light, "texture_scale", 0.3, 0.5).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_IN_OUT)
+	#tween.parallel().tween_property(light, "texture_scale", 0.3, 0.5).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_IN_OUT)
 	#tween.parallel().tween_property(light, "energy", 0, 0.15)
 	
 	tween.tween_callback(self.queue_free)
