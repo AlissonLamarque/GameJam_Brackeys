@@ -2,7 +2,7 @@ extends Node2D
 
 
 func _on_play_button_pressed() -> void:
-	print("Start Game")
+	print("Restart Game")
 	# Troca para a cena do jogo
 	
 	get_tree().change_scene_to_file("res://scenes/main.tscn")
