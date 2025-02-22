@@ -1,6 +1,4 @@
-
-[gd_resource type="VisualShader" load_steps=17 format=3 uid="uid://dvfyt44yrswom"]
-
+[gd_resource type="VisualShader" load_steps=17 format=3 uid="uid://5j5lw6trsmw0"]
 
 [sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_qji35"]
 output_port_for_preview = 0
@@ -44,8 +42,6 @@ default_value = 0.2
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_i2h00"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_804ou"]
-width = 489
-height = 509
 noise = SubResource("FastNoiseLite_i2h00")
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_vhir5"]

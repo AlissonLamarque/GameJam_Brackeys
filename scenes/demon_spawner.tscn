@@ -7,4 +7,7 @@
 script = ExtResource("1_gh4gl")
 enemy_scene = ExtResource("2_ul6bq")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 3.941
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

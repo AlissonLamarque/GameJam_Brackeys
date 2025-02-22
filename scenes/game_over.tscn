@@ -1,16 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://duleeslcm6io5"]
+[gd_scene load_steps=3 format=3 uid="uid://cqdmr8f1eu7td"]
 
-[ext_resource type="Script" path="res://scripts/menu.gd" id="1_xjlkq"]
+[ext_resource type="Script" path="res://scripts/game_over.gd" id="1_ol8f0"]
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_4tyfi"]
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_l4aai"]
 size = Vector2(660, 440)
 
-[node name="Menu" type="Node2D"]
-position = Vector2(317, 285)
-script = ExtResource("1_xjlkq")
+[node name="GameOver" type="Node2D"]
+position = Vector2(318, 286)
+script = ExtResource("1_ol8f0")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("PlaceholderTexture2D_4tyfi")
+texture = SubResource("PlaceholderTexture2D_l4aai")
 
 [node name="Label" type="Label" parent="."]
 offset_left = -89.0
@@ -29,7 +29,7 @@ offset_left = -54.0
 offset_top = 25.0
 offset_right = 58.0
 offset_bottom = 56.0
-text = "START GAME"
+text = "RESTART GAME"
 metadata/_edit_use_anchors_ = true
 
 [node name="ConfigButton" type="Button" parent="."]

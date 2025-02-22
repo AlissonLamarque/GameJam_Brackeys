@@ -4,16 +4,19 @@ extends Node2D
 @export var spawn_rate: float = 0.6
 @export var spawn_area: Area2D
 @export var no_spawn_area: Area2D
+@onready var spawn_timer: Timer = $SpawnTimer
 
 func _ready():
 	start_spawning()
-	
-func start_spawning():
-	var spawn_timer = Timer.new()
+
+func _on_spawn_timer_timeout() -> void:
+	spawn_enemy()
 	spawn_timer.wait_time = spawn_rate
-	spawn_timer.autostart = true
-	spawn_timer.timeout.connect(spawn_enemy)
-	add_child(spawn_timer)
+
+
+func start_spawning():
+	spawn_timer.start()
+
 
 func spawn_enemy():
 	if enemy_scene:
