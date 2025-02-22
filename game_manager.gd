@@ -11,7 +11,21 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if game_state == 0:
+		# Estado Inicial
 		demon_spawner.spawn_rate = 4.0
 	elif game_state == 1:
+		# Após 5 itens serem entregues corretamente
+		demon_spawner.spawn_rate = 2.0
+	elif game_state == 2:
+		# Após 15 itens serem entregues corretamente
+		demon_spawner.spawn_rate = 1.0
+	elif game_state == 3:
+		# Após 19 itens serem entregues corretamente
+		# Só falta 1 item para vencer
+		demon_spawner.spawn_rate = 0.2
+	elif game_state == 4:
+		# Fim do jogo, vitória
 		get_tree().change_scene_to_file("res://scenes/game_over.tscn")
-		demon_spawner.spawn_rate = 0.3
+	elif game_state == 5:
+		# Fim do jogo, derrota
+		get_tree().change_scene_to_file("res://scenes/game_over.tscn")
