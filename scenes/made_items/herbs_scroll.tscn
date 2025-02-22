@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cs0pttwuin6ix"]
+[gd_scene load_steps=6 format=3 uid="uid://cs0pttwuin6ix"]
 
 [ext_resource type="PackedScene" uid="uid://dj6sle58ekgb8" path="res://scenes/bola.tscn" id="1_yntxe"]
 [ext_resource type="Script" path="res://scripts/made_items/herbs_scroll.gd" id="2_a6ht5"]
 [ext_resource type="Shader" path="res://shaders/outline.gdshader" id="3_3wfr5"]
+[ext_resource type="Texture2D" uid="uid://dl7hml1nleywx" path="res://assets/items/herbs_scroll.png" id="4_s8lqn"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8hkpq"]
 resource_local_to_scene = true
@@ -19,3 +20,4 @@ item_nome = "herbs_scroll"
 
 [node name="Sprite2D" parent="." index="0"]
 material = SubResource("ShaderMaterial_8hkpq")
+texture = ExtResource("4_s8lqn")
