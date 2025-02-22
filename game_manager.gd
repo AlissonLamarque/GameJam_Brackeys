@@ -5,13 +5,11 @@ extends Node2D
 @onready var demon_spawner = get_node("DemonSpawner")
 @onready var ritual = get_parent().get_node("Ritual")
 @onready var player = get_parent().get_node("Player")
-
-var velocidade_aumento_spawn_rate = 0.1
+@onready var gameover_fade = get_parent().get_node("ColorRect")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -39,22 +37,21 @@ func _process(delta: float) -> void:
 		timer.start()
 	elif game_state == 6:
 		# Fim do jogo, derrota (MORTE DO PLAYER)
-		await get_tree().create_timer(10).timeout
+		await get_tree().create_timer(6).timeout
 		get_tree().change_scene_to_file("res://scenes/game_over.tscn")
 	elif game_state == 7:
 		# Fim do jogo, derrota (ITEM INCORRETO)
 		get_tree().change_scene_to_file("res://scenes/game_over.tscn")
-
 
 func _on_timer_timeout():
 	if player.health > 0:
 		demon_spawner.spawn_rate -= demon_spawner.spawn_rate / 5
 	else:
 		timer.stop()
-		get_tree().change_scene_to_file("res://scenes/game_over.tscn")
 
 func _darkening_ritual():
 	var tween = get_tree().create_tween()
+	
 	tween.tween_property(ritual, "modulate", Color.hex(0xfc0000), 1.5).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
 
 	for i in range(1, 4):

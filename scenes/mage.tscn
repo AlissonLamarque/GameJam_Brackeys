@@ -44,6 +44,7 @@ animations = [{
 size = Vector2(10, 20)
 
 [node name="Mage" type="StaticBody2D"]
+collision_layer = 3
 script = ExtResource("1_rpk5o")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
