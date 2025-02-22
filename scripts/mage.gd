@@ -11,6 +11,7 @@ extends Node2D
 
 @export var MAX_HEALTH = 3
 var health = MAX_HEALTH
+var is_alive = true
 
 # Lista de itens que o mago conhece
 @export var itens_conhecidos: Array[String] = ["bola", "bottle", "dagger", "rubi", "magic_book", "diamond"]
@@ -83,6 +84,7 @@ func take_damage(amount: int):
 func die():
 	camera.apply_shake(5, 5)
 	request_item_ui.visible = false
+	is_alive = false
 	game_manager.game_state = 5  # Fim de jogo, Derrota
 	
 

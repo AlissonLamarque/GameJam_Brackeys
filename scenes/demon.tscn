@@ -344,6 +344,7 @@ script = ExtResource("1_8f4g8")
 particle_scene = ExtResource("2_r1y2b")
 spawn_symbol_scene = ExtResource("3_e1ox2")
 stop_distance = 30.0
+attack_damage = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_j2yiv")
