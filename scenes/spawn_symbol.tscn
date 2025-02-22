@@ -1,0 +1,68 @@
+[gd_scene load_steps=7 format=3 uid="uid://b8776fh460rgw"]
+
+[ext_resource type="Script" path="res://scripts/spawn_symbol.gd" id="1_lkjci"]
+[ext_resource type="Texture2D" uid="uid://dmbldnknk61fu" path="res://assets/particles/demon_spawn.png" id="1_pujhr"]
+[ext_resource type="Texture2D" uid="uid://c3s6jruidvkv4" path="res://assets/particles/light.webp" id="2_dnyds"]
+
+[sub_resource type="Animation" id="Animation_jaw78"]
+resource_name = "rotate"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="Animation" id="Animation_lk14q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_610h3"]
+_data = {
+"RESET": SubResource("Animation_lk14q"),
+"rotate": SubResource("Animation_jaw78")
+}
+
+[node name="SpawnSymbol" type="Node2D"]
+script = ExtResource("1_lkjci")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_pujhr")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite2D")
+libraries = {
+"": SubResource("AnimationLibrary_610h3")
+}
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(1.19209e-07, 0)
+scale = Vector2(0.046875, 0.046875)
+color = Color(1, 0.988235, 0, 1)
+energy = 5.0
+texture = ExtResource("2_dnyds")
+texture_scale = 1.5
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

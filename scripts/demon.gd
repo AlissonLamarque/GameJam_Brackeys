@@ -1,6 +1,8 @@
 extends CharacterBody2D
 
 @export var particle_scene: PackedScene
+@export var spawn_symbol_scene: PackedScene
+@export var spawm_wait_time: float = 1.5
 @export var speed: float = 70
 @export var stop_distance: float = 10
 @export var attack_damage: int = 25
@@ -13,6 +15,7 @@ extends CharacterBody2D
 @onready var mage = get_parent().get_node("Mage")
 @onready var camera = get_parent().get_node("Camera2D")
 @onready var attack_timer: Timer = $Timer
+@onready var spawn_timer: Timer = Timer.new()
 
 var target
 var target_pos
@@ -23,6 +26,18 @@ func _ready():
 	add_to_group("Demon")
 	attack_timer.wait_time = attack_cooldown
 	attack_timer.start()
+	
+	var spawn_symbol = spawn_symbol_scene.instantiate()
+	get_parent().add_child(spawn_symbol)
+	spawn_symbol.global_position = global_position
+	
+	spawn_timer.wait_time = spawm_wait_time
+	spawn_timer.one_shot = true
+	spawn_timer.timeout.connect(_on_spawn_timer_timeout)
+	add_child(spawn_timer)
+	spawn_timer.start()
+	
+	set_physics_process(false)
 
 func _physics_process(delta: float) -> void:
 	var player_dist = position.distance_to(player.position)
@@ -67,6 +82,9 @@ func _on_AttackTimer_timeout():
 			camera.apply_shake(1, 2)
 			die()
 	attack_timer.start()
+
+func _on_spawn_timer_timeout():
+	set_physics_process(true)
 
 func die():
 	var light = get_node("PointLight2D")
