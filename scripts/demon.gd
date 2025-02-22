@@ -3,7 +3,7 @@ extends CharacterBody2D
 @export var particle_scene: PackedScene
 @export var spawn_symbol_scene: PackedScene
 @export var spawm_wait_time: float = 1.5
-@export var speed: float = 70
+@export var speed: float = 100
 @export var stop_distance: float = 10
 @export var attack_damage: int = 25
 @export var attack_cooldown: float = 3
@@ -22,7 +22,7 @@ extends CharacterBody2D
 var target
 var target_pos
 
-var min_dissolve_rate = -1.14
+var min_dissolve_rate = -1.4
 var max_dissolve_rate = 1
 var dissolve_rate = min_dissolve_rate
 
@@ -82,10 +82,11 @@ func update_animation(direction: Vector2) -> void:
 		return
 
 	if abs(direction.x) > abs(direction.y): 
+		animated_sprite.play("run_side")
 		if direction.x > 0:
-			animated_sprite.play("run_right")
+			animated_sprite.flip_h = false
 		else:
-			animated_sprite.play("run_left")
+			animated_sprite.flip_h = true
 	else:
 		if direction.y > 0:
 			animated_sprite.play("run_down")
@@ -101,10 +102,13 @@ func _on_AttackTimer_timeout():
 
 func _on_spawn_timer_timeout():
 	has_spawned = true
-	$AnimatedSprite2D.material.set("shader_parameter/color", Vector3(0.0, 0.926, 0.94))
+	
+	#$AnimatedSprite2D.material.set("shader_parameter/size", 0.06)
+	dissolve_rate = min_dissolve_rate
 	
 
 func die():
+	$AnimatedSprite2D.material.set("shader_parameter/color", Vector3(0.0, 0.926, 0.94))
 	var light = get_node("PointLight2D")
 	var tween = get_tree().create_tween()
 	dissolve_rate = min_dissolve_rate
