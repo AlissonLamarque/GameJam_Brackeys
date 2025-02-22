@@ -187,4 +187,4 @@ func _on_timer_spawn_item_timeout() -> void:
 		new_item.dissolve_rate = new_item.max_dissolve_rate
 		get_parent().add_child(new_item)
 		new_item.change_shader(0)
-		new_item.spawn(1)
+		new_item.spawn()
