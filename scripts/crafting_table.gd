@@ -183,8 +183,5 @@ func _on_timer_spawn_item_timeout() -> void:
 		var new_item = new_item_packed_scene.instantiate()
 		new_item.global_position = global_position
 		new_item.global_position.y = global_position.y - 50
-		new_item.starting_position = new_item.global_position
-		new_item.dissolve_rate = new_item.max_dissolve_rate
+		
 		get_parent().add_child(new_item)
-		new_item.change_shader(0)
-		new_item.spawn()
