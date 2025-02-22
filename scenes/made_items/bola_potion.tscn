@@ -1,0 +1,23 @@
+[gd_scene load_steps=6 format=3 uid="uid://c8v3cx3qwtx14"]
+
+[ext_resource type="PackedScene" uid="uid://dj6sle58ekgb8" path="res://scenes/bola.tscn" id="1_rbktg"]
+[ext_resource type="Script" path="res://scripts/made_items/bola_potion.gd" id="2_omqeb"]
+[ext_resource type="Shader" path="res://shaders/outline.gdshader" id="3_sexwf"]
+[ext_resource type="Texture2D" uid="uid://copbh80exkq8v" path="res://assets/items/bola_potion.png" id="4_8ay0b"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_07g2t"]
+resource_local_to_scene = true
+shader = ExtResource("3_sexwf")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 1.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+
+[node name="BolaPotion" instance=ExtResource("1_rbktg")]
+script = ExtResource("2_omqeb")
+item_nome = "bola_potion"
+
+[node name="Sprite2D" parent="." index="0"]
+material = SubResource("ShaderMaterial_07g2t")
+texture = ExtResource("4_8ay0b")
