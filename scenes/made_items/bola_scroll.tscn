@@ -1,0 +1,23 @@
+[gd_scene load_steps=6 format=3 uid="uid://beblu311x2dkd"]
+
+[ext_resource type="PackedScene" uid="uid://dj6sle58ekgb8" path="res://scenes/bola.tscn" id="1_505se"]
+[ext_resource type="Script" path="res://scripts/made_items/bola_scroll.gd" id="2_vakv6"]
+[ext_resource type="Shader" path="res://shaders/outline.gdshader" id="3_772aj"]
+[ext_resource type="Texture2D" uid="uid://bo1qdl01o6xgv" path="res://assets/items/bola_scroll.png" id="4_3i1dc"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lu01d"]
+resource_local_to_scene = true
+shader = ExtResource("3_772aj")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 1.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+
+[node name="BolaScroll" instance=ExtResource("1_505se")]
+script = ExtResource("2_vakv6")
+item_nome = "bola_scroll"
+
+[node name="Sprite2D" parent="." index="0"]
+material = SubResource("ShaderMaterial_lu01d")
+texture = ExtResource("4_3i1dc")

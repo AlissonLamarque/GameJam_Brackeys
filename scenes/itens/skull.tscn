@@ -1,8 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://8pyefn6xbr0d"]
+[gd_scene load_steps=6 format=3 uid="uid://8pyefn6xbr0d"]
 
 [ext_resource type="PackedScene" uid="uid://dj6sle58ekgb8" path="res://scenes/bola.tscn" id="1_hnm44"]
 [ext_resource type="Script" path="res://scripts/items/skull.gd" id="2_5w0x8"]
+[ext_resource type="Shader" path="res://shaders/outline.gdshader" id="3_cclhj"]
+[ext_resource type="Texture2D" uid="uid://c5maai2hg5hqr" path="res://assets/items/skull.png" id="4_6k5ok"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lvr5u"]
+resource_local_to_scene = true
+shader = ExtResource("3_cclhj")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 1.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
 
 [node name="Skull" instance=ExtResource("1_hnm44")]
 script = ExtResource("2_5w0x8")
 item_nome = "skull"
+
+[node name="Sprite2D" parent="." index="0"]
+material = SubResource("ShaderMaterial_lvr5u")
+texture = ExtResource("4_6k5ok")

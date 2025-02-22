@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dj6sle58ekgb8" path="res://scenes/bola.tscn" id="1_tsvem"]
 [ext_resource type="Script" path="res://scripts/items/golden_feather.gd" id="2_ptbo6"]
 [ext_resource type="Shader" path="res://shaders/outline.gdshader" id="3_yqbtv"]
+[ext_resource type="Texture2D" uid="uid://cx8g7gf853c5r" path="res://assets/items/golden_feather.png" id="4_nsl2g"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_w741k"]
 resource_local_to_scene = true
@@ -13,13 +14,10 @@ shader_parameter/pattern = 0
 shader_parameter/inside = false
 shader_parameter/add_margins = true
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_p0pim"]
-size = Vector2(16, 16)
-
 [node name="GoldenFeather" instance=ExtResource("1_tsvem")]
 script = ExtResource("2_ptbo6")
 item_nome = "golden_feather"
 
 [node name="Sprite2D" parent="." index="0"]
 material = SubResource("ShaderMaterial_w741k")
-texture = SubResource("PlaceholderTexture2D_p0pim")
+texture = ExtResource("4_nsl2g")

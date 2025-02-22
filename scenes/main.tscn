@@ -1,12 +1,12 @@
-[gd_scene load_steps=27 format=4 uid="uid://bpib2e6h3628"]
+[gd_scene load_steps=30 format=4 uid="uid://bpib2e6h3628"]
 
 [ext_resource type="Script" path="res://scripts/camera_2d.gd" id="1_frwiy"]
-[ext_resource type="PackedScene" path="res://scenes/game_manager.tscn" id="1_q7qob"]
-[ext_resource type="PackedScene" uid="uid://xalb8yo4x8lp" path="res://scenes/demon_spawner.tscn" id="2_solcr"]
+[ext_resource type="PackedScene" uid="uid://cu7lx3nllaatw" path="res://scenes/game_manager.tscn" id="1_q7qob"]
+[ext_resource type="PackedScene" uid="uid://cds0imafbemob" path="res://scenes/demon_spawner.tscn" id="2_solcr"]
 [ext_resource type="PackedScene" uid="uid://df88ub57bgkgd" path="res://scenes/mage.tscn" id="4_g6unc"]
 [ext_resource type="Texture2D" uid="uid://vso7sgsg1sq2" path="res://assets/texture/main_tileset.png" id="5_od7gk"]
 [ext_resource type="PackedScene" uid="uid://dgunt0onwvp5q" path="res://scenes/player.tscn" id="5_yec0p"]
-[ext_resource type="PackedScene" uid="uid://didmp1hd7wdo7" path="res://scenes/ritual.tscn" id="8_tnkwe"]
+[ext_resource type="PackedScene" path="res://scenes/ritual.tscn" id="8_tnkwe"]
 [ext_resource type="PackedScene" uid="uid://y7y5vycuf8li" path="res://scenes/itens/bottle.tscn" id="11_e5gke"]
 [ext_resource type="PackedScene" uid="uid://dj6sle58ekgb8" path="res://scenes/bola.tscn" id="13_cl6fh"]
 [ext_resource type="PackedScene" uid="uid://brdhnvtf7c33n" path="res://scenes/itens/dagger.tscn" id="13_e04sb"]
@@ -14,6 +14,9 @@
 [ext_resource type="PackedScene" uid="uid://bnsb2fndt7f86" path="res://scenes/crafting_table.tscn" id="15_5c1yc"]
 [ext_resource type="PackedScene" uid="uid://b0mnai7isl78n" path="res://scenes/itens/magic_book.tscn" id="15_b11i0"]
 [ext_resource type="PackedScene" uid="uid://bcjiwrp4ulb5w" path="res://scenes/itens/rubi.tscn" id="16_grdbn"]
+[ext_resource type="PackedScene" uid="uid://cdh3oqj87575e" path="res://scenes/itens/herbs.tscn" id="16_hcj3v"]
+[ext_resource type="PackedScene" uid="uid://dgf6skjlfbj6n" path="res://scenes/itens/golden_feather.tscn" id="17_lbmpp"]
+[ext_resource type="PackedScene" uid="uid://8pyefn6xbr0d" path="res://scenes/itens/skull.tscn" id="18_o03cs"]
 [ext_resource type="PackedScene" uid="uid://c8efopliot5j6" path="res://scenes/pause_menu.tscn" id="18_v6ds1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jbw0h"]
@@ -154,7 +157,7 @@ position = Vector2(0, -29)
 position = Vector2(0, 197)
 
 [node name="BOLA" parent="." instance=ExtResource("13_cl6fh")]
-position = Vector2(308, -84)
+position = Vector2(0, 62)
 
 [node name="bottle" parent="." instance=ExtResource("11_e5gke")]
 position = Vector2(411, -45)
@@ -243,3 +246,12 @@ metadata/_edit_lock_ = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_orgk4")
+
+[node name="Herbs" parent="." instance=ExtResource("16_hcj3v")]
+position = Vector2(-119, -113)
+
+[node name="GoldenFeather" parent="." instance=ExtResource("17_lbmpp")]
+position = Vector2(123, -113)
+
+[node name="Skull" parent="." instance=ExtResource("18_o03cs")]
+position = Vector2(1, -121)
