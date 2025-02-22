@@ -24,6 +24,7 @@ var health = MAX_HEALTH
 var item_pedido: String = ""
 # Acima, o item que o mago está pedindo no momento
 
+var balao_time = 0
 
 func _ready():
 	timer_start_talking.start()
@@ -83,7 +84,17 @@ func take_damage(amount: int):
 func die():
 	camera.apply_shake(5, 5)
 	game_manager.game_state = 5  # Fim de jogo, Derota
+	
 
+func _physics_process(delta: float) -> void:
+	var balao = $RequestItemUI/NinePatchRect
+	var texture = $RequestItemUI/TextureRect
+	balao.position.y = lerp(balao.position.y, balao.position.y+cos(deg_to_rad(balao_time*2))/5, 0.4)
+	texture.position.y = balao.position.y+5
+	
+	balao_time += 1
+	balao_time = balao_time%360
+	
 func _on_timer_item_verify_timeout() -> void:
 	pass
 
