@@ -2,17 +2,15 @@
 
 [ext_resource type="PackedScene" uid="uid://dj6sle58ekgb8" path="res://scenes/bola.tscn" id="1_yntxe"]
 [ext_resource type="Script" path="res://scripts/made_items/herbs_scroll.gd" id="2_a6ht5"]
-[ext_resource type="Shader" path="res://shaders/outline.gdshader" id="3_3wfr5"]
+[ext_resource type="Shader" uid="uid://d2yoxxvv2ycee" path="res://shaders/appear.tres" id="3_t5d30"]
 [ext_resource type="Texture2D" uid="uid://dl7hml1nleywx" path="res://assets/items/herbs_scroll.png" id="4_s8lqn"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8hkpq"]
 resource_local_to_scene = true
-shader = ExtResource("3_3wfr5")
+shader = ExtResource("3_t5d30")
+shader_parameter/dissolve_rate = -1.4
+shader_parameter/size = 0.2
 shader_parameter/color = Color(1, 1, 1, 1)
-shader_parameter/width = 1.0
-shader_parameter/pattern = 0
-shader_parameter/inside = false
-shader_parameter/add_margins = true
 
 [node name="HerbsScroll" instance=ExtResource("1_yntxe")]
 script = ExtResource("2_a6ht5")

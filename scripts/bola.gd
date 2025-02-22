@@ -10,6 +10,7 @@ var original_index = z_index
 
 var starting_position
 var initial_position_was_set = false
+var has_spawned = false
 
 var min_dissolve_rate = -1.4
 var max_dissolve_rate = 1
@@ -21,6 +22,13 @@ var is_base = false
 @onready var player = get_node("../Player")
 
 func _physics_process(delta):
+	
+	if not has_spawned:
+		has_spawned = true
+		var tween = get_tree().create_tween()
+		tween.tween_property(self, "dissolve_rate", max_dissolve_rate, 2)
+		tween.tween_callback(change_shader)
+		
 	
 	var staff = get_node("../Player/Staff")
 	
@@ -40,7 +48,7 @@ func _physics_process(delta):
 	$Sprite2D.scale = lerp($Sprite2D.scale, target_scale, 0.3)
 	$Sprite2D.material.set_shader_parameter("dissolve_rate", dissolve_rate)
 	
-	if can_pick:
+	if can_pick and has_spawned:
 		$Sprite2D.material.set("shader_parameter/color", Vector4(1.0, 1.0, 1.0, 1.0))
 	
 	var bodies = $Area2D.get_overlapping_bodies()
@@ -109,25 +117,28 @@ func _input(event):
 					#crafting_table.second_item = self
 					#crafting_table.verify_second_item_name(item_nome)
 
-
 func _ready() -> void:
 	is_base = true
 	item_nome = "bola"
 
 func change_shader(shader = 1):
-
+	dissolve_rate = min_dissolve_rate
 	if shader == 0:
 		var dissolve_shader = load("res://shaders/disappear.tres")
 		$Sprite2D.material.set("shader", dissolve_shader)
 		$Sprite2D.material.set("shader_parameter/color", Vector3(0.888, 0.47, 0.0))
-	else:
+	elif shader == 1:
 		var outline_shader = load("res://shaders/outline.gdshader")
 		$Sprite2D.material.set("shader", outline_shader)
 		$Sprite2D.material.set("shader_parameter/color", Vector4(1.0, 1.0, 1.0, 1.0))
 		$Sprite2D.material.set("shader_parameter/width", 1.0)
-
+	else:
+		var appear_shader = load("res://shaders/appear.tres")
+		$Sprite2D.material.set("shader", appear_shader)
+		#$Sprite2D.material.set("shader_parameter/color", Vector3(1.0, 1.0, 1.0))
+	
 var change = true
-
+var tween 
 func destroy():
 	largou_no_chao_timer.stop()
 	can_pick = false
@@ -136,7 +147,7 @@ func destroy():
 		change = false
 		change_shader(0)
 		 
-	var tween = get_tree().create_tween()
+	tween = get_tree().create_tween()
 
 	tween.tween_property(self, "dissolve_rate",max_dissolve_rate, 2).set_trans(Tween.TRANS_LINEAR)
 	
@@ -152,9 +163,9 @@ func respawn():
 	spawn()
 
 func spawn():
-	var tween = get_tree().create_tween()
-	
-	tween.tween_property(self, "dissolve_rate", min_dissolve_rate, 2).set_trans(Tween.TRANS_LINEAR)
+	tween = get_tree().create_tween()
+	change_shader(2)
+	tween.tween_property(self, "dissolve_rate", max_dissolve_rate, 2).set_trans(Tween.TRANS_LINEAR)
 	tween.tween_callback(self.change_shader)
 
 

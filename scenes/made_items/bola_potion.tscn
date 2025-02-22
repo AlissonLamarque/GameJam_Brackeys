@@ -2,17 +2,15 @@
 
 [ext_resource type="PackedScene" uid="uid://dj6sle58ekgb8" path="res://scenes/bola.tscn" id="1_rbktg"]
 [ext_resource type="Script" path="res://scripts/made_items/bola_potion.gd" id="2_omqeb"]
-[ext_resource type="Shader" path="res://shaders/outline.gdshader" id="3_sexwf"]
+[ext_resource type="Shader" uid="uid://d2yoxxvv2ycee" path="res://shaders/appear.tres" id="3_0el35"]
 [ext_resource type="Texture2D" uid="uid://copbh80exkq8v" path="res://assets/items/bola_potion.png" id="4_8ay0b"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_07g2t"]
 resource_local_to_scene = true
-shader = ExtResource("3_sexwf")
+shader = ExtResource("3_0el35")
+shader_parameter/dissolve_rate = -1.4
+shader_parameter/size = 0.2
 shader_parameter/color = Color(1, 1, 1, 1)
-shader_parameter/width = 1.0
-shader_parameter/pattern = 0
-shader_parameter/inside = false
-shader_parameter/add_margins = true
 
 [node name="BolaPotion" instance=ExtResource("1_rbktg")]
 script = ExtResource("2_omqeb")

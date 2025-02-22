@@ -1,12 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://bcjiwrp4ulb5w"]
+[gd_scene load_steps=6 format=3 uid="uid://bcjiwrp4ulb5w"]
 
 [ext_resource type="PackedScene" uid="uid://dj6sle58ekgb8" path="res://scenes/bola.tscn" id="1_qgt6b"]
 [ext_resource type="Script" path="res://scripts/items/rubi.gd" id="2_crli0"]
 [ext_resource type="Texture2D" uid="uid://p1qk0jdte74e" path="res://assets/items/rubi.png" id="3_2y4sk"]
+[ext_resource type="Shader" uid="uid://d2yoxxvv2ycee" path="res://shaders/appear.tres" id="3_o8thh"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g3lp0"]
+resource_local_to_scene = true
+shader = ExtResource("3_o8thh")
+shader_parameter/dissolve_rate = -1.4
+shader_parameter/size = 0.2
+shader_parameter/color = Color(1, 1, 1, 1)
 
 [node name="Rubi" instance=ExtResource("1_qgt6b")]
 script = ExtResource("2_crli0")
 item_nome = "rubi"
 
 [node name="Sprite2D" parent="." index="0"]
+material = SubResource("ShaderMaterial_g3lp0")
 texture = ExtResource("3_2y4sk")

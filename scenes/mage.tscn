@@ -58,6 +58,7 @@ position = Vector2(0, -15)
 shape = SubResource("RectangleShape2D_txw6l")
 
 [node name="BalaoFala" type="Label" parent="."]
+top_level = true
 offset_left = -32.0
 offset_top = -60.0
 offset_right = 8.0
@@ -82,7 +83,7 @@ one_shot = true
 
 [node name="TextureRect" type="TextureRect" parent="RequestItemUI"]
 visibility_layer = 2
-z_index = 10
+z_index = 11
 offset_left = -13.0
 offset_top = -76.0
 offset_right = 13.0
@@ -92,6 +93,7 @@ stretch_mode = 5
 
 [node name="NinePatchRect" type="NinePatchRect" parent="RequestItemUI"]
 show_behind_parent = true
+z_index = 10
 offset_left = -20.0
 offset_top = -81.0
 offset_right = 20.0
