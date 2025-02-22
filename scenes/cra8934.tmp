@@ -15,16 +15,16 @@ size = Vector2(68, 46)
 collision_layer = 7
 collision_mask = 7
 script = ExtResource("1_bbfvl")
+first_item_name = null
+second_item_name = null
+base_items = null
+made_items = null
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("PlaceholderTexture2D_iwo3x")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_g47pi")
-
-[node name="TimerSpawnItem" type="Timer" parent="."]
-wait_time = 1.5
-one_shot = true
 
 [node name="TimerConsomeItens" type="Timer" parent="."]
 wait_time = 0.193
@@ -43,7 +43,6 @@ one_shot = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_o7xp1")
 
-[connection signal="timeout" from="TimerSpawnItem" to="." method="_on_timer_spawn_item_timeout"]
 [connection signal="timeout" from="TimerConsomeItens" to="." method="_on_timer_consome_itens_timeout"]
 [connection signal="timeout" from="TimerPodeSpawnar" to="." method="_on_timer_pode_spawnar_timeout"]
 [connection signal="timeout" from="TimerGaranteItemsNull" to="." method="_on_timer_garante_items_null_timeout"]
