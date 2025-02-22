@@ -41,7 +41,8 @@ shader_parameter/add_margins = true
 radius = 20.0
 
 [node name="BOLA" type="RigidBody2D"]
-collision_layer = 0
+collision_layer = 8
+collision_mask = 9
 gravity_scale = 0.0
 freeze = true
 freeze_mode = 1
@@ -59,6 +60,7 @@ visible = false
 shape = SubResource("RectangleShape2D_rxonh")
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_mask = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 z_index = 4

@@ -1,50 +1,55 @@
-[gd_scene load_steps=5 format=3 uid="uid://bnsb2fndt7f86"]
+[gd_scene load_steps=7 format=3 uid="uid://bnsb2fndt7f86"]
 
 [ext_resource type="Script" path="res://scripts/crafting_table.gd" id="1_bbfvl"]
+[ext_resource type="Texture2D" uid="uid://bd0g7pfajboem" path="res://assets/texture/crafting_table.png" id="2_y2pxm"]
+[ext_resource type="Texture2D" uid="uid://ynuy8r8mwsqy" path="res://assets/particles/rune_light.png" id="3_078i1"]
+[ext_resource type="Texture2D" uid="uid://c3s6jruidvkv4" path="res://assets/particles/light.webp" id="4_v7p0n"]
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_iwo3x"]
-size = Vector2(40, 25)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j2op2"]
+radius = 33.0
+height = 100.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_g47pi"]
-size = Vector2(36, 22)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_o7xp1"]
-size = Vector2(68, 46)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_idwfs"]
+radius = 35.0
+height = 100.0
 
 [node name="CraftingTable" type="StaticBody2D"]
-collision_layer = 7
-collision_mask = 7
+collision_layer = 8
+collision_mask = 8
 script = ExtResource("1_bbfvl")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("PlaceholderTexture2D_iwo3x")
+scale = Vector2(2, 2)
+texture = ExtResource("2_y2pxm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_g47pi")
+visible = false
+rotation = 1.57079
+shape = SubResource("CapsuleShape2D_j2op2")
 
 [node name="TimerSpawnItem" type="Timer" parent="."]
 wait_time = 1.5
 one_shot = true
 
-[node name="TimerConsomeItens" type="Timer" parent="."]
-wait_time = 0.193
-one_shot = true
-
-[node name="TimerPodeSpawnar" type="Timer" parent="."]
-wait_time = 0.729
-one_shot = true
-
-[node name="TimerGaranteItemsNull" type="Timer" parent="."]
-wait_time = 2.996
-one_shot = true
-
 [node name="Area2D" type="Area2D" parent="."]
+visible = false
+collision_layer = 8
+collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("RectangleShape2D_o7xp1")
+position = Vector2(0, -2)
+rotation = 1.57079
+shape = SubResource("CapsuleShape2D_idwfs")
+
+[node name="RuneLight" type="Sprite2D" parent="."]
+position = Vector2(0, 1)
+texture = ExtResource("3_078i1")
+
+[node name="PointLight2D" type="PointLight2D" parent="RuneLight"]
+position = Vector2(-1.25, -1.25)
+scale = Vector2(0.458984, 0.341797)
+color = Color(0.211765, 1, 1, 0.443137)
+texture = ExtResource("4_v7p0n")
 
 [connection signal="timeout" from="TimerSpawnItem" to="." method="_on_timer_spawn_item_timeout"]
-[connection signal="timeout" from="TimerConsomeItens" to="." method="_on_timer_consome_itens_timeout"]
-[connection signal="timeout" from="TimerPodeSpawnar" to="." method="_on_timer_pode_spawnar_timeout"]
-[connection signal="timeout" from="TimerGaranteItemsNull" to="." method="_on_timer_garante_items_null_timeout"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
