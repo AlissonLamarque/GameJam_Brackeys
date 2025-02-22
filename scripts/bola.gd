@@ -88,13 +88,19 @@ func _input(event):
 				if mago.verificar_item(item_nome):
 					# Item entregue com sucesso
 					destroy()  # Remove o item da cena
-			elif crafting_table and $Area2D.overlaps_body(crafting_table):
+			
+			if crafting_table and $Area2D.overlaps_body(crafting_table):
 				largou_no_chao_timer.stop()
 				
 				if self not in crafting_table.itens:
+					
 					crafting_table.itens.append(self)
+					
 					if crafting_table.itens.size() > 1:
 						crafting_table.verify_items()
+			else:
+				if self in crafting_table.itens:
+					crafting_table.itens.clear()
 				
 				#if crafting_table.is_empty():
 					#crafting_table.first_item_name = item_nome
