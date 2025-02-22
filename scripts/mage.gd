@@ -56,21 +56,20 @@ func exibir_item():
 	else:
 		print("Imagem do item não encontrada:", item_texture_path)
 
-	print("Mago pediu:", item_pedido)
-
 func esconder_item():
 	request_item_ui.visible = false
 	timer_stop_talking.start()
-	print("Item correto entregue")
 
 # Função para verificar o item entregue
 func verificar_item(item_nome: String) -> bool:
+	if health <= 0:
+		return false
+	
 	timer_item_verify.start()
 	if item_nome == item_pedido:
 		esconder_item()
 		return true
 	else:
-		print("Item incorreto entregue")
 		game_manager.game_state = 2  # Muitos demonios vindo
 		return false
 
@@ -83,6 +82,7 @@ func take_damage(amount: int):
 
 func die():
 	camera.apply_shake(5, 5)
+	request_item_ui.visible = false
 	game_manager.game_state = 5  # Fim de jogo, Derrota
 	
 

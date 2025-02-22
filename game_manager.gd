@@ -37,17 +37,23 @@ func _process(delta: float) -> void:
 			return
 		_darkening_ritual()
 		timer.start()
+	elif game_state == 6:
+		# Fim do jogo, derrota (MORTE DO PLAYER)
+		await get_tree().create_timer(10).timeout
+		get_tree().change_scene_to_file("res://scenes/game_over.tscn")
+	elif game_state == 7:
+		# Fim do jogo, derrota (ITEM INCORRETO)
+		get_tree().change_scene_to_file("res://scenes/game_over.tscn")
+
 
 func _on_timer_timeout():
 	if player.health > 0:
-		demon_spawner.spawn_rate -= 0.2 - velocidade_aumento_spawn_rate / 2
-		print(demon_spawner.spawn_rate)
+		demon_spawner.spawn_rate -= demon_spawner.spawn_rate / 5
 	else:
 		timer.stop()
 		get_tree().change_scene_to_file("res://scenes/game_over.tscn")
 
 func _darkening_ritual():
-	var light = ritual.get_node("PointLight2D")
 	var tween = get_tree().create_tween()
 	tween.tween_property(ritual, "modulate", Color.hex(0xfc0000), 1.5).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
 

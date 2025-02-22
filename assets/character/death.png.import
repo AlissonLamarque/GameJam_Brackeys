@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://kjtevw1xhmlr"
-path="res://.godot/imported/mage_magic.png-19828336bafd5061dd664716529d1acf.ctex"
+uid="uid://b2rt5cfbfh876"
+path="res://.godot/imported/death.png-47692680d495379a9ecc5d049875b039.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/characterMage/32x32/mage_magic.png"
-dest_files=["res://.godot/imported/mage_magic.png-19828336bafd5061dd664716529d1acf.ctex"]
+source_file="res://assets/character/death.png"
+dest_files=["res://.godot/imported/death.png-47692680d495379a9ecc5d049875b039.ctex"]
 
 [params]
 

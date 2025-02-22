@@ -4,13 +4,15 @@ var max_speed = 150.0
 var min_speed = 150.0/1.5
 var speed = max_speed
 
+@onready var game_manager: Node2D = $"../GameManager"
 @onready var camera = get_parent().get_node("Camera2D")
 
 var rng = RandomNumberGenerator.new()
 
-var health = 100
+var health = 3
 var player_alive = true
 var is_moving = false
+var is_taking_damage = false
 
 const crosshair_distance = 20
 
@@ -40,8 +42,12 @@ func _process(delta):
 		if Input.is_action_pressed("shoot") and can_shoot:
 			if canPick:
 				shoot()
+	else:
+		$Staff.visible = false
 
 func rotate_staff(delta):
+	if !player_alive:
+		return
 	
 	var light = $Staff/PointLight2D
 	
@@ -68,6 +74,9 @@ func rotate_staff(delta):
 	$Staff.look_at(get_global_mouse_position())
 
 func shoot():
+	if !player_alive:
+		return
+		
 	can_shoot = false
 	
 	$Staff/PointLight2D.scale = initial_light_scale * 2.5
@@ -102,18 +111,12 @@ func _physics_process(delta: float):
 	
 	light.scale = lerp(light.scale, initial_light_scale, 0.07)
 	
-	if health <= 0:
-		player_alive = false
-		health = 0
-		self.queue_free()
-	
 	$Staff.visible = true
 	
 	if not canPick:
 		$Staff.visible = false
 
 func player_movement(delta):
-	
 	var dir_x = Input.get_axis("move_left", "move_right")
 	var dir_y = Input.get_axis("move_up", "move_down")
 	
@@ -125,7 +128,6 @@ func player_movement(delta):
 		is_moving = true
 	
 	move_and_slide()
-
 
 func play_anim():
 	var anim = $AnimatedSprite2D
@@ -153,15 +155,24 @@ func play_anim():
 		
 	else:
 		anim.play("idle_"+dir)
+	
+	#if is_taking_damage:
+		#anim.play("hurt_"+dir)
+		#await anim.animation_finished
+		#is_taking_damage = false
 
 func player():
 	pass
 	
 func take_damage(amount: int):
+	is_taking_damage = true
 	health -= amount
 	camera.apply_shake(200, 0.1)
 	if health <= 0:
 		die()
 
 func die():
-	pass
+	camera.apply_shake(5, 5)
+	speed = 0
+	player_alive = false
+	game_manager.game_state = 6
