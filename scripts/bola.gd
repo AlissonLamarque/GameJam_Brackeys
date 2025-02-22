@@ -8,9 +8,20 @@ var target_scale = Vector2(2,2)
 var can_pick = true
 var original_index = z_index
 
-var shader = preload("res://shaders/disappear.tres")
+var dissolve_shader = preload("res://shaders/disappear.tres")
+var outline_shader = preload("res://shaders/outline.gdshader")
 
-var dissolve_rate = -1.4
+var starting_position
+var initial_position_was_set = false
+
+var min_dissolve_rate = -1.4
+var max_dissolve_rate = 1
+var dissolve_rate = min_dissolve_rate
+
+var is_base = false
+
+@onready var largou_no_chao_timer: Timer = $Timer
+@onready var player = get_node("../Player")
 
 func _physics_process(delta):
 	
@@ -31,65 +42,109 @@ func _physics_process(delta):
 	
 	$Sprite2D.scale = lerp($Sprite2D.scale, target_scale, 0.3)
 	$Sprite2D.material.set_shader_parameter("dissolve_rate", dissolve_rate)
-
-func _input(event):
 	
-	var player = get_node("../Player")
+	if can_pick:
+		$Sprite2D.material.set("shader_parameter/color", Vector4(1.0, 1.0, 1.0, 1.0))
+	
+	var bodies = $Area2D.get_overlapping_bodies()
+	for body in bodies:
+		
+		if body.name != "Player":
+			continue
+		
+		if not player.canPick:
+			break
+		
+		if not can_pick:
+			break
+
+		$Sprite2D.material.set("shader_parameter/color", Vector4(1.0, 1.0, 0.0, 1.0))
+			
+		
+func _input(event):
 	
 	if Input.is_action_pressed("ui_pick"):
 		var bodies = $Area2D.get_overlapping_bodies()
 		
 		for body in bodies:
 			if body.name == "Player" and player.canPick == true and can_pick:
+				if not initial_position_was_set:
+					starting_position = self.get_position()
+					initial_position_was_set = true
 				picked = true
 				player.canPick = false
 				player.speed = player.min_speed 
+				largou_no_chao_timer.stop()
 	else:
-		picked = false
-		player.canPick = true
-		player.speed = player.max_speed
-		
-		# Verifica se o item foi solto perto do mago
-		var mago = get_node("../Mage")
-		var crafting_table = get_node("../CraftingTable")
-		
-		if mago and $Area2D.overlaps_body(mago):
-			if mago.verificar_item(item_nome):
-				# Item entregue com sucesso
-				destroy()  # Remove o item da cena
-		elif crafting_table and $Area2D.overlaps_body(crafting_table):
-			if crafting_table.is_empty():
-				crafting_table.first_item_name = item_nome
-				crafting_table.first_item = self
-			elif crafting_table.first_item_name != item_nome:
-				crafting_table.second_item = self
-				crafting_table.verify_second_item_name(item_nome)
+		if picked:
+			picked = false
+			player.canPick = true
+			player.speed = player.max_speed
 			
-				
+			largou_no_chao_timer.start()
+			
+			# Verifica se o item foi solto perto do mago
+			var mago = get_node("../Mage")
+			var crafting_table = get_node("../CraftingTable")
+			
+			if mago and $Area2D.overlaps_body(mago):
+				if mago.verificar_item(item_nome):
+					# Item entregue com sucesso
+					destroy()  # Remove o item da cena
+			elif crafting_table and $Area2D.overlaps_body(crafting_table):
+				largou_no_chao_timer.stop()
+				if crafting_table.is_empty():
+					crafting_table.first_item_name = item_nome
+					crafting_table.first_item = self
+				elif crafting_table.first_item_name != item_nome:
+					crafting_table.second_item = self
+					crafting_table.verify_second_item_name(item_nome)
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	is_base = true
 	item_nome = "bola"
-	pass # Replace with function body.
+
+func change_shader(shader = 1):
+
+	if shader == 0:
+		$Sprite2D.material.set("shader", dissolve_shader)
+		$Sprite2D.material.set("shader_parameter/color", Vector3(0.888, 0.47, 0.0))
+	else:
+		$Sprite2D.material.set("shader", outline_shader)
+		$Sprite2D.material.set("shader_parameter/color", Vector4(1.0, 1.0, 1.0, 1.0))
+		$Sprite2D.material.set("shader_parameter/width", 1.0)
 
 var tween
 
 var change = true
 
 func destroy():
+	largou_no_chao_timer.stop()
 	can_pick = false
 	
 	if change:
 		change = false
-		$Sprite2D.material.set("shader", shader)
-		$Sprite2D.material.set("shader_parameter/color", Vector3(0.888, 0.47, 0.0))
+		change_shader(0)
 		 
-
 	tween = get_tree().create_tween()
 
-	tween.tween_property(self, "dissolve_rate",1, 2).set_trans(Tween.TRANS_LINEAR)
-	tween.tween_callback(self.queue_free)
+	tween.tween_property(self, "dissolve_rate",max_dissolve_rate, 2).set_trans(Tween.TRANS_LINEAR)
+	
+	if is_base:
+		tween.tween_callback(self.respawn)
+	else:
+		tween.tween_callback(self.queue_free)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func respawn():
+	global_position = starting_position
+	change = true
+	can_pick = true
+	tween = get_tree().create_tween()
+	tween.tween_property(self, "dissolve_rate", min_dissolve_rate, 2).set_trans(Tween.TRANS_LINEAR)
+	tween.tween_callback(self.change_shader)
+
+
+func _on_timer_timeout() -> void:
+	destroy()
