@@ -17,7 +17,7 @@ func apply_shake(strength, speed):
 	shake_speed = speed
 
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	
 	if shake_strength > 0:
 		shake_strength = lerpf(shake_strength, 0, shake_fade * delta * shake_speed)
