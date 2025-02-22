@@ -9,10 +9,18 @@ extends Node2D
 @onready var request_item_ui: Node = $RequestItemUI
 @onready var texture_rect: TextureRect = $RequestItemUI/TextureRect
 
-var health = 100
+@export var MAX_HEALTH = 100
+var health = MAX_HEALTH
 
 # Lista de itens que o mago conhece
 @export var itens_conhecidos: Array[String] = ["bola", "bottle", "dagger", "rubi", "magic_book", "diamond"]
+@export var made_items: Array[String] = [
+"blue_potion", "diamond_scroll", "diamond_skull", "eldritch_dagger",
+"fire_dagger", "golden_book", "golden_potion", "golden_skull", 
+"herbs_potion", "herbs_rubi", "herbs_scroll", "herb_dagger",
+"ice_dagger", "red_potion", "rubi_scroll", "skull_dagger",
+"skull_scroll", "bola_potion", "bola_scroll", "bola_skull"
+]
 var item_pedido: String = ""
 # Acima, o item que o mago está pedindo no momento
 
@@ -25,10 +33,17 @@ func _ready():
 # Função para pedir um item aleatório
 func decide_item_aleatorio():
 	if itens_conhecidos.size() > 0:
-		item_pedido = itens_conhecidos.pop_at(randi() % itens_conhecidos.size())
+		item_pedido = made_items.pop_at(randi() % made_items.size())
 		exibir_item()
-	elif itens_conhecidos.size() == 0:
+	if made_items.size() <= 15:
 		game_manager.game_state = 1
+	elif made_items.size() <= 5:
+		game_manager.game_state = 2
+	elif made_items.size() == 1:
+		game_manager.game_state = 3
+	elif made_items.size() == 0:
+		game_manager.game_state = 4
+		
 
 func exibir_item():
 	var item_texture_path = "res://assets/items/" + item_pedido + ".png"
@@ -55,15 +70,19 @@ func verificar_item(item_nome: String) -> bool:
 		return true
 	else:
 		print("Item incorreto entregue")
+		game_manager.game_state = 2  # Muitos demonios vindo
 		return false
 
 func take_damage(amount: int):
 	health -= amount
+	if health <= MAX_HEALTH/2:
+		game_manager.game_state = 2  # Muitos demonios vindo
 	if health <= 0:
 		die()
 
 func die():
 	camera.apply_shake(5, 5)
+	game_manager.game_state = 5  # Fim de jogo, Derota
 
 func _on_timer_item_verify_timeout() -> void:
 	pass
