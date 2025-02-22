@@ -35,14 +35,14 @@ func decide_item_aleatorio():
 	if itens_conhecidos.size() > 0:
 		item_pedido = made_items.pop_at(randi() % made_items.size())
 		exibir_item()
-	if made_items.size() <= 15:
-		game_manager.game_state = 1
-	elif made_items.size() <= 5:
-		game_manager.game_state = 2
+	if made_items.size() == 0:
+		game_manager.game_state = 4
 	elif made_items.size() == 1:
 		game_manager.game_state = 3
-	elif made_items.size() == 0:
-		game_manager.game_state = 4
+	elif made_items.size() <= 5:
+		game_manager.game_state = 2
+	elif made_items.size() <= 15:
+		game_manager.game_state = 1
 		
 
 func exibir_item():
