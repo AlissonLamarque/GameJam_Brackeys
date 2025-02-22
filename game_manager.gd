@@ -5,7 +5,7 @@ extends Node2D
 @onready var demon_spawner = get_node("DemonSpawner")
 @onready var ritual = get_parent().get_node("Ritual")
 @onready var player = get_parent().get_node("Player")
-@onready var gameover_fade = get_parent().get_node("ColorRect")
+@onready var player_anim = get_parent().get_node("Player/AnimatedSprite2D")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -37,6 +37,7 @@ func _process(delta: float) -> void:
 		timer.start()
 	elif game_state == 6:
 		# Fim do jogo, derrota (MORTE DO PLAYER)
+		player_anim.play("death_front")
 		await get_tree().create_timer(6).timeout
 		get_tree().change_scene_to_file("res://scenes/game_over.tscn")
 	elif game_state == 7:
