@@ -59,10 +59,7 @@ func verify_items():
 		for item in itens:
 			names.append(item.item_nome)
 		
-		print(names)
 		names.sort()
-		print(names)
-		
 		empty_crafting_table()
 
 	
@@ -81,6 +78,14 @@ func combine_items(item1: String, item2: String) -> String:
 func _on_timer_spawn_item_timeout() -> void:
 	var new_item_name = combine_items(names[0], names[1])
 	names.clear()
+	
+	var bodies = $Area2D.get_overlapping_bodies()
+		
+	for body in bodies:
+		if body is Bola:
+			if not body.is_base:
+				body.destroy()
+	
 	if new_item_name != "":
 		new_item_scene_path = "res://scenes/made_items/" + new_item_name + ".tscn"
 		

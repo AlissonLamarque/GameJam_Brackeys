@@ -93,9 +93,9 @@ func _input(event):
 			var crafting_table = get_node("../CraftingTable")
 			
 			if mago and $Area2D.overlaps_body(mago):
-				if mago.verificar_item(item_nome):
+				mago.verificar_item(item_nome)
 					# Item entregue com sucesso
-					destroy()  # Remove o item da cena
+				destroy()  # Remove o item da cena
 			
 			if crafting_table and $Area2D.overlaps_body(crafting_table):
 				
@@ -173,3 +173,6 @@ func spawn():
 
 func _on_timer_timeout() -> void:
 	destroy()
+
+func bola():
+	pass

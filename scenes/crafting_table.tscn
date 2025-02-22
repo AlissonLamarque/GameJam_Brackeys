@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bnsb2fndt7f86"]
+[gd_scene load_steps=7 format=3 uid="uid://bnsb2fndt7f86"]
 
 [ext_resource type="Script" path="res://scripts/crafting_table.gd" id="1_bbfvl"]
 [ext_resource type="Texture2D" uid="uid://bd0g7pfajboem" path="res://assets/texture/crafting_table.png" id="2_y2pxm"]
 [ext_resource type="Texture2D" uid="uid://ynuy8r8mwsqy" path="res://assets/particles/rune_light.png" id="3_078i1"]
+[ext_resource type="Texture2D" uid="uid://c3s6jruidvkv4" path="res://assets/particles/light.webp" id="4_v7p0n"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j2op2"]
 radius = 33.0
@@ -41,8 +42,14 @@ rotation = 1.57079
 shape = SubResource("CapsuleShape2D_idwfs")
 
 [node name="RuneLight" type="Sprite2D" parent="."]
-position = Vector2(1, 1)
+position = Vector2(0, 1)
 texture = ExtResource("3_078i1")
+
+[node name="PointLight2D" type="PointLight2D" parent="RuneLight"]
+position = Vector2(-1.25, -1.25)
+scale = Vector2(0.458984, 0.341797)
+color = Color(0.211765, 1, 1, 0.443137)
+texture = ExtResource("4_v7p0n")
 
 [connection signal="timeout" from="TimerSpawnItem" to="." method="_on_timer_spawn_item_timeout"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
