@@ -10,7 +10,7 @@ resource_local_to_scene = true
 shader = ExtResource("3_giugp")
 shader_parameter/dissolve_rate = -1.4
 shader_parameter/size = 0.2
-shader_parameter/color = Color(0, 1, 1, 1)
+shader_parameter/color = Color(0, 0.796135, 0.70345, 1)
 
 [node name="SkullScroll" instance=ExtResource("1_ntltj")]
 script = ExtResource("2_05tkf")

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/camera_2d.gd" id="1_frwiy"]
 [ext_resource type="PackedScene" path="res://scenes/game_manager.tscn" id="1_q7qob"]
-[ext_resource type="PackedScene" uid="uid://cds0imafbemob" path="res://scenes/demon_spawner.tscn" id="2_solcr"]
+[ext_resource type="PackedScene" uid="uid://xalb8yo4x8lp" path="res://scenes/demon_spawner.tscn" id="2_solcr"]
 [ext_resource type="PackedScene" uid="uid://df88ub57bgkgd" path="res://scenes/mage.tscn" id="4_g6unc"]
 [ext_resource type="Texture2D" uid="uid://vso7sgsg1sq2" path="res://assets/texture/main_tileset.png" id="5_od7gk"]
 [ext_resource type="PackedScene" uid="uid://dgunt0onwvp5q" path="res://scenes/player.tscn" id="5_yec0p"]
@@ -148,40 +148,51 @@ tile_set = SubResource("TileSet_t5t8e")
 metadata/_edit_lock_ = true
 
 [node name="Ritual" parent="." instance=ExtResource("8_tnkwe")]
+position = Vector2(-3, 0)
 metadata/_edit_lock_ = true
 
 [node name="Mage" parent="." instance=ExtResource("4_g6unc")]
 position = Vector2(0, -29)
 
 [node name="CraftingTable" parent="." instance=ExtResource("15_5c1yc")]
-position = Vector2(0, 197)
+position = Vector2(0, 158)
 
 [node name="BOLA" parent="." instance=ExtResource("13_cl6fh")]
 position = Vector2(0, 62)
 
 [node name="bottle" parent="." instance=ExtResource("11_e5gke")]
 position = Vector2(411, -45)
+collision_layer = 0
+collision_mask = 1
 gravity_scale = 1.0
 linear_damp = 0.0
 item_nome = ""
 
 [node name="Dagger" parent="." instance=ExtResource("13_e04sb")]
 position = Vector2(233, -113)
+collision_layer = 0
+collision_mask = 1
 gravity_scale = 1.0
 linear_damp = 0.0
 
 [node name="Diamond" parent="." instance=ExtResource("14_njq81")]
 position = Vector2(-227, -113)
+collision_layer = 0
+collision_mask = 1
 gravity_scale = 1.0
 linear_damp = 0.0
 
 [node name="MagicBook" parent="." instance=ExtResource("15_b11i0")]
 position = Vector2(-354, -80)
+collision_layer = 0
+collision_mask = 1
 gravity_scale = 1.0
 linear_damp = 0.0
 
 [node name="Rubi" parent="." instance=ExtResource("16_grdbn")]
 position = Vector2(-429, -1)
+collision_layer = 0
+collision_mask = 1
 gravity_scale = 1.0
 linear_damp = 0.0
 
@@ -249,9 +260,15 @@ environment = SubResource("Environment_orgk4")
 
 [node name="Herbs" parent="." instance=ExtResource("16_hcj3v")]
 position = Vector2(-119, -113)
+collision_layer = 0
+collision_mask = 1
 
 [node name="GoldenFeather" parent="." instance=ExtResource("17_lbmpp")]
 position = Vector2(123, -113)
+collision_layer = 0
+collision_mask = 1
 
 [node name="Skull" parent="." instance=ExtResource("18_o03cs")]
 position = Vector2(1, -121)
+collision_layer = 0
+collision_mask = 1

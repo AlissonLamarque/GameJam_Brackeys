@@ -98,7 +98,9 @@ func _input(event):
 					destroy()  # Remove o item da cena
 			
 			if crafting_table and $Area2D.overlaps_body(crafting_table):
-				largou_no_chao_timer.stop()
+				
+				if is_base:
+					largou_no_chao_timer.stop()
 				
 				if self not in crafting_table.itens:
 					
@@ -135,7 +137,7 @@ func change_shader(shader = 1):
 	else:
 		var appear_shader = load("res://shaders/appear.tres")
 		$Sprite2D.material.set("shader", appear_shader)
-		#$Sprite2D.material.set("shader_parameter/color", Vector3(1.0, 1.0, 1.0))
+		$Sprite2D.material.set("shader_parameter/color", Vector4(0.0, 0.796, 0.703, 1.0))
 	
 var change = true
 var tween 
