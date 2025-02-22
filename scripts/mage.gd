@@ -9,7 +9,7 @@ extends Node2D
 @onready var request_item_ui: Node = $RequestItemUI
 @onready var texture_rect: TextureRect = $RequestItemUI/TextureRect
 
-@export var MAX_HEALTH = 100
+@export var MAX_HEALTH = 3
 var health = MAX_HEALTH
 
 # Lista de itens que o mago conhece
@@ -83,7 +83,7 @@ func take_damage(amount: int):
 
 func die():
 	camera.apply_shake(5, 5)
-	game_manager.game_state = 5  # Fim de jogo, Derota
+	game_manager.game_state = 5  # Fim de jogo, Derrota
 	
 
 func _physics_process(delta: float) -> void:

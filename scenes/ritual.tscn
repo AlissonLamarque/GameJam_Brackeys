@@ -25,7 +25,7 @@ anim_speed_min = 0.1
 anim_speed_max = 0.3
 
 [node name="Ritual" type="Sprite2D"]
-modulate = Color(0.443844, 0.764447, 1, 1)
+modulate = Color(0.443137, 0.764706, 1, 1)
 texture = ExtResource("1_1oscp")
 script = ExtResource("2_44xap")
 
