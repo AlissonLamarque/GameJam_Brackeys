@@ -5,6 +5,9 @@
 [node name="GameManager" type="Node2D"]
 script = ExtResource("1_t6psl")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="TimerGameState5" type="Timer" parent="."]
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[node name="TimerGameState7" type="Timer" parent="."]
+
+[connection signal="timeout" from="TimerGameState5" to="." method="_on_timergs5_timeout"]
+[connection signal="timeout" from="TimerGameState7" to="." method="_on_timergs7_timeout"]

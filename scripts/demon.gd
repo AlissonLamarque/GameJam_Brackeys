@@ -6,7 +6,6 @@ extends CharacterBody2D
 @export var speed: float = 100
 @export var stop_distance: float = 10
 @export var attack_damage: int = 25
-@export var attack_cooldown: float = 3
 @export var attack_range: float = 50
 @export var player_ignore_distance: float = 50
 
@@ -37,7 +36,6 @@ func _ready():
 	tween.parallel().tween_property(self, "dissolve_rate", max_dissolve_rate, 2)
 	
 	add_to_group("Demon")
-	attack_timer.wait_time = attack_cooldown
 	attack_timer.start()
 	
 	var spawn_symbol = spawn_symbol_scene.instantiate()
@@ -102,8 +100,6 @@ func _on_AttackTimer_timeout():
 
 func _on_spawn_timer_timeout():
 	has_spawned = true
-	
-	#$AnimatedSprite2D.material.set("shader_parameter/size", 0.06)
 	dissolve_rate = min_dissolve_rate
 	
 
@@ -115,17 +111,12 @@ func die():
 	$AnimatedSprite2D.material.set("shader", dissolve_shader)
 	speed = 0
 	set_collision_layer_value(3, false)
-	#animated_sprite.visible = false
-	# Trecho para brilho de morte do demon
-	#light.visible = true
 	var particle = particle_scene.instantiate()
 	particle.get_node("GPUParticles2D").emitting = true
 	particle.global_position = global_position
 	get_parent().add_child(particle)
 	tween.parallel().tween_property(self, "dissolve_rate",1, 0.5).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
-	#tween.parallel().tween_property(light, "texture_scale", 0.3, 0.5).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_IN_OUT)
-	#tween.parallel().tween_property(light, "energy", 0, 0.15)
-	
+
 	tween.tween_callback(self.queue_free)
 	
 	camera.apply_shake(0.4, 2)
