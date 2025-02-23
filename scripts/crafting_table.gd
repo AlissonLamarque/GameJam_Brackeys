@@ -6,6 +6,9 @@ extends StaticBody2D
 @export var first_item = null
 @export var second_item = null
 @onready var area_2d: Area2D = $Area2D
+@onready var som_crafting: AudioStreamPlayer = $SomCrafting
+
+var rng = RandomNumberGenerator.new()
 
 var itens = []
 var names = []
@@ -87,6 +90,8 @@ func _on_timer_spawn_item_timeout() -> void:
 				body.destroy()
 	
 	if new_item_name != "":
+		som_crafting.pitch_scale = rng.randf_range(0.9, 1.1)
+		som_crafting.play()
 		new_item_scene_path = "res://scenes/made_items/" + new_item_name + ".tscn"
 		
 		var new_item_packed_scene = load(new_item_scene_path)

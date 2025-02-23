@@ -24,8 +24,8 @@ offset_right = 768.0
 offset_bottom = -441.0
 theme_override_fonts/font = ExtResource("2_rf4g2")
 theme_override_font_sizes/font_size = 128
-text = "CONTEMPLEM O MAGO
-THE GAME"
+text = "APPRENTICE'S
+TRIAL"
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
