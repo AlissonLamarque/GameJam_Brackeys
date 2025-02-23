@@ -10,7 +10,7 @@ extends Node2D
 @onready var request_item_ui: Node = $RequestItemUI
 @onready var texture_rect: TextureRect = $RequestItemUI/TextureRect
 
-@export var MAX_HEALTH = 3
+@export var MAX_HEALTH = 1
 var health = MAX_HEALTH
 var is_alive = true
 
