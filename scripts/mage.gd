@@ -18,7 +18,7 @@ var is_alive = true
 @export var made_items: Array[String] = [
 "blue_potion", "diamond_scroll", "diamond_skull", "eldritch_dagger",
 "fire_dagger", "golden_book", "golden_potion", "golden_skull", 
-"herbs_potion", "herbs_rubi", "herbs_scroll", "herb_dagger",
+"herbs_potion", "herbs_scroll", "herb_dagger",
 "ice_dagger", "red_potion", "rubi_scroll", "skull_dagger",
 "skull_scroll", "bola_potion", "bola_scroll", "bola_skull"
 ]
