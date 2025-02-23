@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://cqdmr8f1eu7td"]
+[gd_scene load_steps=4 format=3 uid="uid://cqdmr8f1eu7td"]
 
 [ext_resource type="Script" path="res://scripts/game_over.gd" id="1_ol8f0"]
+[ext_resource type="FontFile" uid="uid://bwjpn3acva7by" path="res://assets/fonts/half_bold_pixel-7.ttf" id="2_n28i5"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_l4aai"]
 size = Vector2(660, 440)
@@ -10,53 +11,54 @@ position = Vector2(318, 286)
 script = ExtResource("1_ol8f0")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.207843, 0.207843, 0.207843, 0.0627451)
+position = Vector2(674.5, 280.25)
+scale = Vector2(3.00152, 2.57159)
 texture = SubResource("PlaceholderTexture2D_l4aai")
 
 [node name="Label" type="Label" parent="."]
-offset_left = -89.0
-offset_top = -66.0
-offset_right = 73.0
-offset_bottom = -17.0
-text = "CONTEMPLEM O MAGO
-THE GAME"
+offset_left = 294.0
+offset_top = -112.0
+offset_right = 1100.0
+offset_bottom = 19.0
+theme_override_fonts/font = ExtResource("2_n28i5")
+theme_override_font_sizes/font_size = 128
+text = "GAME OVER"
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="PlayButton" type="Button" parent="."]
 z_index = 4
-offset_left = -54.0
-offset_top = 25.0
-offset_right = 58.0
-offset_bottom = 56.0
+offset_left = 483.0
+offset_top = 188.0
+offset_right = 894.0
+offset_bottom = 244.0
+theme_override_fonts/font = ExtResource("2_n28i5")
+theme_override_font_sizes/font_size = 48
 text = "RESTART GAME"
 metadata/_edit_use_anchors_ = true
 
-[node name="ConfigButton" type="Button" parent="."]
-offset_left = -34.0
-offset_top = 64.0
-offset_right = 35.0
-offset_bottom = 95.0
-text = "CONFIG"
-metadata/_edit_use_anchors_ = true
-
 [node name="CreditsButton" type="Button" parent="."]
-offset_left = -36.0
-offset_top = 107.0
-offset_right = 36.0
-offset_bottom = 138.0
+offset_left = 566.0
+offset_top = 307.0
+offset_right = 809.0
+offset_bottom = 363.0
+theme_override_fonts/font = ExtResource("2_n28i5")
+theme_override_font_sizes/font_size = 48
 text = "CREDITS"
 metadata/_edit_use_anchors_ = true
 
 [node name="ExitButton" type="Button" parent="."]
-offset_left = -20.0
-offset_top = 149.0
-offset_right = 21.0
-offset_bottom = 180.0
+offset_left = 617.0
+offset_top = 573.0
+offset_right = 759.0
+offset_bottom = 629.0
+theme_override_fonts/font = ExtResource("2_n28i5")
+theme_override_font_sizes/font_size = 48
 text = "EXIT"
 metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
-[connection signal="pressed" from="ConfigButton" to="." method="_on_config_button_pressed"]
 [connection signal="pressed" from="CreditsButton" to="." method="_on_credits_button_pressed"]
 [connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]
