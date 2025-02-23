@@ -26,7 +26,7 @@ func _process(delta: float) -> void:
 	elif game_state == 3:
 		# Após 19 itens serem entregues corretamente
 		# Só falta 1 item para vencer
-		demon_spawner.spawn_rate = 0.6
+		demon_spawner.spawn_rate = 0.7
 	elif game_state == 4:
 		# Fim do jogo, vitória
 		get_tree().change_scene_to_file("res://scenes/game_over.tscn")
