@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://c8efopliot5j6"]
+[gd_scene load_steps=4 format=3 uid="uid://c8efopliot5j6"]
 
 [ext_resource type="Script" path="res://scripts/pause_menu.gd" id="1_j2hse"]
+[ext_resource type="Texture2D" uid="uid://5io0kmdcaj3b" path="res://assets/items/bola.png" id="2_pq84l"]
 [ext_resource type="FontFile" uid="uid://bwjpn3acva7by" path="res://assets/fonts/half_bold_pixel-7.ttf" id="2_q7rsv"]
 
 [node name="PauseMenu" type="Control"]
@@ -17,6 +18,12 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.00116, 1)
 script = ExtResource("1_j2hse")
+
+[node name="Bola" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 0.396078)
+position = Vector2(253.706, 150)
+scale = Vector2(142.22, 142.22)
+texture = ExtResource("2_pq84l")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 self_modulate = Color(1, 1, 1, 0)
