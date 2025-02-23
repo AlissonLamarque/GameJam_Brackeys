@@ -1,8 +1,8 @@
 [gd_scene load_steps=39 format=4 uid="uid://bpib2e6h3628"]
 
 [ext_resource type="Script" path="res://scripts/camera_2d.gd" id="1_frwiy"]
-[ext_resource type="PackedScene" uid="uid://cu7lx3nllaatw" path="res://scenes/game_manager.tscn" id="1_q7qob"]
-[ext_resource type="PackedScene" uid="uid://cds0imafbemob" path="res://scenes/demon_spawner.tscn" id="2_solcr"]
+[ext_resource type="PackedScene" path="res://scenes/game_manager.tscn" id="1_q7qob"]
+[ext_resource type="PackedScene" uid="uid://xalb8yo4x8lp" path="res://scenes/demon_spawner.tscn" id="2_solcr"]
 [ext_resource type="PackedScene" uid="uid://df88ub57bgkgd" path="res://scenes/mage.tscn" id="4_g6unc"]
 [ext_resource type="Texture2D" uid="uid://vso7sgsg1sq2" path="res://assets/texture/main_tileset.png" id="5_od7gk"]
 [ext_resource type="PackedScene" uid="uid://dgunt0onwvp5q" path="res://scenes/player.tscn" id="5_yec0p"]
