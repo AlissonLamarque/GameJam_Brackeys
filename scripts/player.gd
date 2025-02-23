@@ -6,9 +6,11 @@ var speed = max_speed
 
 @onready var game_manager: Node2D = $"../GameManager"
 @onready var camera = get_parent().get_node("Camera2D")
+@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 var rng = RandomNumberGenerator.new()
 
+signal health_changed
 var health = 3
 var player_alive = true
 var is_moving = false
@@ -167,6 +169,7 @@ func player():
 func take_damage(amount: int):
 	is_taking_damage = true
 	health -= amount
+	health_changed.emit()
 	camera.apply_shake(200, 0.1)
 	if health <= 0:
 		die()
@@ -175,4 +178,6 @@ func die():
 	camera.apply_shake(5, 5)
 	speed = 0
 	player_alive = false
+	set_physics_process(false)
+	animated_sprite.play("death_front")
 	game_manager.game_state = 6
