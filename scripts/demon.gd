@@ -26,6 +26,7 @@ var max_dissolve_rate = 1
 var dissolve_rate = min_dissolve_rate
 
 var has_spawned = false
+var attacking = false
 
 func _ready():
 	
@@ -36,7 +37,6 @@ func _ready():
 	tween.parallel().tween_property(self, "dissolve_rate", max_dissolve_rate, 2)
 	
 	add_to_group("Demon")
-	attack_timer.start()
 	
 	var spawn_symbol = spawn_symbol_scene.instantiate()
 	get_parent().add_child(spawn_symbol)
@@ -64,12 +64,13 @@ func _physics_process(delta: float) -> void:
 		
 	target_pos = (target.position - position).normalized()
 	
-	if position.distance_to(target.position) > stop_distance:
+	if position.distance_to(target.position) > stop_distance and not attacking:
 		position += target_pos * speed * delta
 		update_animation(target_pos)
 	else:
-		animated_sprite.play("idle")
-	
+		attacking = true
+		attack()
+		
 	
 
 func update_animation(direction: Vector2) -> void:
@@ -91,12 +92,25 @@ func update_animation(direction: Vector2) -> void:
 		else:
 			animated_sprite.play("run_up")
 
+func attack():
+	animated_sprite.play("attack")
+	
+	await animated_sprite.animation_finished
+	
+	if target and position.distance_to(target.position) <= attack_range and attacking:
+		if target.has_method("take_damage"):  
+			target.take_damage(attack_damage)
+			die()
+	
+	attacking = false
+
 func _on_AttackTimer_timeout():
 	if target and position.distance_to(target.position) <= attack_range:
 		if target.has_method("take_damage"):  
 			target.take_damage(attack_damage)
 			die()
-	attack_timer.start()
+	
+	attacking = false
 
 func _on_spawn_timer_timeout():
 	has_spawned = true

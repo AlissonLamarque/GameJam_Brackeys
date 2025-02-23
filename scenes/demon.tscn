@@ -1,10 +1,11 @@
-[gd_scene load_steps=51 format=3 uid="uid://datauqyrgk8a6"]
+[gd_scene load_steps=57 format=3 uid="uid://datauqyrgk8a6"]
 
 [ext_resource type="Script" path="res://scripts/demon.gd" id="1_8f4g8"]
 [ext_resource type="PackedScene" uid="uid://ck8si6sff7erd" path="res://scenes/particles.tscn" id="2_r1y2b"]
 [ext_resource type="PackedScene" uid="uid://byctftnl32xs5" path="res://scenes/spawn_symbol.tscn" id="3_e1ox2"]
 [ext_resource type="Shader" uid="uid://d2yoxxvv2ycee" path="res://shaders/appear.tres" id="4_be3tu"]
 [ext_resource type="Texture2D" uid="uid://c3s6jruidvkv4" path="res://assets/particles/light.webp" id="4_c2ywt"]
+[ext_resource type="Texture2D" uid="uid://bxetbymkqq0ca" path="res://assets/demon/attack.png" id="5_bw00k"]
 [ext_resource type="Texture2D" uid="uid://0of124m3objp" path="res://assets/demon/idle.png" id="6_ulady"]
 [ext_resource type="Texture2D" uid="uid://rw5tkx65d6rd" path="res://assets/demon/run.png" id="7_xt08t"]
 
@@ -14,6 +15,26 @@ shader = ExtResource("4_be3tu")
 shader_parameter/dissolve_rate = 1.0
 shader_parameter/size = 0.06
 shader_parameter/color = Color(0.94, 0.454333, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6y6gv"]
+atlas = ExtResource("5_bw00k")
+region = Rect2(0, 0, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_npqa2"]
+atlas = ExtResource("5_bw00k")
+region = Rect2(48, 0, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2310t"]
+atlas = ExtResource("5_bw00k")
+region = Rect2(96, 0, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qtep7"]
+atlas = ExtResource("5_bw00k")
+region = Rect2(0, 16, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wdoyh"]
+atlas = ExtResource("5_bw00k")
+region = Rect2(48, 16, 48, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4bcsk"]
 atlas = ExtResource("6_ulady")
@@ -179,6 +200,26 @@ region = Rect2(112, 32, 16, 16)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_6y6gv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_npqa2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2310t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qtep7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wdoyh")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_4bcsk")
 }, {
 "duration": 1.0,
@@ -333,8 +374,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1qi46"]
-size = Vector2(10, 21)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kunld"]
+size = Vector2(27, 28)
 
 [node name="Demon" type="CharacterBody2D"]
 z_index = 1
@@ -344,19 +385,17 @@ script = ExtResource("1_8f4g8")
 particle_scene = ExtResource("2_r1y2b")
 spawn_symbol_scene = ExtResource("3_e1ox2")
 stop_distance = 30.0
-attack_damage = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_j2yiv")
-position = Vector2(0, -24)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_jwefi")
-animation = &"run_up"
+animation = &"attack"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -22)
-shape = SubResource("RectangleShape2D_1qi46")
+position = Vector2(0.5, 2)
+shape = SubResource("RectangleShape2D_kunld")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 visible = false
@@ -368,5 +407,7 @@ texture = ExtResource("4_c2ywt")
 texture_scale = 0.01
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_AttackTimer_timeout"]
