@@ -1,0 +1,147 @@
+Delivered-To: alissonlmq@gmail.com
+Received: by 2002:a05:6218:2802:b0:1da:e06:ce14 with SMTP id vv2csp1260744rwc;
+        Sat, 22 Feb 2025 19:54:17 -0800 (PST)
+X-Received: by 2002:a05:6512:3f1a:b0:545:22ec:8b68 with SMTP id 2adb3069b0e04-54838edd169mr2711215e87.1.1740282857590;
+        Sat, 22 Feb 2025 19:54:17 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1740282857; cv=none;
+        d=google.com; s=arc-20240605;
+        b=H2vxXG5d9j4Z4YZ6NgsCjc37771pJGZrwIBTaVyvpOxm/SHv7y+82gz/HYBkdw6paP
+         lt4goXEPkKiVrmfHqWWoi7I/akWk2giN2Pb+y1S0JLXYFQkg9VKLm64VY6dt7zFH1nHE
+         wCi2APdO4GtU2PuPKq0ua8ftGn3oM1COTTeDR6Sm8L1AzOcMNr4FmOp45+rzCKwqh7Wf
+         RzKQ6wPoDS5ScOlSbJZoPWJthVFZ0VA/ryp+qhl23UCLI5V9+X1Tg1dv5wBwFIk5S7yi
+         Yl9/MoLdzpf3KQ4kqEIPlc4Xvre+St+gwH0oWEOCuBu9E77mYqNQdHs6sNAx7PWd8s6n
+         HKOQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=to:subject:message-id:date:from:mime-version:dkim-signature;
+        bh=fgfNXKTG0Gml5aKTsxBMEtsIGoJwRSVWd4/3NPSDp+0=;
+        fh=2DJgwzyI07mCrrvJxSFhNLbnussF79GNs1jPUdqVKg4=;
+        b=kNhJoK9/w7aYG6CHx71hFUW7lJ8BoOz9jp0+a7AtUPl3P8XWr3EkJt93VC7AjNC56L
+         TCcEfEnqp0u0aJAXxk0xnkwmBQKK3L0KM3yJuMgRfNDQF0RspRV6YliRYyKwQlJAh5xF
+         3V4S8xZ9XdVb00nNNdOQLCGruYgk7g5srfFQfu6HXLzH7JWZU81D6YhVurwpHJUdW6YD
+         mEhR4xP0iN6YEokzPmKDCdZsEYYWp+qpivKxT83uUGWGOx5gZb6nuVTyvSxa8b1DbNtT
+         Q1njwPoDrkKcj9zf7KwvkpXjTc1f01K2FMLqwpCwKNEGpLNqVJ0IGVhHc+GUe7YZpug3
+         /Dhg==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=l2fMi1Vs;
+       spf=pass (google.com: domain of lara.fracaog@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=lara.fracaog@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <lara.fracaog@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 2adb3069b0e04-54624bbd1a6sor3887033e87.20.2025.02.22.19.54.17
+        for <alissonlmq@gmail.com>
+        (Google Transport Security);
+        Sat, 22 Feb 2025 19:54:17 -0800 (PST)
+Received-SPF: pass (google.com: domain of lara.fracaog@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20230601 header.b=l2fMi1Vs;
+       spf=pass (google.com: domain of lara.fracaog@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=lara.fracaog@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1740282856; x=1740887656; dara=google.com;
+        h=to:subject:message-id:date:from:mime-version:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=fgfNXKTG0Gml5aKTsxBMEtsIGoJwRSVWd4/3NPSDp+0=;
+        b=l2fMi1VsWtHNDrzyddt34xNtTKlos721EBkFv8U7fxaVVE/lUBQHzoarbpJgzQHFUO
+         68t8LQaFYSM0EoDBoJRWphhUI6p7eJ+QgX/FdIw/b2xhVSR0vipcXHAwtLYmqfdKi1EM
+         ICSwAomwLR4X4ad5N7MY75rRTSC5pUZNVZM+9C2705rdHdnQhzYcCDxjbYfu01dILGWa
+         Getv2iqJ9iUsNUzxAXcBH5mmYp7Oxn65ZAKkEEWJtlRMq4k4XN2pj4RYu/dswsmluA+W
+         XgbmIKtCq4Ec9M22PzXEFBSRw4cOum6u5pQIAzeRh2N2D38Bhc6+ZvvjKcuzJMi5S18s
+         Vj7A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1740282856; x=1740887656;
+        h=to:subject:message-id:date:from:mime-version:x-gm-message-state
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=fgfNXKTG0Gml5aKTsxBMEtsIGoJwRSVWd4/3NPSDp+0=;
+        b=adCQ9SyAc0m8HaMG7jlHCxBLd8d5eBgHJsi+2V6hP0m7lQchaNNg+h0dSRtt36J3VX
+         JZ5b8e3q4ZVOXfmpeXcRXEpPtLfAClHHrwsQuBfaRJnFf/LFNrRSZ5JMfZRUN0vrvch3
+         dhHFZ7fnLTjJq1DCLG6STEwCp8lS+s0ZJvquzCMzWlBIAIMgpJBpq/kiDR6SdYf4q7xW
+         Nqa9DlxSjVwLTDlJrdZLZ/xt4ow61ZtxBcHe776IaLagvGvmoPy2usFJgOvlbr9SVqAL
+         3V1eaUdW8xkJzCPqizMi/VmT5WVQ/drjMlts7/gp2Rf2gg7SmvuZ/uVyu+9RSxED4OhM
+         k5Hw==
+X-Gm-Message-State: AOJu0YyRX03rThIpCGO9YfFzmBZ5zQRxXn56WzzhQZQpvwD37CZPhgna
+	lHvjGzXwW4JPwJx7ONZEzo0SL2e3onqa9TVIocoHJoMDX2zwIVhfI8wehauxypmjxIlD7HPSU8a
+	soM0Vu9Jlu8EurQmSHAKH3ELuoBzpBfyX
+X-Gm-Gg: ASbGnctxahDhV8EhqeVh7HZYjfoSqIShU2shTt+HXnsxMwaRkHMN8CjXyy8PFY6gdBI
+	VEu3ayip57VnYu9kZKowRtov9XbPZmHedrxwC6OVfbFz7Zc6JqwjbaancZwb/8lXTMuEnJv8ZBq
+	xtJebPZRtvWQ==
+X-Google-Smtp-Source: AGHT+IEaWRGrc3gcffrDcgyrEs59QSZuDv8i1iL7hhUs+H0n5Lknmjzpf8ZKAeX4xSWljqhaTSyCrtQrjBm7MwrXSWU=
+X-Received: by 2002:a05:6512:159b:b0:545:8a1:5381 with SMTP id
+ 2adb3069b0e04-54838eddc2amr3815044e87.11.1740282855801; Sat, 22 Feb 2025
+ 19:54:15 -0800 (PST)
+MIME-Version: 1.0
+From: Lara <lara.fracaog@gmail.com>
+Date: Sun, 23 Feb 2025 03:54:02 +0000
+X-Gm-Features: AWEUYZkG7hJY6hxwpjXLo0TadGyBuMiJsbVWmRRNC2KbnftETCmEAKVJxZutjiE
+Message-ID: <CAK=TU5B70Swhgihj1=ianjTvhashqdcdB4qe8Dv-1EppTmh0mQ@mail.gmail.com>
+Subject: Mage
+To: alissonlmq@gmail.com
+Content-Type: multipart/related; boundary="0000000000006de643062ec72d84"
+
+--0000000000006de643062ec72d84
+Content-Type: multipart/alternative; boundary="0000000000006de641062ec72d83"
+
+--0000000000006de641062ec72d83
+Content-Type: text/plain; charset="UTF-8"
+
+
+
+--0000000000006de641062ec72d83
+Content-Type: text/html; charset="UTF-8"
+
+<div><img src="cid:EFF50212-565C-4BFA-8C76-1BA0DEF35997" style="max-width: 100%;"></div>
+
+--0000000000006de641062ec72d83--
+--0000000000006de643062ec72d84
+Content-Type: image/png; name="Mage_maging.jpg.png"
+Content-Disposition: inline; filename="Mage_maging.jpg.png"
+Content-Transfer-Encoding: base64
+Content-ID: <EFF50212-565C-4BFA-8C76-1BA0DEF35997>
+X-Attachment-Id: EFF50212-565C-4BFA-8C76-1BA0DEF35997
+
+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
+1cQzLG/6y2e//6WbcHKeMXUzTczV9dKXzjlfy2OZW9eF+fCjwFYeiPoLxD8tM7XXW/ujjuu/uvlm
+SAb1C1POt/JQQwbcIwmhQrdAvn95fHjy+vpXQa/BDVjWtFO0B1UA6gZZ5tH6M2ZarMEXfiqPwcuZ
+fjp57HsLxL/Wjq080qeGDMor2K2loD/9eH0s5jnmvPXlOGhJprkRiPdaHoDGC8hjvPnWjPLY0hnT
+lwzSMtupPOrYMaubfJYaSF7Xgj45zS6XL49d2FcnlccqzS4d8tiFfXVSeazS6CBAgAABAgQIECBA
+gAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAAB
+AgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQI
+ECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBA
+gAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAAB
+AgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQI
+ECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBAgAABAgQIECBA
+gAABAgQIECBAgACB3QR+ALkizTJ/qWSIAAAAAElFTkSuQmCC
+--0000000000006de643062ec72d84--

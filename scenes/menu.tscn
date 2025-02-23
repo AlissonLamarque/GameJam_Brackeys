@@ -1,22 +1,28 @@
-[gd_scene load_steps=3 format=3 uid="uid://duleeslcm6io5"]
+[gd_scene load_steps=4 format=3 uid="uid://duleeslcm6io5"]
 
 [ext_resource type="Script" path="res://scripts/menu.gd" id="1_xjlkq"]
+[ext_resource type="FontFile" uid="uid://bwjpn3acva7by" path="res://assets/fonts/half_bold_pixel-7.ttf" id="2_rf4g2"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_4tyfi"]
 size = Vector2(660, 440)
 
 [node name="Menu" type="Node2D"]
-position = Vector2(317, 285)
+position = Vector2(987, 781)
 script = ExtResource("1_xjlkq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.012483, 0, 0.615353, 1)
+position = Vector2(-17, -194.75)
+scale = Vector2(2.93939, 2.68523)
 texture = SubResource("PlaceholderTexture2D_4tyfi")
 
 [node name="Label" type="Label" parent="."]
-offset_left = -89.0
-offset_top = -66.0
-offset_right = 73.0
-offset_bottom = -17.0
+offset_left = -387.0
+offset_top = -634.0
+offset_right = 375.0
+offset_bottom = -503.0
+theme_override_fonts/font = ExtResource("2_rf4g2")
+theme_override_font_sizes/font_size = 64
 text = "CONTEMPLEM O MAGO
 THE GAME"
 horizontal_alignment = 1
@@ -24,35 +30,44 @@ vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="PlayButton" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0.984314)
 z_index = 4
-offset_left = -54.0
-offset_top = 25.0
-offset_right = 58.0
-offset_bottom = 56.0
+offset_left = -168.0
+offset_top = -300.0
+offset_right = 176.0
+offset_bottom = -244.0
+theme_override_fonts/font = ExtResource("2_rf4g2")
+theme_override_font_sizes/font_size = 48
 text = "START GAME"
 metadata/_edit_use_anchors_ = true
 
 [node name="ConfigButton" type="Button" parent="."]
-offset_left = -34.0
-offset_top = 64.0
-offset_right = 35.0
-offset_bottom = 95.0
+offset_left = -102.0
+offset_top = -178.0
+offset_right = 108.0
+offset_bottom = -122.0
+theme_override_fonts/font = ExtResource("2_rf4g2")
+theme_override_font_sizes/font_size = 48
 text = "CONFIG"
 metadata/_edit_use_anchors_ = true
 
 [node name="CreditsButton" type="Button" parent="."]
-offset_left = -36.0
-offset_top = 107.0
-offset_right = 36.0
-offset_bottom = 138.0
+offset_left = -117.0
+offset_top = -52.0
+offset_right = 126.0
+offset_bottom = 4.0
+theme_override_fonts/font = ExtResource("2_rf4g2")
+theme_override_font_sizes/font_size = 48
 text = "CREDITS"
 metadata/_edit_use_anchors_ = true
 
 [node name="ExitButton" type="Button" parent="."]
-offset_left = -20.0
-offset_top = 149.0
-offset_right = 21.0
-offset_bottom = 180.0
+offset_left = -72.0
+offset_top = 110.0
+offset_right = 70.0
+offset_bottom = 166.0
+theme_override_fonts/font = ExtResource("2_rf4g2")
+theme_override_font_sizes/font_size = 48
 text = "EXIT"
 metadata/_edit_use_anchors_ = true
 
