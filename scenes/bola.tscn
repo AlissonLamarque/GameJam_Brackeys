@@ -80,11 +80,12 @@ volume_db = -11.045
 
 [node name="AudioItemPickup" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_sthgy")
+volume_db = -5.433
 pitch_scale = 0.74
 
 [node name="AudioItemDrop" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_lk2aa")
-volume_db = -0.938
+volume_db = -4.686
 pitch_scale = 0.78
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
