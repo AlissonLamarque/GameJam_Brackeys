@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=4 uid="uid://bpib2e6h3628"]
+[gd_scene load_steps=38 format=4 uid="uid://bpib2e6h3628"]
 
 [ext_resource type="Script" path="res://scripts/camera_2d.gd" id="1_frwiy"]
 [ext_resource type="PackedScene" path="res://scenes/game_manager.tscn" id="1_q7qob"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dgejjiubiasby" path="res://assets/texture/chest.png" id="8_5wn57"]
 [ext_resource type="PackedScene" uid="uid://didmp1hd7wdo7" path="res://scenes/ritual.tscn" id="8_tnkwe"]
 [ext_resource type="PackedScene" uid="uid://y7y5vycuf8li" path="res://scenes/itens/bottle.tscn" id="11_e5gke"]
+[ext_resource type="Texture2D" uid="uid://c6h7tvp2wkee5" path="res://assets/texture/banner.png" id="11_eiqsp"]
 [ext_resource type="PackedScene" uid="uid://dj6sle58ekgb8" path="res://scenes/bola.tscn" id="13_cl6fh"]
 [ext_resource type="PackedScene" uid="uid://brdhnvtf7c33n" path="res://scenes/itens/dagger.tscn" id="13_e04sb"]
 [ext_resource type="PackedScene" uid="uid://b5f6j70pjrk1g" path="res://scenes/itens/diamond.tscn" id="14_njq81"]
@@ -22,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://8pyefn6xbr0d" path="res://scenes/itens/skull.tscn" id="18_o03cs"]
 [ext_resource type="PackedScene" uid="uid://c8efopliot5j6" path="res://scenes/pause_menu.tscn" id="18_v6ds1"]
 [ext_resource type="Texture2D" uid="uid://dftyrx7gq73mr" path="res://assets/texture/book_shelf.png" id="19_b4v1c"]
+[ext_resource type="Texture2D" uid="uid://ddoibh6obtj1a" path="res://assets/texture/tapete.png" id="23_eavgt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jbw0h"]
 size = Vector2(870, 174)
@@ -29,11 +31,8 @@ size = Vector2(870, 174)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ahhw4"]
 size = Vector2(766, 32)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3rbpo"]
-size = Vector2(474, 13)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2sfyo"]
-size = Vector2(512, 271)
+size = Vector2(473, 335)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5urii"]
 texture = ExtResource("5_od7gk")
@@ -123,22 +122,19 @@ no_spawn_area = NodePath("NoSpawnArea")
 position = Vector2(-490, 524)
 
 [node name="CollisionShape2D_Spawn" type="CollisionShape2D" parent="GameManager/DemonSpawner/SpawnArea"]
-position = Vector2(493, -460)
+modulate = Color(0, 0.64, 0.512, 1)
+position = Vector2(490, -468)
 shape = SubResource("RectangleShape2D_jbw0h")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameManager/DemonSpawner/SpawnArea"]
 position = Vector2(493, -356)
 shape = SubResource("RectangleShape2D_ahhw4")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="GameManager/DemonSpawner/SpawnArea"]
-position = Vector2(493, -323.5)
-shape = SubResource("RectangleShape2D_3rbpo")
-
 [node name="NoSpawnArea" type="Area2D" parent="GameManager/DemonSpawner"]
 position = Vector2(587, 595)
 
 [node name="CollisionShape2D_NoSpawn" type="CollisionShape2D" parent="GameManager/DemonSpawner/NoSpawnArea"]
-position = Vector2(-587, -588.5)
+position = Vector2(-584.5, -556.5)
 shape = SubResource("RectangleShape2D_2sfyo")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -181,7 +177,7 @@ position = Vector2(386.5, -0.5)
 texture = ExtResource("6_en3fm")
 
 [node name="Chest" type="Sprite2D" parent="Mobilia"]
-position = Vector2(103.5, -14.5)
+position = Vector2(104.5, -14.5)
 texture = ExtResource("8_5wn57")
 
 [node name="BookShelf4" type="Sprite2D" parent="Mobilia"]
@@ -207,6 +203,24 @@ texture = ExtResource("7_xsmqq")
 [node name="Table2" type="Sprite2D" parent="Mobilia"]
 position = Vector2(312, -11)
 texture = ExtResource("7_xsmqq")
+
+[node name="Tapete" type="Sprite2D" parent="Mobilia"]
+modulate = Color(0.68, 0.68, 0.68, 1)
+position = Vector2(48.5, 78.5)
+texture = ExtResource("23_eavgt")
+
+[node name="Tapete2" type="Sprite2D" parent="Mobilia"]
+modulate = Color(0.68, 0.68, 0.68, 1)
+position = Vector2(368.5, 78.5)
+texture = ExtResource("23_eavgt")
+
+[node name="Banner2" type="Sprite2D" parent="Mobilia"]
+position = Vector2(271, -35)
+texture = ExtResource("11_eiqsp")
+
+[node name="Banner" type="Sprite2D" parent="Mobilia"]
+position = Vector2(143.5, -35.5)
+texture = ExtResource("11_eiqsp")
 
 [node name="Mage" parent="." instance=ExtResource("4_g6unc")]
 position = Vector2(0, -29)
@@ -274,7 +288,6 @@ position = Vector2(-55, -28)
 [node name="Collisions" type="Node2D" parent="."]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Collisions"]
-visible = false
 collision_layer = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions/StaticBody2D"]
@@ -282,7 +295,7 @@ position = Vector2(-3, -159)
 shape = SubResource("RectangleShape2D_5k478")
 
 [node name="CollisionShape2D16" type="CollisionShape2D" parent="Collisions/StaticBody2D"]
-position = Vector2(-209, -132)
+position = Vector2(-207, -132)
 shape = SubResource("RectangleShape2D_sjtkq")
 
 [node name="CollisionShape2D17" type="CollisionShape2D" parent="Collisions/StaticBody2D"]
