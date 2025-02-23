@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=4 uid="uid://bpib2e6h3628"]
+[gd_scene load_steps=37 format=4 uid="uid://bpib2e6h3628"]
 
 [ext_resource type="Script" path="res://scripts/camera_2d.gd" id="1_frwiy"]
 [ext_resource type="PackedScene" path="res://scenes/game_manager.tscn" id="1_q7qob"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://df88ub57bgkgd" path="res://scenes/mage.tscn" id="4_g6unc"]
 [ext_resource type="Texture2D" uid="uid://vso7sgsg1sq2" path="res://assets/texture/main_tileset.png" id="5_od7gk"]
 [ext_resource type="PackedScene" uid="uid://dgunt0onwvp5q" path="res://scenes/player.tscn" id="5_yec0p"]
+[ext_resource type="Texture2D" uid="uid://dp6wlerdvwhm6" path="res://assets/texture/barrel.png" id="6_en3fm"]
 [ext_resource type="Texture2D" uid="uid://7a3qqjg7oigg" path="res://assets/texture/table.png" id="7_xsmqq"]
 [ext_resource type="Texture2D" uid="uid://dgejjiubiasby" path="res://assets/texture/chest.png" id="8_5wn57"]
 [ext_resource type="PackedScene" uid="uid://didmp1hd7wdo7" path="res://scenes/ritual.tscn" id="8_tnkwe"]
@@ -167,11 +168,27 @@ metadata/_edit_lock_ = true
 position = Vector2(-416, -100)
 scale = Vector2(2, 2)
 
+[node name="Barrel" type="Sprite2D" parent="Mobilia"]
+position = Vector2(347.5, -0.5)
+texture = ExtResource("6_en3fm")
+
+[node name="Barrel2" type="Sprite2D" parent="Mobilia"]
+position = Vector2(366.5, -0.5)
+texture = ExtResource("6_en3fm")
+
+[node name="Barrel3" type="Sprite2D" parent="Mobilia"]
+position = Vector2(386.5, -0.5)
+texture = ExtResource("6_en3fm")
+
 [node name="Chest" type="Sprite2D" parent="Mobilia"]
 position = Vector2(103.5, -14.5)
 texture = ExtResource("8_5wn57")
 
 [node name="BookShelf" type="Sprite2D" parent="Mobilia"]
+texture = ExtResource("19_b4v1c")
+
+[node name="BookShelf" type="Sprite2D" parent="Mobilia/BookShelf"]
+position = Vector2(416, 3.5)
 texture = ExtResource("19_b4v1c")
 
 [node name="BookShelf2" type="Sprite2D" parent="Mobilia"]
@@ -201,7 +218,7 @@ position = Vector2(0, 158)
 position = Vector2(-306, -110)
 
 [node name="bottle" parent="." instance=ExtResource("11_e5gke")]
-position = Vector2(411, -45)
+position = Vector2(357, -117)
 collision_layer = 0
 collision_mask = 1
 gravity_scale = 1.0
@@ -209,12 +226,12 @@ linear_damp = 0.0
 item_nome = ""
 
 [node name="Herbs" parent="." instance=ExtResource("16_hcj3v")]
-position = Vector2(330, -68)
+position = Vector2(279, -120)
 collision_layer = 0
 collision_mask = 1
 
 [node name="GoldenFeather" parent="." instance=ExtResource("17_lbmpp")]
-position = Vector2(379, -29)
+position = Vector2(317, -119)
 collision_layer = 0
 collision_mask = 1
 
@@ -277,6 +294,10 @@ shape = SubResource("RectangleShape2D_8iinp")
 
 [node name="CollisionShape2D13" type="CollisionShape2D" parent="Collisions/StaticBody2D"]
 position = Vector2(-416, -75)
+shape = SubResource("RectangleShape2D_q421s")
+
+[node name="CollisionShape2D19" type="CollisionShape2D" parent="Collisions/StaticBody2D"]
+position = Vector2(416, -71)
 shape = SubResource("RectangleShape2D_q421s")
 
 [node name="CollisionShape2D14" type="CollisionShape2D" parent="Collisions/StaticBody2D"]
