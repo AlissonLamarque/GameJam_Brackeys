@@ -5,6 +5,7 @@ extends Node2D
 @onready var timer_stop_talking: Timer = $TimerStopTalking
 @onready var game_manager: Node2D = $"../GameManager"
 @onready var camera = get_parent().get_node("Camera2D")
+@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 @onready var request_item_ui: Node = $RequestItemUI
 @onready var texture_rect: TextureRect = $RequestItemUI/TextureRect
@@ -88,6 +89,7 @@ func die():
 	camera.apply_shake(5, 5)
 	request_item_ui.visible = false
 	is_alive = false
+	animated_sprite.play("death")
 	game_manager.game_state = 5  # Fim de jogo, Derrota
 	
 

@@ -1,8 +1,34 @@
-[gd_scene load_steps=10 format=3 uid="uid://df88ub57bgkgd"]
+[gd_scene load_steps=23 format=3 uid="uid://df88ub57bgkgd"]
 
 [ext_resource type="Script" path="res://scripts/mage.gd" id="1_rpk5o"]
 [ext_resource type="Texture2D" uid="uid://f2wuxe8481mn" path="res://assets/characterMage/32x32/Char_005_Idle.png" id="1_yrchu"]
+[ext_resource type="Texture2D" uid="uid://w1c8y2xs41m0" path="res://assets/characterMage/Mage_dying.png" id="2_25kcp"]
+[ext_resource type="Texture2D" uid="uid://dbwr7acaye6a5" path="res://assets/characterMage/Mage_maging.png" id="3_71juk"]
 [ext_resource type="Texture2D" uid="uid://buqtp3mmbey0i" path="res://assets/texture/textbox.png" id="3_ufwq1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2kx8y"]
+atlas = ExtResource("2_25kcp")
+region = Rect2(0, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8372o"]
+atlas = ExtResource("2_25kcp")
+region = Rect2(160, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ywbll"]
+atlas = ExtResource("2_25kcp")
+region = Rect2(320, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eyogh"]
+atlas = ExtResource("2_25kcp")
+region = Rect2(480, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b6hpu"]
+atlas = ExtResource("2_25kcp")
+region = Rect2(640, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5x434"]
+atlas = ExtResource("2_25kcp")
+region = Rect2(800, 0, 160, 160)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o51x3"]
 atlas = ExtResource("1_yrchu")
@@ -20,8 +46,51 @@ region = Rect2(96, 0, 48, 48)
 atlas = ExtResource("1_yrchu")
 region = Rect2(144, 0, 48, 48)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_mfj5o"]
+atlas = ExtResource("3_71juk")
+region = Rect2(0, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ln86b"]
+atlas = ExtResource("3_71juk")
+region = Rect2(160, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_masvi"]
+atlas = ExtResource("3_71juk")
+region = Rect2(320, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ejya6"]
+atlas = ExtResource("3_71juk")
+region = Rect2(480, 0, 160, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3axvt"]
+atlas = ExtResource("3_71juk")
+region = Rect2(640, 0, 160, 160)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_b562u"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2kx8y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8372o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ywbll")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eyogh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b6hpu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5x434")
+}],
+"loop": false,
+"name": &"death",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_o51x3")
@@ -38,6 +107,26 @@ animations = [{
 "loop": true,
 "name": &"idle",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mfj5o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ln86b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_masvi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ejya6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3axvt")
+}],
+"loop": true,
+"name": &"magic",
+"speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_txw6l"]
@@ -48,10 +137,12 @@ collision_layer = 3
 script = ExtResource("1_rpk5o")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -13)
+position = Vector2(-2, -18)
 sprite_frames = SubResource("SpriteFrames_b562u")
-animation = &"idle"
-autoplay = "idle"
+animation = &"death"
+autoplay = "magic"
+frame = 5
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = -1
@@ -96,9 +187,9 @@ stretch_mode = 5
 show_behind_parent = true
 z_index = 10
 offset_left = -20.0
-offset_top = -81.0
+offset_top = -89.0
 offset_right = 20.0
-offset_bottom = -41.0
+offset_bottom = -49.0
 texture = ExtResource("3_ufwq1")
 region_rect = Rect2(0, 0, 47.0891, 48)
 
