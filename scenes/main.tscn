@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=4 uid="uid://bpib2e6h3628"]
+[gd_scene load_steps=36 format=4 uid="uid://bpib2e6h3628"]
 
 [ext_resource type="Script" path="res://scripts/camera_2d.gd" id="1_frwiy"]
 [ext_resource type="PackedScene" path="res://scenes/game_manager.tscn" id="1_q7qob"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://df88ub57bgkgd" path="res://scenes/mage.tscn" id="4_g6unc"]
 [ext_resource type="Texture2D" uid="uid://vso7sgsg1sq2" path="res://assets/texture/main_tileset.png" id="5_od7gk"]
 [ext_resource type="PackedScene" uid="uid://dgunt0onwvp5q" path="res://scenes/player.tscn" id="5_yec0p"]
+[ext_resource type="Texture2D" uid="uid://7a3qqjg7oigg" path="res://assets/texture/table.png" id="7_xsmqq"]
+[ext_resource type="Texture2D" uid="uid://dgejjiubiasby" path="res://assets/texture/chest.png" id="8_5wn57"]
 [ext_resource type="PackedScene" uid="uid://didmp1hd7wdo7" path="res://scenes/ritual.tscn" id="8_tnkwe"]
 [ext_resource type="PackedScene" uid="uid://y7y5vycuf8li" path="res://scenes/itens/bottle.tscn" id="11_e5gke"]
 [ext_resource type="PackedScene" uid="uid://dj6sle58ekgb8" path="res://scenes/bola.tscn" id="13_cl6fh"]
@@ -82,6 +84,15 @@ sources/0 = SubResource("TileSetAtlasSource_5urii")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5k478"]
 size = Vector2(518, 32)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sjtkq"]
+size = Vector2(96, 22)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8iinp"]
+size = Vector2(92, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q421s"]
+size = Vector2(64, 20)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ukh0g"]
 size = Vector2(136, 32)
 
@@ -152,6 +163,34 @@ metadata/_edit_lock_ = true
 position = Vector2(-3, 0)
 metadata/_edit_lock_ = true
 
+[node name="Mobilia" type="Node2D" parent="."]
+position = Vector2(-416, -100)
+scale = Vector2(2, 2)
+
+[node name="Chest" type="Sprite2D" parent="Mobilia"]
+position = Vector2(103.5, -14.5)
+texture = ExtResource("8_5wn57")
+
+[node name="BookShelf" type="Sprite2D" parent="Mobilia"]
+texture = ExtResource("19_b4v1c")
+
+[node name="BookShelf2" type="Sprite2D" parent="Mobilia"]
+position = Vector2(176.5, -31)
+texture = ExtResource("19_b4v1c")
+
+[node name="BookShelf3" type="Sprite2D" parent="Mobilia"]
+position = Vector2(239.5, -30)
+scale = Vector2(-1, 1)
+texture = ExtResource("19_b4v1c")
+
+[node name="Table" type="Sprite2D" parent="Mobilia"]
+position = Vector2(46.5, -0.5)
+texture = ExtResource("7_xsmqq")
+
+[node name="Table2" type="Sprite2D" parent="Mobilia"]
+position = Vector2(312, -11)
+texture = ExtResource("7_xsmqq")
+
 [node name="Mage" parent="." instance=ExtResource("4_g6unc")]
 position = Vector2(0, -29)
 
@@ -159,7 +198,7 @@ position = Vector2(0, -29)
 position = Vector2(0, 158)
 
 [node name="BOLA" parent="." instance=ExtResource("13_cl6fh")]
-position = Vector2(0, 62)
+position = Vector2(-306, -110)
 
 [node name="bottle" parent="." instance=ExtResource("11_e5gke")]
 position = Vector2(411, -45)
@@ -169,29 +208,44 @@ gravity_scale = 1.0
 linear_damp = 0.0
 item_nome = ""
 
+[node name="Herbs" parent="." instance=ExtResource("16_hcj3v")]
+position = Vector2(330, -68)
+collision_layer = 0
+collision_mask = 1
+
+[node name="GoldenFeather" parent="." instance=ExtResource("17_lbmpp")]
+position = Vector2(379, -29)
+collision_layer = 0
+collision_mask = 1
+
+[node name="Skull" parent="." instance=ExtResource("18_o03cs")]
+position = Vector2(181, -130)
+collision_layer = 0
+collision_mask = 1
+
 [node name="Dagger" parent="." instance=ExtResource("13_e04sb")]
-position = Vector2(233, -113)
+position = Vector2(229, -127)
 collision_layer = 0
 collision_mask = 1
 gravity_scale = 1.0
 linear_damp = 0.0
 
 [node name="Diamond" parent="." instance=ExtResource("14_njq81")]
-position = Vector2(-227, -113)
+position = Vector2(-240, -123)
 collision_layer = 0
 collision_mask = 1
 gravity_scale = 1.0
 linear_damp = 0.0
 
 [node name="MagicBook" parent="." instance=ExtResource("15_b11i0")]
-position = Vector2(-354, -80)
+position = Vector2(-353, -111)
 collision_layer = 0
 collision_mask = 1
 gravity_scale = 1.0
 linear_damp = 0.0
 
 [node name="Rubi" parent="." instance=ExtResource("16_grdbn")]
-position = Vector2(-429, -1)
+position = Vector2(-182, -123)
 collision_layer = 0
 collision_mask = 1
 gravity_scale = 1.0
@@ -208,6 +262,30 @@ collision_layer = 7
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions/StaticBody2D"]
 position = Vector2(-3, -159)
 shape = SubResource("RectangleShape2D_5k478")
+
+[node name="CollisionShape2D16" type="CollisionShape2D" parent="Collisions/StaticBody2D"]
+position = Vector2(-209, -132)
+shape = SubResource("RectangleShape2D_sjtkq")
+
+[node name="CollisionShape2D17" type="CollisionShape2D" parent="Collisions/StaticBody2D"]
+position = Vector2(-323, -108)
+shape = SubResource("RectangleShape2D_8iinp")
+
+[node name="CollisionShape2D18" type="CollisionShape2D" parent="Collisions/StaticBody2D"]
+position = Vector2(208, -133)
+shape = SubResource("RectangleShape2D_8iinp")
+
+[node name="CollisionShape2D13" type="CollisionShape2D" parent="Collisions/StaticBody2D"]
+position = Vector2(-416, -75)
+shape = SubResource("RectangleShape2D_q421s")
+
+[node name="CollisionShape2D14" type="CollisionShape2D" parent="Collisions/StaticBody2D"]
+position = Vector2(-63, -137)
+shape = SubResource("RectangleShape2D_q421s")
+
+[node name="CollisionShape2D15" type="CollisionShape2D" parent="Collisions/StaticBody2D"]
+position = Vector2(63, -137)
+shape = SubResource("RectangleShape2D_q421s")
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="Collisions/StaticBody2D"]
 position = Vector2(0, 239)
@@ -258,23 +336,3 @@ metadata/_edit_lock_ = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_orgk4")
-
-[node name="Herbs" parent="." instance=ExtResource("16_hcj3v")]
-position = Vector2(-119, -113)
-collision_layer = 0
-collision_mask = 1
-
-[node name="GoldenFeather" parent="." instance=ExtResource("17_lbmpp")]
-position = Vector2(123, -113)
-collision_layer = 0
-collision_mask = 1
-
-[node name="Skull" parent="." instance=ExtResource("18_o03cs")]
-position = Vector2(1, -121)
-collision_layer = 0
-collision_mask = 1
-
-[node name="BookShelf" type="Sprite2D" parent="."]
-position = Vector2(-416, -100)
-scale = Vector2(2, 2)
-texture = ExtResource("19_b4v1c")
