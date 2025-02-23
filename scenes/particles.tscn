@@ -14,7 +14,6 @@ color = Color(1, 0.75, 0, 1)
 [node name="Node2D" type="Node2D"]
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-position = Vector2(0, -14)
 emitting = false
 amount = 30
 process_material = SubResource("ParticleProcessMaterial_iayn8")

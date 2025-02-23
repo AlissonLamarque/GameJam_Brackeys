@@ -125,6 +125,7 @@ func _ready() -> void:
 
 func change_shader(shader = 1):
 	dissolve_rate = min_dissolve_rate
+	$Sprite2D.material.set_shader_parameter("dissolve_rate", dissolve_rate)
 	if shader == 0:
 		var dissolve_shader = load("res://shaders/disappear.tres")
 		$Sprite2D.material.set("shader", dissolve_shader)
