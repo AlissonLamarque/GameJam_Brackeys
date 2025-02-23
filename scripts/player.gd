@@ -95,7 +95,7 @@ func shoot():
 	
 	get_parent().add_child(bullet)
 
-	await get_tree().create_timer(0.2).timeout
+	await get_tree().create_timer(0.5).timeout
 
 	can_shoot = true
 
