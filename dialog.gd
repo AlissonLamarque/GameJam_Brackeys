@@ -33,9 +33,11 @@ func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("shoot"):
 		change_dialog()
 		change_dialog_timer.start()
-		index += 1
+		if index < dialogs.size()-1:
+			index += 1
+		else:
+			end_cutscene()
 		
-
 func _on_change_dialog_timeout() -> void:
 	if index < dialogs.size()-1:
 		change_dialog()
