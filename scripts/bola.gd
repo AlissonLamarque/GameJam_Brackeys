@@ -7,6 +7,9 @@ var picked = false
 var target_scale = Vector2(2,2)
 var can_pick = true
 var original_index = z_index
+@onready var audio_stream_player: AudioStreamPlayer = $AudioItemDestroy
+@onready var audio_item_pickup: AudioStreamPlayer = $AudioItemPickup
+@onready var audio_item_drop: AudioStreamPlayer = $AudioItemDrop
 
 var starting_position
 var initial_position_was_set = false
@@ -76,6 +79,7 @@ func _input(event):
 				if not initial_position_was_set:
 					starting_position = self.get_position()
 					initial_position_was_set = true
+				audio_item_pickup.play()
 				picked = true
 				player.canPick = false
 				player.speed = player.min_speed 
@@ -85,7 +89,7 @@ func _input(event):
 			picked = false
 			player.canPick = true
 			player.speed = player.max_speed
-			
+			audio_item_drop.play()
 			largou_no_chao_timer.start()
 			
 			# Verifica se o item foi solto perto do mago
@@ -145,7 +149,7 @@ var tween
 func destroy():
 	largou_no_chao_timer.stop()
 	can_pick = false
-	
+	audio_stream_player.play()
 	if change:
 		change = false
 		change_shader(0)

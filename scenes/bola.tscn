@@ -1,9 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://dj6sle58ekgb8"]
+[gd_scene load_steps=13 format=3 uid="uid://dj6sle58ekgb8"]
 
 [ext_resource type="Script" path="res://scripts/bola.gd" id="1_eafgv"]
 [ext_resource type="Shader" path="res://shaders/outline.gdshader" id="1_enydp"]
 [ext_resource type="Shader" uid="uid://d2yoxxvv2ycee" path="res://shaders/appear.tres" id="2_d2q0r"]
 [ext_resource type="Texture2D" uid="uid://5io0kmdcaj3b" path="res://assets/items/bola.png" id="3_45s7g"]
+[ext_resource type="AudioStream" uid="uid://cuot03rer00l5" path="res://assets/sounds/ItemMorrendo.wav" id="5_desxc"]
+[ext_resource type="AudioStream" uid="uid://d1t7n5nrv0me1" path="res://assets/sounds/Pickup_Item.wav" id="6_sthgy"]
+[ext_resource type="AudioStream" uid="uid://dym7xeexsfy2y" path="res://assets/sounds/Drop_Item.wav" id="7_lk2aa"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_obsl3"]
 resource_local_to_scene = true
@@ -70,5 +73,18 @@ shape = SubResource("CircleShape2D_yspe6")
 [node name="Timer" type="Timer" parent="."]
 wait_time = 4.0
 one_shot = true
+
+[node name="AudioItemDestroy" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_desxc")
+volume_db = -11.045
+
+[node name="AudioItemPickup" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_sthgy")
+pitch_scale = 0.74
+
+[node name="AudioItemDrop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_lk2aa")
+volume_db = -0.938
+pitch_scale = 0.78
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
