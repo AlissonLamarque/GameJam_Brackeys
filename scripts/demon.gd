@@ -58,18 +58,22 @@ func _physics_process(delta: float) -> void:
 	var player_dist = position.distance_to(player.position)
 	var mage_dist = position.distance_to(mage.position)
 	
-	target = player 
+	target = null
+	
+	if player.player_alive == true:
+		target = player 
 	if mage_dist < attack_range and player_dist > player_ignore_distance and mage.is_alive == true:
 		target = mage
-		
-	target_pos = (target.position - position).normalized()
 	
-	if position.distance_to(target.position) > stop_distance and not attacking:
-		position += target_pos * speed * delta
-		update_animation(target_pos)
-	else:
-		attacking = true
-		attack()
+	if target:
+		target_pos = (target.position - position).normalized()
+	
+		if position.distance_to(target.position) > stop_distance and not attacking:
+			position += target_pos * speed * delta
+			update_animation(target_pos)
+		else:
+			attacking = true
+			attack()
 		
 	
 
