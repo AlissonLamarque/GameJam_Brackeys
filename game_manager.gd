@@ -38,7 +38,7 @@ func _process(delta: float) -> void:
 		timer_gs5.start()
 	elif game_state == 6:
 		# Fim do jogo, derrota (MORTE DO PLAYER)
-		await get_tree().create_timer(6).timeout
+		await get_tree().create_timer(3).timeout
 		get_tree().change_scene_to_file("res://scenes/game_over.tscn")
 	elif game_state == 7:
 		# Fim do jogo, derrota (ITEM INCORRETO)
