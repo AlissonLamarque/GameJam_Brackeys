@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://0i7s0dvevww7"]
+
+[ext_resource type="Script" path="res://dialog.gd" id="1_1p6bc"]
+[ext_resource type="Texture2D" uid="uid://5io0kmdcaj3b" path="res://assets/items/bola.png" id="2_0dk14"]
+[ext_resource type="FontFile" uid="uid://bwjpn3acva7by" path="res://assets/fonts/half_bold_pixel-7.ttf" id="3_kyhwh"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_0uore"]
+font = ExtResource("3_kyhwh")
+font_size = 20
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_1p6bc")
+
+[node name="Bola" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(550, 323)
+scale = Vector2(115.723, 97.414)
+texture = ExtResource("2_0dk14")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 391.0
+offset_top = 367.0
+offset_right = 795.0
+offset_bottom = 390.0
+text = "The time has come, my apprentice..."
+label_settings = SubResource("LabelSettings_0uore")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ChangeDialog" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(591, 379)
+zoom = Vector2(2, 2)
+
+[connection signal="timeout" from="ChangeDialog" to="." method="_on_change_dialog_timeout"]
