@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=4 uid="uid://bpib2e6h3628"]
+[gd_scene load_steps=39 format=4 uid="uid://bpib2e6h3628"]
 
 [ext_resource type="Script" path="res://scripts/camera_2d.gd" id="1_frwiy"]
 [ext_resource type="PackedScene" uid="uid://cu7lx3nllaatw" path="res://scenes/game_manager.tscn" id="1_q7qob"]
@@ -24,6 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://c8efopliot5j6" path="res://scenes/pause_menu.tscn" id="18_v6ds1"]
 [ext_resource type="Texture2D" uid="uid://dftyrx7gq73mr" path="res://assets/texture/book_shelf.png" id="19_b4v1c"]
 [ext_resource type="Texture2D" uid="uid://ddoibh6obtj1a" path="res://assets/texture/tapete.png" id="23_eavgt"]
+[ext_resource type="PackedScene" uid="uid://dnsp0nhmmojjh" path="res://scenes/ui.tscn" id="25_145gj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jbw0h"]
 size = Vector2(870, 174)
@@ -371,3 +372,9 @@ metadata/_edit_lock_ = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_orgk4")
+
+[node name="UI" parent="." instance=ExtResource("25_145gj")]
+offset_left = -473.0
+offset_top = -275.0
+offset_right = -433.0
+offset_bottom = -235.0
