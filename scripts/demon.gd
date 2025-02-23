@@ -15,6 +15,9 @@ extends CharacterBody2D
 @onready var camera = get_parent().get_node("Camera2D")
 @onready var attack_timer: Timer = $Timer
 @onready var spawn_timer: Timer = Timer.new()
+@onready var som_hit: AudioStreamPlayer = $SomHit
+
+
 
 @onready var dissolve_shader = preload("res://shaders/disappear.tres")
 
@@ -28,10 +31,11 @@ var dissolve_rate = min_dissolve_rate
 var has_spawned = false
 var attacking = false
 
+var rng = RandomNumberGenerator.new()
+
 func _ready():
 	
 	var tween = get_tree().create_tween()
-	
 	$AnimatedSprite2D.material.set("shader_parameter/color", Vector3(0.888, 0.47, 0.0))
 	
 	tween.parallel().tween_property(self, "dissolve_rate", max_dissolve_rate, 2)
@@ -123,6 +127,8 @@ func _on_spawn_timer_timeout():
 
 func die():
 	$AnimatedSprite2D.material.set("shader_parameter/color", Vector3(0.0, 0.926, 0.94))
+	som_hit.pitch_scale = rng.randf_range(0.9, 1.1)
+	som_hit.play()
 	var light = get_node("PointLight2D")
 	var tween = get_tree().create_tween()
 	dissolve_rate = min_dissolve_rate

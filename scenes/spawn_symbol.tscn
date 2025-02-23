@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://byctftnl32xs5"]
+[gd_scene load_steps=8 format=3 uid="uid://byctftnl32xs5"]
 
 [ext_resource type="Script" path="res://scripts/spawn_symbol.gd" id="1_lkjci"]
 [ext_resource type="Texture2D" uid="uid://dmbldnknk61fu" path="res://assets/particles/demon_spawn.png" id="1_pujhr"]
 [ext_resource type="Texture2D" uid="uid://c3s6jruidvkv4" path="res://assets/particles/light.webp" id="2_dnyds"]
+[ext_resource type="AudioStream" uid="uid://bjsou1wynq4d7" path="res://assets/sounds/enemy_spawn.wav" id="4_i6hb0"]
 
 [sub_resource type="Animation" id="Animation_lk14q"]
 length = 0.001
@@ -65,5 +66,9 @@ color = Color(1, 0.988235, 0, 1)
 energy = 5.0
 texture = ExtResource("2_dnyds")
 texture_scale = 1.5
+
+[node name="somSpawn" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_i6hb0")
+volume_db = -30.0
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

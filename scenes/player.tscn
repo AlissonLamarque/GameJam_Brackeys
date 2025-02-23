@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://dgunt0onwvp5q"]
+[gd_scene load_steps=66 format=3 uid="uid://dgunt0onwvp5q"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_rjxes"]
 [ext_resource type="PackedScene" uid="uid://q14ikqdfgugs" path="res://scenes/bullet.tscn" id="2_go0rh"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://btfgd401qavbn" path="res://assets/character/hurt.png" id="5_wgtam"]
 [ext_resource type="Texture2D" uid="uid://dn8d8acsyf36n" path="res://assets/character/idle_mage_spritesheet.png" id="7_qwblf"]
 [ext_resource type="Texture2D" uid="uid://7gxutut1up5n" path="res://assets/character/run_mage_spritesheet.png" id="8_aqkd1"]
+[ext_resource type="AudioStream" uid="uid://b5h8puvsm46rn" path="res://assets/sounds/tiro.wav" id="9_s5uat"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bpl7w"]
 atlas = ExtResource("5_u7cby")
@@ -488,5 +489,10 @@ position = Vector2(0, 9)
 [node name="TimerTakeDamage" type="Timer" parent="."]
 wait_time = 1.5
 one_shot = true
+
+[node name="tiro" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_s5uat")
+volume_db = -30.0
+pitch_scale = 1.1
 
 [connection signal="timeout" from="TimerTakeDamage" to="." method="_on_timer_take_damage_timeout"]
