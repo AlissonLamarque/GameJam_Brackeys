@@ -24,7 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://c8efopliot5j6" path="res://scenes/pause_menu.tscn" id="18_v6ds1"]
 [ext_resource type="Texture2D" uid="uid://dftyrx7gq73mr" path="res://assets/texture/book_shelf.png" id="19_b4v1c"]
 [ext_resource type="Texture2D" uid="uid://ddoibh6obtj1a" path="res://assets/texture/tapete.png" id="23_eavgt"]
-[ext_resource type="PackedScene" uid="uid://dnsp0nhmmojjh" path="res://scenes/ui.tscn" id="25_145gj"]
+[ext_resource type="PackedScene" path="res://scenes/ui.tscn" id="25_145gj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jbw0h"]
 size = Vector2(870, 174)

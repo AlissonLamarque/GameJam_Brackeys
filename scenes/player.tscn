@@ -484,3 +484,9 @@ shape = SubResource("RectangleShape2D_wpdte")
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(0, 9)
+
+[node name="TimerTakeDamage" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+
+[connection signal="timeout" from="TimerTakeDamage" to="." method="_on_timer_take_damage_timeout"]
