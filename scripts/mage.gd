@@ -49,6 +49,8 @@ func decide_item_aleatorio():
 
 func exibir_item():
 	var item_texture_path = "res://assets/items/" + item_pedido + ".png"
+	if game_manager.game_state == 7:
+		item_texture_path = "res://assets/items/item_errado.png"
 	var item_texture = load(item_texture_path)
 
 	if item_texture:
@@ -72,6 +74,7 @@ func verificar_item(item_nome: String) -> bool:
 		return true
 	else:
 		game_manager.game_state = 7  # Muitos demonios vindo
+		exibir_item()
 		return false
 
 func take_damage(amount: int):
