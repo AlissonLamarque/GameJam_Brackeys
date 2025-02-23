@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhrdo6r1sp57a"]
+
+[ext_resource type="AudioStream" uid="uid://dbmmnl1q67233" path="res://assets/sounds/MusicaBrackeysGameJogoJam.wav" id="1_m1tfj"]
+[ext_resource type="Script" path="res://scripts/MusicPlayer.gd" id="2_6gpjn"]
+
+[node name="MusicPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_m1tfj")
+volume_db = -1.478
+autoplay = true
+script = ExtResource("2_6gpjn")
