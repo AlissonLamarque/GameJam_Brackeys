@@ -22,6 +22,8 @@ const crosshair_distance = 20
 
 @export var staff_distance = 1
 @export var bullet_scene: PackedScene
+@onready var tiro: AudioStreamPlayer = $tiro
+
 var can_shoot = true
 
 var initial_light_scale = 0
@@ -82,6 +84,9 @@ func shoot():
 		return
 		
 	can_shoot = false
+	
+	tiro.pitch_scale = rng.randf_range(0.8, 1.1)
+	tiro.play()
 	
 	$Staff/PointLight2D.scale = initial_light_scale * 2.5
 	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://datauqyrgk8a6"]
+[gd_scene load_steps=62 format=3 uid="uid://datauqyrgk8a6"]
 
 [ext_resource type="Script" path="res://scripts/demon.gd" id="1_8f4g8"]
 [ext_resource type="PackedScene" uid="uid://ck8si6sff7erd" path="res://scenes/particles.tscn" id="2_r1y2b"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bxetbymkqq0ca" path="res://assets/demon/attack.png" id="5_bw00k"]
 [ext_resource type="Texture2D" uid="uid://0of124m3objp" path="res://assets/demon/idle.png" id="6_ulady"]
 [ext_resource type="Texture2D" uid="uid://rw5tkx65d6rd" path="res://assets/demon/run.png" id="7_xt08t"]
+[ext_resource type="AudioStream" path="res://assets/sounds/enemy_hit.wav" id="9_w5sr6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_j2yiv"]
 resource_local_to_scene = true
@@ -440,5 +441,9 @@ texture_scale = 0.01
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
+
+[node name="SomHit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_w5sr6")
+volume_db = -30.415
 
 [connection signal="timeout" from="Timer" to="." method="_on_AttackTimer_timeout"]
