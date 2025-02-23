@@ -9,7 +9,7 @@ radial_velocity_max = 60.0
 gravity = Vector3(0, 0, 0)
 damping_min = 7.095
 damping_max = 7.095
-color = Color(1, 0.516667, 0, 1)
+color = Color(1, 0.75, 0, 1)
 
 [node name="Node2D" type="Node2D"]
 

@@ -184,11 +184,11 @@ texture = ExtResource("6_en3fm")
 position = Vector2(103.5, -14.5)
 texture = ExtResource("8_5wn57")
 
-[node name="BookShelf" type="Sprite2D" parent="Mobilia"]
+[node name="BookShelf4" type="Sprite2D" parent="Mobilia"]
+position = Vector2(416, 3.5)
 texture = ExtResource("19_b4v1c")
 
-[node name="BookShelf" type="Sprite2D" parent="Mobilia/BookShelf"]
-position = Vector2(416, 3.5)
+[node name="BookShelf" type="Sprite2D" parent="Mobilia"]
 texture = ExtResource("19_b4v1c")
 
 [node name="BookShelf2" type="Sprite2D" parent="Mobilia"]
@@ -248,7 +248,7 @@ gravity_scale = 1.0
 linear_damp = 0.0
 
 [node name="Diamond" parent="." instance=ExtResource("14_njq81")]
-position = Vector2(-240, -123)
+position = Vector2(-240, -126)
 collision_layer = 0
 collision_mask = 1
 gravity_scale = 1.0
@@ -262,7 +262,7 @@ gravity_scale = 1.0
 linear_damp = 0.0
 
 [node name="Rubi" parent="." instance=ExtResource("16_grdbn")]
-position = Vector2(-182, -123)
+position = Vector2(-182, -127)
 collision_layer = 0
 collision_mask = 1
 gravity_scale = 1.0
@@ -274,6 +274,7 @@ position = Vector2(-55, -28)
 [node name="Collisions" type="Node2D" parent="."]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Collisions"]
+visible = false
 collision_layer = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions/StaticBody2D"]
