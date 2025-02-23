@@ -1,7 +1,8 @@
 extends Node2D
 
 @export var game_state = 0
-@onready var timer: Timer = $Timer
+@onready var timer_gs5: Timer = $TimerGameState5
+@onready var timer_gs7: Timer = $TimerGameState7
 @onready var demon_spawner = get_node("DemonSpawner")
 @onready var ritual = get_parent().get_node("Ritual")
 @onready var player = get_parent().get_node("Player")
@@ -31,10 +32,10 @@ func _process(delta: float) -> void:
 		get_tree().change_scene_to_file("res://scenes/game_over.tscn")
 	elif game_state == 5:
 		# Fim do jogo, derrota (MORTE DO MAGO)
-		if not timer.is_stopped():
+		if not timer_gs5.is_stopped():
 			return
 		_darkening_ritual()
-		timer.start()
+		timer_gs5.start()
 	elif game_state == 6:
 		# Fim do jogo, derrota (MORTE DO PLAYER)
 		player_anim.play("death_front")
@@ -42,19 +43,32 @@ func _process(delta: float) -> void:
 		get_tree().change_scene_to_file("res://scenes/game_over.tscn")
 	elif game_state == 7:
 		# Fim do jogo, derrota (ITEM INCORRETO)
-		get_tree().change_scene_to_file("res://scenes/game_over.tscn")
+		if not timer_gs7.is_stopped():
+			return
+		_darkening_ritual()
+		timer_gs7.start()
 
-func _on_timer_timeout():
+func _on_timergs5_timeout():
 	if player.health > 0:
 		demon_spawner.spawn_rate -= demon_spawner.spawn_rate / 5
 	else:
-		timer.stop()
+		timer_gs5.stop()
+
+func _on_timergs7_timeout() -> void:
+	if player.health > 0:
+		demon_spawner.spawn_rate -= demon_spawner.spawn_rate / 5
+	else:
+		timer_gs7.stop()
 
 func _darkening_ritual():
 	var tween = get_tree().create_tween()
 	
-	tween.tween_property(ritual, "modulate", Color.hex(0xfc0000), 1.5).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
+	if game_state == 5:
+		tween.tween_property(ritual, "modulate", Color.hex(0xfc0000), 1.5).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
 
-	for i in range(1, 4):
-		var particles = ritual.get_node("GPUParticles2D" + ("" if i == 1 else str(i)))
-		particles.emitting = false
+		for i in range(1, 4):
+			var particles = ritual.get_node("GPUParticles2D" + ("" if i == 1 else str(i)))
+			particles.emitting = false
+	
+	if game_state == 7:
+		tween.tween_property(ritual, "modulate", Color.hex(0xff0000), 1.5).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)

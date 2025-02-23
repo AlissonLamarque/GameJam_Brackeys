@@ -71,7 +71,7 @@ func verificar_item(item_nome: String) -> bool:
 		esconder_item()
 		return true
 	else:
-		game_manager.game_state = 2  # Muitos demonios vindo
+		game_manager.game_state = 7  # Muitos demonios vindo
 		return false
 
 func take_damage(amount: int):
